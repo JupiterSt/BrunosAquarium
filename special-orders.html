@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Special Orders | Bruno’s Aquarium — Huron, SD</title>
+  <meta name="description" content="Request special‑order livestock, foods, and equipment from our approved suppliers. We’ll confirm price & ETA, then invoice via Square." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .steps{counter-reset:step;display:grid;gap:12px}
+    .steps .step{display:flex;gap:12px;align-items:flex-start}
+    .steps .dot{flex:none;width:32px;height:32px;border-radius:999px;background:var(--sea);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    @media (max-width:960px){.cols{grid-template-columns:1fr}}
+    .supplier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:640px){.supplier-grid{grid-template-columns:1fr}}
+    .policy{background:#fff7ed;border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:12px}
+  </style>
+  <script>
+    // Paste your Square checkout links later
+    const SQUARE_LINKS = {
+      deposit: 'https://square.link/REPLACE-DEPOSIT',
+      payBalance: 'https://square.link/REPLACE-PAY-BALANCE'
+    };
+    document.addEventListener('DOMContentLoaded',()=>{
+      for(const [k,url] of Object.entries(SQUARE_LINKS)){
+        const a = document.querySelector(`[data-square="${k}"]`);
+        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="livestock.html">Livestock</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="special-orders.html">Special Orders</a>
+      <a href="care-guides.html">Care Guides</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Special Orders</h1>
+    <p class="muted">If it’s not on the shelf, we can usually get it. Tell us what you need — we’ll confirm price and ETA, then invoice you securely via Square.</p>
+
+    <section class="cols">
+      <div>
+        <div class="card">
+          <h2>How it works</h2>
+          <div class="steps">
+            <div class="step"><div class="dot">1</div><div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget).</div></div>
+            <div class="step"><div class="dot">2</div><div>We <strong>check availability</strong> with suppliers and message you with price & ETA.</div></div>
+            <div class="step"><div class="dot">3</div><div>Pay a small <strong>deposit</strong> to lock it in. <a class="btn" data-square="deposit" href="#">Pay Deposit</a></div></div>
+            <div class="step"><div class="dot">4</div><div>We place the order and <strong>notify you on arrival</strong>. Pick up in‑store or ask about delivery/install.</div></div>
+            <div class="step"><div class="dot">5</div><div>Pay the <strong>remaining balance</strong> at pickup. <a class="btn ghost" data-square="payBalance" href="#">Pay Balance</a></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Request Form</h2>
+          <p class="muted">Fastest way to get a quote. You’ll receive a confirmation by phone or email.</p>
+          <!-- Swap to Google Form when ready -->
+          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="grid cols-2">
+              <label>Full name<br><input name="name" required></label>
+              <label>Phone<br><input name="phone" required></label>
+            </div>
+            <div class="grid cols-2" style="margin-top:10px">
+              <label>Email<br><input type="email" name="email"></label>
+              <label>Preferred contact method<br>
+                <select name="contact">
+                  <option value="Phone">Phone</option>
+                  <option value="Text">Text</option>
+                  <option value="Email">Email</option>
+                </select>
+              </label>
+            </div>
+            <label style="display:block;margin-top:10px">What do you want to order?<br>
+              <textarea name="details" rows="5" placeholder="Species/equipment, size, qty, budget. Example: Yellow Tang (SM), 1; Reef Nutrition TDO Chroma Boost; 75g glass tank with stand."></textarea>
+            </label>
+            <div class="grid cols-2" style="margin-top:10px">
+              <label>Deadline or event date (optional)<br><input name="deadline" placeholder="MM/DD/YYYY"></label>
+              <label>Pickup or install?<br>
+                <select name="fulfillment">
+                  <option value="Pickup">Pickup</option>
+                  <option value="Delivery/Install">Delivery/Install</option>
+                </select>
+              </label>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" type="submit">Request Quote</button>
+              <a class="btn ghost" href="mailto:brunosaquarium@gmail.com">Email Instead</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h2>Approved Suppliers</h2>
+          <div class="supplier-grid">
+            <div>
+              <h3>Reef Nutrition</h3>
+              <p class="muted">Foods for fish & corals.</p>
+              <a href="https://reefnutrition.com/" target="_blank" rel="noopener">View catalog ↗</a>
+            </div>
+            <div>
+              <h3>AlgaeBarn</h3>
+              <p class="muted">Pods, phyto, cleanup crew, more.</p>
+              <a href="https://algaebarn.com/" target="_blank" rel="noopener">View catalog ↗</a>
+            </div>
+            <div>
+              <h3>Quality Marine</h3>
+              <p class="muted">Saltwater fish, corals, inverts.</p>
+              <a href="https://www.qualitymarine.com/" target="_blank" rel="noopener">View site ↗</a>
+            </div>
+            <div>
+              <h3>Eye Catching Coral</h3>
+              <p class="muted">Corals & aquacultured frags.</p>
+              <a href="https://eyecatchingcoral.com/" target="_blank" rel="noopener">View site ↗</a>
+            </div>
+            <div>
+              <h3>UGR Wholesale</h3>
+              <p class="muted">Freshwater, reptiles, supplies.</p>
+              <a href="https://ugrwholesale.com/" target="_blank" rel="noopener">View site ↗</a>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:10px">Availability changes quickly; we’ll confirm current stock before invoicing.</p>
+        </div>
+
+        <div class="card">
+          <h2>Policies</h2>
+          <div class="policy">
+            <strong>Deposits:</strong> Non‑refundable once ordered from supplier. Applied to final balance.
+          </div>
+          <div class="policy" style="margin-top:10px">
+            <strong>Live Arrival:</strong> For livestock, we follow industry‑standard DOA procedures. Inspect at pickup; contact us immediately with concerns.
+          </div>
+          <div class="policy" style="margin-top:10px">
+            <strong>Timing:</strong> ETAs depend on supplier schedules and weather. We’ll provide the best estimate and updates.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Need Installation?</h2>
+          <p class="muted">We can deliver, assemble, aquascape, and start your system the right way.</p>
+          <a class="btn" href="services.html">See Services</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>
