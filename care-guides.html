@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Care Guides | Bruno’s Aquarium — Huron, SD</title>
+  <meta name="description" content="Beginner‑friendly aquarium care guides: acclimation, cycling, water parameters, reef lighting, feeding, and compatibility. Saltwater • Freshwater • Reptiles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .toc{display:flex;flex-wrap:wrap;gap:10px}
+    .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
+    .checklist{list-style: none; padding-left:0}
+    .checklist li{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+    .check{width:18px;height:18px;border-radius:4px;border:2px solid #22c55e;margin-top:3px}
+    .table{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    @media (max-width:640px){.table{grid-template-columns:1fr}}
+    .row{display:contents}
+    .cell{padding:8px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+  </style>
+  <script>
+    // Optional Square deep-links (replace later)
+    const SQUARE_LINKS = {
+      bookWaterTest: 'https://square.link/REPLACE-WATER-TEST-BASIC',
+      shopFoods: 'https://square.link/REPLACE-CAT-SPECIALTY-FOOD',
+      shopLiveFood: 'https://square.link/REPLACE-CAT-LIVE-FOOD',
+      shopTestKits: 'https://square.link/REPLACE-CAT-TEST-ADD'
+    };
+    document.addEventListener('DOMContentLoaded',()=>{
+      for(const [k,url] of Object.entries(SQUARE_LINKS)){
+        const a = document.querySelector(`[data-square="${k}"]`);
+        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+      }
+    });
+  </script>
+  <!-- FAQ SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How do I acclimate new fish or inverts?","acceptedAnswer":{"@type":"Answer","text":"Float sealed bag 15–20 min to temperature match. Open and add small amounts of tank water every 5 min for 20–30 min (drip acclimation preferred). Net livestock into the tank; discard bag water."}},
+      {"@type":"Question","name":"How long does a new tank cycle take?","acceptedAnswer":{"@type":"Answer","text":"Typically 2–6 weeks. Ammonia rises, then nitrite, then both drop as nitrate appears. Use a test kit to verify and add livestock slowly."}},
+      {"@type":"Question","name":"What are basic reef parameters?","acceptedAnswer":{"@type":"Answer","text":"Temp 77–79°F, salinity 1.025, alkalinity 8–9 dKH, calcium 420–450 ppm, magnesium 1300–1400 ppm, nitrate 2–10 ppm, phosphate 0.03–0.10 ppm."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="livestock.html">Livestock</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies</a>
+      <a href="services.html">Services</a>
+      <a href="special-orders.html">Special Orders</a>
+      <a class="active" href="care-guides.html">Care Guides</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Care Guides</h1>
+    <p class="muted">Quick, practical references for healthy aquariums and reptiles. Visit the shop any time for help or <a data-square="bookWaterTest" href="#">book a water test</a>.</p>
+
+    <div class="card">
+      <div class="kicker">Jump to</div>
+      <div class="toc">
+        <a href="#acclimation">Acclimation</a>
+        <a href="#cycling">Cycling</a>
+        <a href="#parameters">Water Parameters</a>
+        <a href="#lighting">Reef Lighting</a>
+        <a href="#feeding">Feeding</a>
+        <a href="#compatibility">Compatibility</a>
+        <a href="#quarantine">Quarantine</a>
+      </div>
+    </div>
+
+    <section id="acclimation" class="card">
+      <h2>Acclimation (Fish, Corals, Inverts)</h2>
+      <ul class="checklist">
+        <li><span class="check"></span> Turn off lights to reduce stress. Dim room if possible.</li>
+        <li><span class="check"></span> Float sealed bag 15–20 min to equalize temperature.</li>
+        <li><span class="check"></span> Open bag; add ~1/4 cup tank water every 5 min for 20–30 min (or drip at 2–4 drops/sec for 30–60 min).</li>
+        <li><span class="check"></span> Net livestock into tank. <strong>Discard bag water</strong> (do not pour into tank).</li>
+        <li><span class="check"></span> Lights low for first few hours; feed lightly next day.</li>
+      </ul>
+      <p class="muted">Tip: Have Prime/conditioner and an aerated bucket handy. Sensitive inverts may need slower drip times.</p>
+    </section>
+
+    <section id="cycling" class="card">
+      <h2>Cycling a New Tank</h2>
+      <p>The nitrogen cycle establishes beneficial bacteria that convert <em>ammonia → nitrite → nitrate</em>. Most setups take <strong>2–6 weeks</strong> depending on seeding and temperature.</p>
+      <div class="grid cols-2">
+        <div>
+          <h3>Basic Steps</h3>
+          <ul class="checklist">
+            <li><span class="check"></span> Add dechlorinated water and start filtration/heater.</li>
+            <li><span class="check"></span> Add a bacteria starter and a small ammonia source (fish food or bottled ammonium per directions).</li>
+            <li><span class="check"></span> Test every 2–3 days: ammonia, nitrite, nitrate.</li>
+            <li><span class="check"></span> When ammonia & nitrite are zero and nitrate is present, perform a water change and begin stocking slowly.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Helpful Gear</h3>
+          <ul class="checklist">
+            <li><span class="check"></span> Reliable test kit (<a data-square="shopTestKits" href="#">shop kits</a>)</li>
+            <li><span class="check"></span> Biological media & flow
+            </li>
+            <li><span class="check"></span> Temperature control (76–80°F most systems)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="parameters" class="card">
+      <h2>Water Parameters (Quick Targets)</h2>
+      <div class="table">
+        <div class="row">
+          <div class="cell"><strong>Saltwater (Fish‑only)</strong></div>
+          <div class="cell">Temp 77–79°F • Salinity 1.020–1.023 • pH 8.0–8.3 • Ammonia/Nitrite 0 • Nitrate &lt; 30 ppm</div>
+        </div>
+        <div class="row">
+          <div class="cell"><strong>Reef</strong></div>
+          <div class="cell">Temp 77–79°F • Salinity 1.025 • Alk 8–9 dKH • Ca 420–450 • Mg 1300–1400 • NO3 2–10 ppm • PO4 0.03–0.10 ppm</div>
+        </div>
+        <div class="row">
+          <div class="cell"><strong>Freshwater (Community)</strong></div>
+          <div class="cell">Temp 74–78°F • pH 6.8–7.6 • Ammonia/Nitrite 0 • Nitrate &lt; 40 ppm (species dependent)</div>
+        </div>
+        <div class="row">
+          <div class="cell"><strong>Reptiles (enclosures)</strong></div>
+          <div class="cell">Match species humidity/temperature gradients; provide UVB/heat per species guidelines.</div>
+        </div>
+      </div>
+      <p class="muted">Bring a sample for a <a data-square="bookWaterTest" href="#">professional water test</a> and tailored recommendations.</p>
+    </section>
+
+    <section id="lighting" class="card">
+      <h2>Reef Lighting Basics</h2>
+      <p>Place corals according to their light demand. Aim for stable photoperiods (8–10 hours) and adequate flow.</p>
+      <ul class="checklist">
+        <li><span class="check"></span> Soft corals: ~50–100 PAR</li>
+        <li><span class="check"></span> LPS corals: ~75–150 PAR</li>
+        <li><span class="check"></span> SPS corals: ~200–350 PAR</li>
+      </ul>
+      <p class="muted">Start low and increase slowly to avoid bleaching. Ask us to help place new frags.</p>
+    </section>
+
+    <section id="feeding" class="card">
+      <h2>Feeding</h2>
+      <div class="grid cols-2">
+        <div>
+          <h3>Fish</h3>
+          <ul class="checklist">
+            <li><span class="check"></span> Mix frozen, pellets, and nori for variety.</li>
+            <li><span class="check"></span> Small portions 1–2× daily; remove uneaten food.</li>
+          </ul>
+          <a class="btn" data-square="shopFoods" href="#">Shop Foods</a>
+        </div>
+        <div>
+          <h3>Corals & Filter Feeders</h3>
+          <ul class="checklist">
+            <li><span class="check"></span> Target feed appropriate particle size.</li>
+            <li><span class="check"></span> Use live foods when possible (<a data-square="shopLiveFood" href="#">pods & phyto</a>).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="compatibility" class="card">
+      <h2>Compatibility & Stocking</h2>
+      <ul class="checklist">
+        <li><span class="check"></span> Research temperament; avoid mixing known aggressors.</li>
+        <li><span class="check"></span> Quarantine when possible; add most peaceful fish first, territorial species last.</li>
+        <li><span class="check"></span> Follow tank size guidelines—upgrade plans matter.</li>
+      </ul>
+      <p class="muted">Unsure about a pairing? Ask us before you buy—we love planning safe stocking lists.</p>
+    </section>
+
+    <section id="quarantine" class="card">
+      <h2>Quarantine Tips</h2>
+      <ul class="checklist">
+        <li><span class="check"></span> Simple 10–20g tank with heater, sponge filter, and cover.</li>
+        <li><span class="check"></span> Observe 2–4 weeks; feed well and monitor behavior.</li>
+        <li><span class="check"></span> Keep separate tools to avoid cross‑contamination.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Downloads</h2>
+      <ul class="list">
+        <li><a href="#">Acclimation Cheat Sheet (PDF)</a> — TODO</li>
+        <li><a href="#">Reef Parameters Reference (PDF)</a> — TODO</li>
+        <li><a href="#">New Tank Checklist (PDF)</a> — TODO</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>
