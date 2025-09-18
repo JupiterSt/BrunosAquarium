@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Care Guides | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Beginner‑friendly aquarium care guides: acclimation, cycling, water parameters, reef lighting, feeding, and compatibility. Saltwater • Freshwater • Reptiles." />
+  <meta name="description" content="Beginner-friendly aquarium care guides: acclimation, cycling, water parameters, reef lighting, feeding, and compatibility. Saltwater • Freshwater • Reptiles." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -12,29 +12,118 @@
   <style>
     .toc{display:flex;flex-wrap:wrap;gap:10px}
     .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
-    .checklist{list-style: none; padding-left:0}
+    .checklist{list-style:none;padding-left:0}
     .checklist li{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
     .check{width:18px;height:18px;border-radius:4px;border:2px solid #22c55e;margin-top:3px}
     .table{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     @media (max-width:640px){.table{grid-template-columns:1fr}}
     .row{display:contents}
     .cell{padding:8px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+
+    /* Care Forms */
+    details.care-form{border:1px solid #e5e7eb;border-radius:12px;padding:0;background:#fff}
+    details.care-form > summary{
+      cursor:pointer; list-style:none; padding:14px 16px; margin:0; font-weight:800;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    details.care-form[open] > summary{border-bottom:1px solid #e5e7eb}
+    .form-body{padding:16px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:800px){.form-grid{grid-template-columns:1fr}}
+    .form-row{display:flex;flex-direction:column;gap:6px}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .note{font-size:13px;color:#6b7280}
+    .pill{padding:6px 10px;background:#eefaf3;border:1px solid #c7efd9;color:#155e3b;border-radius:999px;font-weight:700}
+
+    /* Print: only print the opened form content */
+    @media print{
+      body *{visibility:hidden !important}
+      .print-target, .print-target *{visibility:visible !important}
+      .print-target{position:static !important; inset:auto !important}
+    }
   </style>
+
   <script>
-    // Optional Square deep-links (replace later)
+    // Square deep-links (replace later if you want)
     const SQUARE_LINKS = {
       bookWaterTest: 'https://square.link/REPLACE-WATER-TEST-BASIC',
       shopFoods: 'https://square.link/REPLACE-CAT-SPECIALTY-FOOD',
       shopLiveFood: 'https://square.link/REPLACE-CAT-LIVE-FOOD',
       shopTestKits: 'https://square.link/REPLACE-CAT-TEST-ADD'
     };
+
+    // 👇 Google Forms: paste your published form URLs here
+    const GOOGLE_FORMS = {
+      saltwaterFish: '',   // e.g. https://docs.google.com/forms/d/e/.../viewform
+      freshwaterFish: '',
+      cycling: '',
+      reptile: '',
+      // optional general forms:
+      waterTest: '',       // if you have a Google Form for water tests
+      general: ''          // general care questions
+    };
+
     document.addEventListener('DOMContentLoaded',()=>{
+      // Square links
       for(const [k,url] of Object.entries(SQUARE_LINKS)){
         const a = document.querySelector(`[data-square="${k}"]`);
         if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
       }
+      // Google Form buttons
+      for(const [k,url] of Object.entries(GOOGLE_FORMS)){
+        const btns = document.querySelectorAll(`[data-gform="${k}"]`);
+        btns.forEach(btn=>{
+          if(url){
+            btn.href = url;
+            btn.target = '_blank';
+            btn.rel = 'noopener';
+            btn.style.display = 'inline-flex';
+          }else{
+            // Hide button if you haven’t set this URL yet
+            btn.style.display = 'none';
+          }
+        });
+      }
     });
+
+    // ------- Care Form helpers (print/email/clear) -------
+    function collectFormData(form){
+      const fields = form.querySelectorAll('input, select, textarea');
+      const lines = [];
+      fields.forEach(el=>{
+        const label = el.dataset.label || el.name || 'Field';
+        let val = '';
+        if (el.type === 'checkbox'){ val = el.checked ? 'Yes' : 'No'; }
+        else { val = (el.value || '').toString().trim(); }
+        lines.push(`${label}: ${val}`);
+      });
+      return lines;
+    }
+    function emailForm(formId, to=''){
+      const form = document.getElementById(formId);
+      if(!form) return;
+      const title = form.getAttribute('data-title') || 'Care Sheet';
+      const species = (form.querySelector('[name="species"]')?.value || '').trim();
+      const subject = encodeURIComponent(`${title}${species ? ' — ' + species : ''}`);
+      const lines = collectFormData(form);
+      const body = encodeURIComponent(lines.join('\n'));
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+    function printForm(formId){
+      const wrap = document.getElementById(formId)?.closest('details');
+      if(!wrap) return;
+      wrap.classList.add('print-target');
+      window.print();
+      setTimeout(()=>wrap.classList.remove('print-target'), 500);
+    }
+    function clearForm(formId){
+      const form = document.getElementById(formId);
+      if(!form) return;
+      form.reset();
+    }
   </script>
+
   <!-- FAQ SEO -->
   <script type="application/ld+json">
   {
@@ -50,7 +139,7 @@
 </head>
 <body>
   <header>
-    <nav>
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
@@ -65,11 +154,18 @@
 
   <main class="container">
     <h1>Care Guides</h1>
-    <p class="muted">Quick, practical references for healthy aquariums and reptiles. Visit the shop any time for help or <a data-square="bookWaterTest" href="#">book a water test</a>.</p>
+    <p class="muted">
+      Quick, practical references for healthy aquariums and reptiles. Visit the shop any time for help or
+      <a data-square="bookWaterTest" href="#">book a water test</a>.
+      <!-- Optional general Google Form & water test form buttons -->
+      <a class="btn ghost" data-gform="general" href="#" style="margin-left:8px">Open General Care Form</a>
+      <a class="btn ghost" data-gform="waterTest" href="#" style="margin-left:8px">Open Water Test Form</a>
+    </p>
 
     <div class="card">
       <div class="kicker">Jump to</div>
       <div class="toc">
+        <a href="#forms">Care Sheet Forms</a>
         <a href="#acclimation">Acclimation</a>
         <a href="#cycling">Cycling</a>
         <a href="#parameters">Water Parameters</a>
@@ -79,6 +175,262 @@
         <a href="#quarantine">Quarantine</a>
       </div>
     </div>
+
+    <!-- ================== CARE SHEET FORMS ================== -->
+    <section id="forms" class="card">
+      <h2>Care Sheet Forms</h2>
+      <p class="muted">Fill these out for customers, then <span class="pill">Print</span> or use <span class="pill">Email</span> to share. You can also open your Google Forms version if you prefer.</p>
+
+      <!-- Saltwater Fish -->
+      <details class="care-form">
+        <summary>Saltwater Fish — Care Sheet</summary>
+        <div class="form-body">
+          <form id="form-saltwater" data-title="Saltwater Fish Care">
+            <div class="form-grid">
+              <div class="form-row">
+                <label>Species / Common Name
+                  <input name="species" data-label="Species / Common Name" placeholder="e.g., Ocellaris Clownfish" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Scientific Name (optional)
+                  <input name="sci" data-label="Scientific Name" placeholder="Amphiprion ocellaris" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Minimum Tank Size (gal)
+                  <input name="minTank" data-label="Minimum Tank Size (gal)" placeholder="e.g., 20" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Temperature Range (°F)
+                  <input name="temp" data-label="Temperature Range (°F)" placeholder="76–80" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Salinity / Specific Gravity
+                  <input name="salinity" data-label="Salinity / SG" placeholder="1.020–1.023 (fish-only) or 1.025 (reef)" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>pH Range
+                  <input name="ph" data-label="pH Range" placeholder="8.0–8.3" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Diet / Foods
+                  <input name="diet" data-label="Diet / Foods" placeholder="Frozen mysis, pellets, nori, etc." />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Feeding Frequency
+                  <input name="feeding" data-label="Feeding Frequency" placeholder="1–2× daily, small portions" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Behavior / Compatibility Notes
+                  <textarea name="behavior" data-label="Behavior / Compatibility" rows="3" placeholder="Peaceful; avoid mixing with..."></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Recommended Equipment / Setup
+                  <textarea name="equipment" data-label="Equipment / Setup" rows="3" placeholder="Heater with controller, moderate flow, skimmer (if reef)..."></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Maintenance Schedule
+                  <textarea name="maintenance" data-label="Maintenance Schedule" rows="3" placeholder="10–20% water change weekly; test ammonia/nitrite/nitrate..."></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="button" onclick="printForm('form-saltwater')">Print</button>
+              <button class="btn ghost" type="button" onclick="emailForm('form-saltwater','')">Email…</button>
+              <a class="btn ghost" data-gform="saltwaterFish" href="#">Open Google Form</a>
+              <button class="btn ghost" type="button" onclick="clearForm('form-saltwater')">Clear</button>
+            </div>
+            <p class="note">Tip: Use <a data-square="shopFoods" href="#">quality foods</a> and bring water for <a data-square="bookWaterTest" href="#">testing</a>.</p>
+          </form>
+        </div>
+      </details>
+
+      <!-- Freshwater Fish -->
+      <details class="care-form" style="margin-top:12px">
+        <summary>Freshwater Fish — Care Sheet</summary>
+        <div class="form-body">
+          <form id="form-freshwater" data-title="Freshwater Fish Care">
+            <div class="form-grid">
+              <div class="form-row">
+                <label>Species / Common Name
+                  <input name="species" data-label="Species / Common Name" placeholder="e.g., Neon Tetra" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Scientific Name (optional)
+                  <input name="sci" data-label="Scientific Name" placeholder="Paracheirodon innesi" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Minimum Tank Size (gal)
+                  <input name="minTank" data-label="Minimum Tank Size (gal)" placeholder="e.g., 10" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Temperature Range (°F)
+                  <input name="temp" data-label="Temperature Range (°F)" placeholder="74–78" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>pH / Hardness
+                  <input name="ph" data-label="pH / Hardness" placeholder="pH 6.8–7.6 (species dependent)" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Diet / Foods
+                  <input name="diet" data-label="Diet / Foods" placeholder="Flake/pellet, frozen daphnia, etc." />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Feeding Frequency
+                  <input name="feeding" data-label="Feeding Frequency" placeholder="1–2× daily, small portions" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Behavior / Compatibility Notes
+                  <textarea name="behavior" data-label="Behavior / Compatibility" rows="3" placeholder="Community-safe; avoid fin-nippers..."></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Recommended Equipment / Setup
+                  <textarea name="equipment" data-label="Equipment / Setup" rows="3" placeholder="Heater, gentle filtration for planted tanks, etc."></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Maintenance Schedule
+                  <textarea name="maintenance" data-label="Maintenance Schedule" rows="3" placeholder="25–30% weekly water change; gravel vac; test nitrates..."></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="button" onclick="printForm('form-freshwater')">Print</button>
+              <button class="btn ghost" type="button" onclick="emailForm('form-freshwater','')">Email…</button>
+              <a class="btn ghost" data-gform="freshwaterFish" href="#">Open Google Form</a>
+              <button class="btn ghost" type="button" onclick="clearForm('form-freshwater')">Clear</button>
+            </div>
+            <p class="note">New tanks should be cycled first. See <a href="#cycling">Cycling</a> and bring water for <a data-square="bookWaterTest" href="#">testing</a>.</p>
+          </form>
+        </div>
+      </details>
+
+      <!-- Cycling Checklist -->
+      <details class="care-form" style="margin-top:12px">
+        <summary>Cycling a Tank — Checklist</summary>
+        <div class="form-body">
+          <form id="form-cycling" data-title="Cycling Checklist">
+            <div class="form-grid">
+              <div class="form-row">
+                <label>Tank Size / Type
+                  <input name="tank" data-label="Tank Size / Type" placeholder="e.g., 40g breeder reef / 20g freshwater" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Start Date
+                  <input name="start" data-label="Start Date" type="date" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Bacteria Starter Used?
+                  <select name="bacteria" data-label="Bacteria Starter">
+                    <option value="">Select…</option>
+                    <option>Yes</option><option>No</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Ammonia Source
+                  <input name="ammonia" data-label="Ammonia Source" placeholder="Fish food / bottled ammonium / shrimp" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Target Params
+                  <input name="targets" data-label="Target Params" placeholder="NH3/NH4 0 • NO2 0 • NO3 < 30–40 ppm" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Notes
+                  <textarea name="notes" data-label="Notes" rows="3" placeholder="When ammonia & nitrite read 0 and nitrate is present, water change & begin stocking slowly."></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="button" onclick="printForm('form-cycling')">Print</button>
+              <button class="btn ghost" type="button" onclick="emailForm('form-cycling','')">Email…</button>
+              <a class="btn ghost" data-gform="cycling" href="#">Open Google Form</a>
+              <button class="btn ghost" type="button" onclick="clearForm('form-cycling')">Clear</button>
+            </div>
+            <p class="note">Pick up <a data-square="shopTestKits" href="#">test kits</a> and ask about seeding media to shorten the cycle.</p>
+          </form>
+        </div>
+      </details>
+
+      <!-- Reptile Care -->
+      <details class="care-form" style="margin-top:12px">
+        <summary>Reptile — Care Sheet</summary>
+        <div class="form-body">
+          <form id="form-reptile" data-title="Reptile Care">
+            <div class="form-grid">
+              <div class="form-row">
+                <label>Species / Common Name
+                  <input name="species" data-label="Species / Common Name" placeholder="e.g., Leopard Gecko" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Enclosure Size / Type
+                  <input name="enclosure" data-label="Enclosure Size / Type" placeholder="e.g., 40B glass, front-open" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Temperature Gradient (Warm / Cool)
+                  <input name="temp" data-label="Temperature Gradient" placeholder="Warm 88–92°F / Cool 75–80°F" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Humidity / UVB
+                  <input name="humidity" data-label="Humidity / UVB" placeholder="40–60% • UVB 5.0 T5 10–12 hrs" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Diet / Supplementation
+                  <input name="diet" data-label="Diet / Supplementation" placeholder="Crickets/roaches, calcium + D3 per schedule" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Handling / Temperament
+                  <textarea name="temperament" data-label="Handling / Temperament" rows="3" placeholder="Handle gently; avoid during shed; wash hands..."></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>Maintenance Schedule
+                  <textarea name="maintenance" data-label="Maintenance Schedule" rows="3" placeholder="Spot clean daily; full clean monthly; replace UVB 6–12 months."></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="button" onclick="printForm('form-reptile')">Print</button>
+              <button class="btn ghost" type="button" onclick="emailForm('form-reptile','')">Email…</button>
+              <a class="btn ghost" data-gform="reptile" href="#">Open Google Form</a>
+              <button class="btn ghost" type="button" onclick="clearForm('form-reptile')">Clear</button>
+            </div>
+            <p class="note">Need gear? See <a href="supplies.html#reptile-gear">Reptile Gear</a> and <a href="food.html#specialty">Reptile Diets</a>.</p>
+          </form>
+        </div>
+      </details>
+    </section>
+    <!-- ================== /CARE SHEET FORMS ================== -->
 
     <section id="acclimation" class="card">
       <h2>Acclimation (Fish, Corals, Inverts)</h2>
@@ -109,8 +461,7 @@
           <h3>Helpful Gear</h3>
           <ul class="checklist">
             <li><span class="check"></span> Reliable test kit (<a data-square="shopTestKits" href="#">shop kits</a>)</li>
-            <li><span class="check"></span> Biological media & flow
-            </li>
+            <li><span class="check"></span> Biological media & flow</li>
             <li><span class="check"></span> Temperature control (76–80°F most systems)</li>
           </ul>
         </div>
@@ -121,7 +472,7 @@
       <h2>Water Parameters (Quick Targets)</h2>
       <div class="table">
         <div class="row">
-          <div class="cell"><strong>Saltwater (Fish‑only)</strong></div>
+          <div class="cell"><strong>Saltwater (Fish-only)</strong></div>
           <div class="cell">Temp 77–79°F • Salinity 1.020–1.023 • pH 8.0–8.3 • Ammonia/Nitrite 0 • Nitrate &lt; 30 ppm</div>
         </div>
         <div class="row">
@@ -187,7 +538,7 @@
       <ul class="checklist">
         <li><span class="check"></span> Simple 10–20g tank with heater, sponge filter, and cover.</li>
         <li><span class="check"></span> Observe 2–4 weeks; feed well and monitor behavior.</li>
-        <li><span class="check"></span> Keep separate tools to avoid cross‑contamination.</li>
+        <li><span class="check"></span> Keep separate tools to avoid cross-contamination.</li>
       </ul>
     </section>
 
@@ -203,8 +554,11 @@
 
   <footer>
     <div class="container">
-      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
