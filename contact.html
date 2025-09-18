@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Bruno’s Aquarium — Huron, SD</title>
+  <meta name="description" content="Contact Bruno’s Aquarium in Huron, SD. Hours, phone, email, address, and a quick contact form. We’re here to help with livestock, equipment, and services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- LocalBusiness JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetStore",
+    "name": "Bruno’s Aquarium",
+    "url": "https://brunosaquarium.com/contact.html",
+    "telephone": ["+1-787-233-3313","+1-605-350-6478"],
+    "email": "brunosaquarium@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "258 Dakota Ave S",
+      "addressLocality": "Huron",
+      "addressRegion": "SD",
+      "postalCode": "57350",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday"],"opens":"10:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday"],"opens":"10:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"10:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"10:00","closes":"20:00"}
+    ]
+  }
+  </script>
+  <style>
+    /* minimal extras specific to this page */
+    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    @media (max-width:960px){.cols{grid-template-columns:1fr}}
+    .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:960px){.contact-cards{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.contact-cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="livestock.html">Livestock</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies</a>
+      <a href="services.html">Services</a>
+      <a href="special-orders.html">Special Orders</a>
+      <a href="care-guides.html">Care Guides</a>
+      <a href="shop.html">Shop</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Contact Us</h1>
+    <p class="muted">Questions about livestock, special orders, maintenance, or installs? Send a message and we’ll get right back to you.</p>
+
+    <section class="cols">
+      <div>
+        <div class="card">
+          <h2>Get in touch</h2>
+          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="grid cols-2">
+              <label>Full name<br><input name="name" required></label>
+              <label>Phone<br><input name="phone" required></label>
+            </div>
+            <div class="grid cols-2" style="margin-top:10px">
+              <label>Email<br><input type="email" name="email"></label>
+              <label>Subject<br><input name="subject" placeholder="Question, special order, service…"></label>
+            </div>
+            <label style="display:block;margin-top:10px">Message<br>
+              <textarea name="message" rows="5" placeholder="Tell us what you’re looking for or how we can help."></textarea>
+            </label>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" type="submit">Send Message</button>
+              <a class="btn ghost" href="mailto:brunosaquarium@gmail.com">Email Instead</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Store Hours</h2>
+          <div class="hours">
+            <div>Thursday</div><div>10:00 AM – 8:00 PM</div>
+            <div>Friday</div><div>10:00 AM – 8:00 PM</div>
+            <div>Saturday</div><div>10:00 AM – 8:00 PM</div>
+            <div>Sunday</div><div>Closed</div>
+            <div>Monday</div><div>10:00 AM – 8:00 PM</div>
+            <div>Tuesday</div><div>10:00 AM – 8:00 PM</div>
+            <div>Wednesday</div><div>10:00 AM – 8:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h2>Visit Us</h2>
+          <p>258 Dakota Ave S, Huron SD 57350</p>
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed"></iframe>
+        </div>
+        <div class="card contact-cards">
+          <div>
+            <h3>Owner</h3>
+            <p>Jose Escribano<br><a href="tel:+17872333313">787‑233‑3313</a></p>
+          </div>
+          <div>
+            <h3>Manager</h3>
+            <p>Ian Escribano<br><a href="tel:+16053506478">605‑350‑6478</a></p>
+          </div>
+          <div>
+            <h3>Email</h3>
+            <p><a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:16px">
+      <div class="card">
+        <h2>Social</h2>
+        <p class="muted">Add your links when ready:</p>
+        <ul class="list">
+          <li>Facebook — <a href="#">@brunosaquarium</a> (TODO)</li>
+          <li>Instagram — <a href="#">@brunosaquarium</a> (TODO)</li>
+          <li>TikTok — <a href="#">@brunosaquarium</a> (TODO)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <p><strong>Bruno’s Aquarium</strong> — Huron, SD • © 2025</p>
+      <p class="muted"><a href="shop.html">Shop</a> • <a href="services.html">Services</a></p>
+    </div>
+  </footer>
+</body>
+</html>
