@@ -4,11 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Special Orders | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Request special‑order livestock, foods, and equipment from our approved suppliers. We’ll confirm price & ETA, then invoice via Square." />
+  <meta name="description" content="Request special-order livestock, foods, and equipment from our approved suppliers. We’ll confirm price & ETA, then invoice via Square." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
+
   <style>
     .steps{counter-reset:step;display:grid;gap:12px}
     .steps .step{display:flex;gap:12px;align-items:flex-start}
@@ -19,6 +21,7 @@
     @media (max-width:640px){.supplier-grid{grid-template-columns:1fr}}
     .policy{background:#fff7ed;border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:12px}
   </style>
+
   <script>
     // Paste your Square checkout links later
     const SQUARE_LINKS = {
@@ -28,19 +31,33 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for(const [k,url] of Object.entries(SQUARE_LINKS)){
         const a = document.querySelector(`[data-square="${k}"]`);
-        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+        if(a && url){
+          a.href = url; a.target = '_blank'; a.rel = 'noopener';
+        }
       }
     });
   </script>
 </head>
 <body>
   <header>
-    <nav>
+    <!-- Compact brand row -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies</a>
-      <a href="services.html">Services</a>
+      <a href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
       <a class="active" href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
@@ -57,11 +74,26 @@
         <div class="card">
           <h2>How it works</h2>
           <div class="steps">
-            <div class="step"><div class="dot">1</div><div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget).</div></div>
-            <div class="step"><div class="dot">2</div><div>We <strong>check availability</strong> with suppliers and message you with price & ETA.</div></div>
-            <div class="step"><div class="dot">3</div><div>Pay a small <strong>deposit</strong> to lock it in. <a class="btn" data-square="deposit" href="#">Pay Deposit</a></div></div>
-            <div class="step"><div class="dot">4</div><div>We place the order and <strong>notify you on arrival</strong>. Pick up in‑store or ask about delivery/install.</div></div>
-            <div class="step"><div class="dot">5</div><div>Pay the <strong>remaining balance</strong> at pickup. <a class="btn ghost" data-square="payBalance" href="#">Pay Balance</a></div></div>
+            <div class="step">
+              <div class="dot">1</div>
+              <div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget).</div>
+            </div>
+            <div class="step">
+              <div class="dot">2</div>
+              <div>We <strong>check availability</strong> with suppliers and message you with price &amp; ETA.</div>
+            </div>
+            <div class="step">
+              <div class="dot">3</div>
+              <div>Pay a small <strong>deposit</strong> to lock it in. <a class="btn" data-square="deposit" href="#">Pay Deposit</a></div>
+            </div>
+            <div class="step">
+              <div class="dot">4</div>
+              <div>We place the order and <strong>notify you on arrival</strong>. Pick up in-store or ask about delivery/install.</div>
+            </div>
+            <div class="step">
+              <div class="dot">5</div>
+              <div>Pay the <strong>remaining balance</strong> at pickup. <a class="btn ghost" data-square="payBalance" href="#">Pay Balance</a></div>
+            </div>
           </div>
         </div>
 
@@ -70,7 +102,11 @@
           <p class="muted">Fastest way to get a quote. You’ll receive a confirmation by phone or email.</p>
           <!-- Swap to Google Form when ready -->
           <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
+            <!-- Anti-spam + helpful subject -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_subject" value="Special Order Request — Bruno’s Aquarium">
             <input type="hidden" name="_captcha" value="false">
+
             <div class="grid cols-2">
               <label>Full name<br><input name="name" required></label>
               <label>Phone<br><input name="phone" required></label>
@@ -111,7 +147,7 @@
           <div class="supplier-grid">
             <div>
               <h3>Reef Nutrition</h3>
-              <p class="muted">Foods for fish & corals.</p>
+              <p class="muted">Foods for fish &amp; corals.</p>
               <a href="https://reefnutrition.com/" target="_blank" rel="noopener">View catalog ↗</a>
             </div>
             <div>
@@ -126,7 +162,7 @@
             </div>
             <div>
               <h3>Eye Catching Coral</h3>
-              <p class="muted">Corals & aquacultured frags.</p>
+              <p class="muted">Corals &amp; aquacultured frags.</p>
               <a href="https://eyecatchingcoral.com/" target="_blank" rel="noopener">View site ↗</a>
             </div>
             <div>
@@ -141,10 +177,10 @@
         <div class="card">
           <h2>Policies</h2>
           <div class="policy">
-            <strong>Deposits:</strong> Non‑refundable once ordered from supplier. Applied to final balance.
+            <strong>Deposits:</strong> Non-refundable once ordered from supplier. Applied to final balance.
           </div>
           <div class="policy" style="margin-top:10px">
-            <strong>Live Arrival:</strong> For livestock, we follow industry‑standard DOA procedures. Inspect at pickup; contact us immediately with concerns.
+            <strong>Live Arrival:</strong> For livestock, we follow industry-standard DOA procedures. Inspect at pickup; contact us immediately with concerns.
           </div>
           <div class="policy" style="margin-top:10px">
             <strong>Timing:</strong> ETAs depend on supplier schedules and weather. We’ll provide the best estimate and updates.
@@ -162,8 +198,11 @@
 
   <footer>
     <div class="container">
-      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
