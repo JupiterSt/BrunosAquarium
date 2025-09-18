@@ -10,17 +10,24 @@
 </head>
 <body>
   <header>
-    <nav>
-      <!-- 👇 Put your logo file at assets/img/logo.svg (or .png) -->
-      <a href="index.html" class="brand" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none">
-        <img src="assets/img/logo.svg" alt="Bruno’s Aquarium logo" width="40" height="40" style="border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px" />
-        <span style="font-weight:800;color:#0e1b2a">Bruno’s Aquarium</span>
-      </a>
-      <a class="active" href="index.html">Home</a>
+    <!-- Compact brand row -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies</a>
-      <a href="services.html">Services</a>
+      <a href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
@@ -33,7 +40,7 @@
     <section class="hero">
       <div class="card">
         <h1>Welcome to Bruno’s Aquarium</h1>
-        <p class="muted">Your local hub in Huron, SD for saltwater & freshwater fish, corals, inverts, reptiles, foods, tanks and professional services. Special orders available.</p>
+        <p class="muted">Your local hub in Huron, SD for saltwater &amp; freshwater fish, corals, inverts, reptiles, foods, tanks and professional services. Special orders available.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <a class="btn" href="shop.html">Shop Now</a>
           <a class="btn" href="services.html">Book Services</a>
@@ -61,9 +68,8 @@
       <div class="grid cols-3">
         <a class="card" href="shop.html#livestock"><div class="tile">Livestock</div></a>
         <a class="card" href="shop.html#food"><div class="tile">Food</div></a>
-        <!-- 👇 This one will work once we add id="supplies" to shop.html (provided below) -->
-        <a class="card" href="shop.html#supplies"><div class="tile">Supplies & Equipment</div></a>
-        <!-- If you prefer, you can point directly to the dedicated page instead: href="supplies.html" -->
+        <a class="card" href="shop.html#supplies"><div class="tile">Supplies &amp; Equipment</div></a>
+        <!-- Or point directly to the dedicated page: href="supplies.html" -->
       </div>
     </section>
 
@@ -91,7 +97,7 @@
           258 Dakota Ave S, Huron SD 57350<br>
           <strong>Hours:</strong> Thu–Sat 10 AM–8 PM; Sun Closed; Mon–Wed 10 AM–8 PM
         </p>
-        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed"></iframe>
+        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed" title="Map to Bruno’s Aquarium, Huron SD"></iframe>
       </div>
     </section>
   </main>
