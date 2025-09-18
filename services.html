@@ -42,7 +42,7 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for (const [key, url] of Object.entries(SQUARE_LINKS)){
         const el = document.querySelector(`[data-square="${key}"]`);
-        if(el && url){ el.href = url; }
+        if(el && url){ el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
       }
     });
   </script>
@@ -75,8 +75,20 @@
   </script>
 </head>
 <body>
-  <!-- Standard sitewide tabs -->
+  <!-- Standard sitewide header -->
   <header>
+    <!-- Compact brand row -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
@@ -93,8 +105,8 @@
   <main class="container">
     <section class="hero">
       <div class="card">
-        <div class="kicker">Services & Maintenance</div>
-        <h1 style="margin:6px 0 8px">Water Testing, Maintenance & Installations</h1>
+        <div class="kicker">Services &amp; Maintenance</div>
+        <h1 style="margin:6px 0 8px">Water Testing, Maintenance &amp; Installations</h1>
         <p class="muted">Saltwater • Freshwater • Reptiles. We keep your system healthy, clean, and looking beautiful. Special orders welcome.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
           <a class="btn" data-square="waterTestBasic" href="#">Book Water Test</a>
@@ -141,14 +153,14 @@
     </section>
 
     <section>
-      <div class="section-title"><h2>On-site Cleaning & Maintenance</h2><span class="pill">Salt & Fresh</span></div>
+      <div class="section-title"><h2>On-site Cleaning &amp; Maintenance</h2><span class="pill">Salt &amp; Fresh</span></div>
       <div class="grid cols-2">
         <div class="card">
           <h3>Standard Visit</h3>
           <ul style="margin:0;padding-left:18px">
-            <li>Water change & substrate clean</li>
-            <li>Glass/acrylic scrape & detail</li>
-            <li>Filter media service & top-off</li>
+            <li>Water change &amp; substrate clean</li>
+            <li>Glass/acrylic scrape &amp; detail</li>
+            <li>Filter media service &amp; top-off</li>
             <li>Parameter checks</li>
           </ul>
           <p style="margin-top:8px"><span class="price">$—/hr</span> <span class="muted">(price set in Square)</span></p>
@@ -164,7 +176,7 @@
     </section>
 
     <section>
-      <div class="section-title"><h2>Installation & New Setup</h2><span class="pill">Turn-key</span></div>
+      <div class="section-title"><h2>Installation &amp; New Setup</h2><span class="pill">Turn-key</span></div>
       <div class="grid cols-2">
         <div class="card">
           <h3>Starter Tank Package</h3>
