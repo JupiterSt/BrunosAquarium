@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Livestock | Bruno’s Aquarium — Huron, SD</title>
+  <meta name="description" content="Saltwater & freshwater fish, corals, inverts, and reptiles. Availability varies—ask about special orders. Secure checkout via Square." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .toc{display:flex;flex-wrap:wrap;gap:10px}
+    .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
+  </style>
+  <script>
+    // Square category links (fill these in later)
+    const SQUARE_CATEGORY_LINKS = {
+      saltwaterFish: 'https://square.link/REPLACE-CAT-SALTWATER-FISH',
+      freshwaterFish: 'https://square.link/REPLACE-CAT-FRESHWATER-FISH',
+      corals: 'https://square.link/REPLACE-CAT-CORALS',
+      invertsSalt: 'https://square.link/REPLACE-CAT-INVERTS-SALT',
+      invertsFresh: 'https://square.link/REPLACE-CAT-INVERTS-FRESH',
+      reptiles: 'https://square.link/REPLACE-CAT-REPTILES',
+      reptileGear: 'https://square.link/REPLACE-CAT-REPTILE-GEAR'
+    };
+    document.addEventListener('DOMContentLoaded',()=>{
+      for (const [k,url] of Object.entries(SQUARE_CATEGORY_LINKS)){
+        const a = document.querySelector(`a[data-square-cat="${k}"]`);
+        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a class="active" href="livestock.html">Livestock</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies</a>
+      <a href="services.html">Services</a>
+      <a href="special-orders.html">Special Orders</a>
+      <a href="care-guides.html">Care Guides</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Livestock</h1>
+      <p class="muted">We carry saltwater & freshwater fish, corals, inverts, and reptiles. Stock changes often—<a href="special-orders.html">special orders</a> welcome.</p>
+      <div class="toc">
+        <a href="#saltwater-fish">Saltwater Fish</a>
+        <a href="#freshwater-fish">Freshwater Fish</a>
+        <a href="#corals">Corals</a>
+        <a href="#inverts-salt">Inverts — Saltwater</a>
+        <a href="#inverts-fresh">Inverts — Freshwater</a>
+        <a href="#reptiles">Reptiles</a>
+      </div>
+    </section>
+
+    <!-- Quick buttons to shop categories -->
+    <section class="grid cols-3">
+      <div class="card"><div class="tile">Saltwater Fish</div><div class="pad"><a class="btn" data-square-cat="saltwaterFish" href="#">Shop Saltwater Fish</a></div></div>
+      <div class="card"><div class="tile">Freshwater Fish</div><div class="pad"><a class="btn" data-square-cat="freshwaterFish" href="#">Shop Freshwater Fish</a></div></div>
+      <div class="card"><div class="tile">Corals</div><div class="pad"><a class="btn" data-square-cat="corals" href="#">Shop Corals</a></div></div>
+      <div class="card"><div class="tile">Inverts — Saltwater</div><div class="pad"><a class="btn" data-square-cat="invertsSalt" href="#">Shop SW Inverts</a></div></div>
+      <div class="card"><div class="tile">Inverts — Freshwater</div><div class="pad"><a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a></div></div>
+      <div class="card"><div class="tile">Reptiles</div><div class="pad"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div></div>
+    </section>
+
+    <section id="saltwater-fish" class="card">
+      <h2>Saltwater Fish</h2>
+      <p class="muted">From clowns and tangs to wrasses and gobies. Ask us about compatibility and tank size before purchasing.</p>
+      <ul class="list">
+        <li>Acclimation recommended; see <a href="care-guides.html#acclimation">Care Guides</a>.</li>
+        <li>Quarantine when possible; add peaceful fish first, territorial fish last.</li>
+        <li>Bring a water sample or <a href="services.html">book a test</a> for best results.</li>
+      </ul>
+      <a class="btn" data-square-cat="saltwaterFish" href="#">Shop Saltwater Fish</a>
+    </section>
+
+    <section id="freshwater-fish" class="card">
+      <h2>Freshwater Fish</h2>
+      <p class="muted">Community fish, cichlids, shrimp-safe options, and more. We’ll help plan a peaceful mix.</p>
+      <ul class="list">
+        <li>Cycle your tank first; see <a href="care-guides.html#cycling">Cycling</a>.</li>
+        <li>Match species for temperament and water parameters.</li>
+      </ul>
+      <a class="btn" data-square-cat="freshwaterFish" href="#">Shop Freshwater Fish</a>
+    </section>
+
+    <section id="corals" class="card">
+      <h2>Corals</h2>
+      <p class="muted">Softies, LPS, SPS, frags & colonies. Lighting and flow matter—ask us to help place new corals.</p>
+      <ul class="list">
+        <li>Target light ranges: Soft 50–100 PAR • LPS 75–150 • SPS 200–350 (see <a href="care-guides.html#lighting">Lighting</a>).</li>
+        <li>Keep alkalinity, calcium, magnesium stable (see <a href="care-guides.html#parameters">Parameters</a>).</li>
+      </ul>
+      <a class="btn" data-square-cat="corals" href="#">Shop Corals</a>
+    </section>
+
+    <section id="inverts-salt" class="card">
+      <h2>Inverts — Saltwater</h2>
+      <p class="muted">Clean‑up crew, shrimp, crabs, snails, urchins, starfish and more. Great for algae and detritus control.</p>
+      <ul class="list">
+        <li>Check compatibility with fish (some crabs/shrimps are opportunistic).</li>
+        <li>Acclimate slowly; many inverts are sensitive to salinity swings.</li>
+      </ul>
+      <a class="btn" data-square-cat="invertsSalt" href="#">Shop SW Inverts</a>
+    </section>
+
+    <section id="inverts-fresh" class="card">
+      <h2>Inverts — Freshwater</h2>
+      <p class="muted">Shrimp, snails and more for planted and community tanks. Watch copper-based meds around inverts.</p>
+      <ul class="list">
+        <li>Keep stable parameters; avoid sudden pH/TDS shifts.</li>
+      </ul>
+      <a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a>
+    </section>
+
+    <section id="reptiles" class="card">
+      <h2>Reptiles</h2>
+      <p class="muted">Ask about species availability and enclosure needs. We also carry habitat gear, lighting and food.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a>
+        <a class="btn ghost" data-square-cat="reptileGear" href="#">Shop Reptile Gear</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Notes & Policies</h2>
+      <ul class="list">
+        <li><strong>Availability:</strong> Live inventory changes quickly; call ahead or visit for current stock. Special orders available.</li>
+        <li><strong>Health:</strong> We strive to sell only healthy livestock; please acclimate carefully and avoid mixing aggressive species.</li>
+        <li><strong>DOA/Returns:</strong> See in‑store policy; contact us immediately with concerns at pickup.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>
