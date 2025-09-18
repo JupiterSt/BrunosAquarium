@@ -4,15 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Food | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Frozen fish food, frozen coral food, pellets for fish & corals, live foods (pods & phyto), and specialty diets for reptiles & inverts. Square‑ready." />
+  <meta name="description" content="Frozen fish food, frozen coral food, pellets for fish & corals, live foods (pods & phyto), and specialty diets for reptiles & inverts. Square-ready." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
+
   <style>
     .toc{display:flex;flex-wrap:wrap;gap:10px}
     .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
   </style>
+
   <script>
     // Square category links (replace later)
     const SQUARE_CATEGORY_LINKS = {
@@ -30,10 +33,32 @@
       }
     });
   </script>
+
+  <!-- Optional: category ItemList schema (enable if you want SEO boost)
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Aquarium & Reptile Foods",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Frozen Fish Food","url":"https://brunosaquarium.com/food.html#frozen-fish"},
+      {"@type":"ListItem","position":2,"name":"Frozen Coral Food","url":"https://brunosaquarium.com/food.html#frozen-coral"},
+      {"@type":"ListItem","position":3,"name":"Pellets — Fish","url":"https://brunosaquarium.com/food.html#pellets-fish"},
+      {"@type":"ListItem","position":4,"name":"Pellets — Corals","url":"https://brunosaquarium.com/food.html#pellets-coral"},
+      {"@type":"ListItem","position":5,"name":"Live Food (Pods & Phyto)","url":"https://brunosaquarium.com/food.html#live-food"},
+      {"@type":"ListItem","position":6,"name":"Specialty & Other","url":"https://brunosaquarium.com/food.html#specialty"}
+    ]
+  }
+  </script> -->
 </head>
 <body>
   <header>
-    <nav>
+    <nav aria-label="Main">
+      <!-- logo spot (works with your current CSS) -->
+      <a href="index.html" class="brand" aria-label="Bruno’s Aquarium — Home">
+        <img src="assets/img/logo.svg" alt="Bruno’s Aquarium logo" width="40" height="40" style="border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px">
+        <span>Bruno’s Aquarium</span>
+      </a>
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a class="active" href="food.html">Food</a>
@@ -49,8 +74,12 @@
   <main class="container">
     <section class="card">
       <h1>Food</h1>
-      <p class="muted">Fuel for healthy growth and color. We stock frozen and dry foods for <strong>saltwater & freshwater fish, corals, inverts, and reptiles</strong>, plus live foods like pods & phyto. Ask about special orders.</p>
-      <div class="toc">
+      <p class="muted">
+        Fuel for healthy growth and color. We stock frozen and dry foods for <strong>saltwater & freshwater fish, corals, inverts, and reptiles</strong>,
+        plus live foods like pods & phyto. Ask about special orders.
+        <br><span class="note">New to feeding schedules? See <a href="care-guides.html#feeding">Care Guides → Feeding</a>.</span>
+      </p>
+      <div class="toc" aria-label="Food categories">
         <a href="#frozen-fish">Frozen Fish Food</a>
         <a href="#frozen-coral">Frozen Coral Food</a>
         <a href="#pellets-fish">Pellets — Fish</a>
@@ -61,7 +90,7 @@
     </section>
 
     <!-- Quick buttons to shop categories -->
-    <section class="grid cols-3">
+    <section class="grid cols-3" aria-label="Shop by category">
       <div class="card"><div class="tile">Frozen Fish Food</div><div class="pad"><a class="btn" data-square-cat="frozenFishFood" href="#">Shop Frozen Fish</a></div></div>
       <div class="card"><div class="tile">Frozen Coral Food</div><div class="pad"><a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a></div></div>
       <div class="card"><div class="tile">Pellets — Fish</div><div class="pad"><a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a></div></div>
@@ -72,7 +101,7 @@
 
     <section id="frozen-fish" class="card">
       <h2>Frozen Fish Food</h2>
-      <p class="muted">High‑protein blends for growth and body condition. Rotate varieties to cover herbivore, omnivore, and carnivore needs.</p>
+      <p class="muted">High-protein blends for growth and body condition. Rotate varieties to cover herbivore, omnivore, and carnivore needs.</p>
       <ul class="list">
         <li>Great for picky eaters; thaw in tank water and target feed when needed.</li>
         <li>Remove uneaten food to keep nutrients in check.</li>
@@ -91,7 +120,7 @@
 
     <section id="pellets-fish" class="card">
       <h2>Pellets — Fish</h2>
-      <p class="muted">Clean, shelf‑stable staples. Choose pellet size for species and mix formulas for variety.</p>
+      <p class="muted">Clean, shelf-stable staples. Choose pellet size for species and mix formulas for variety.</p>
       <ul class="list">
         <li>Soak briefly if buoyancy causes gulping; feed small portions 1–2× daily.</li>
       </ul>
@@ -132,20 +161,23 @@
     <section class="card">
       <h2>Our Partners</h2>
       <p class="muted">We source premium foods from trusted suppliers.</p>
-      <div class="badges">
-        <span class="badge">Reef Nutrition</span>
-        <span class="badge">AlgaeBarn</span>
-        <span class="badge">Quality Marine</span>
-        <span class="badge">Eye Catching Coral</span>
-        <span class="badge">UGR Wholesale</span>
+      <div class="badges" role="list">
+        <span class="badge" role="listitem">Reef Nutrition</span>
+        <span class="badge" role="listitem">AlgaeBarn</span>
+        <span class="badge" role="listitem">Quality Marine</span>
+        <span class="badge" role="listitem">Eye Catching Coral</span>
+        <span class="badge" role="listitem">UGR Wholesale</span>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
