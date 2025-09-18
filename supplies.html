@@ -4,15 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Supplies & Equipment | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Aquariums & tanks, filtration, heating & lighting, pumps & flow, testing & additives, substrates & décor, reptile gear, and accessories. Square‑ready." />
+  <meta name="description" content="Aquariums & tanks, filtration, heating & lighting, pumps & flow, testing & additives, substrates & décor, reptile gear, and accessories. Square-ready." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
+
   <style>
     .toc{display:flex;flex-wrap:wrap;gap:10px}
     .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
   </style>
+
   <script>
     // Square category links (replace later)
     const SQUARE_CATEGORY_LINKS = {
@@ -28,19 +31,31 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for(const [k,url] of Object.entries(SQUARE_CATEGORY_LINKS)){
         const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+        if(a && url){ a.href=url; a.target='_blank'; a.rel='noopener'; }
       }
     });
   </script>
 </head>
 <body>
   <header>
-    <nav>
+    <!-- Compact brand row -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
-      <a class="active" href="supplies.html">Supplies</a>
-      <a href="services.html">Services</a>
+      <a class="active" href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
@@ -50,60 +65,60 @@
 
   <main class="container">
     <section class="card">
-      <h1>Supplies & Equipment</h1>
-      <p class="muted">Everything you need for healthy, beautiful systems: tanks, filters, heaters, lights, pumps, test kits, additives, substrate & décor, plus reptile gear and general accessories. If it’s not in stock, we can special‑order it.</p>
-      <div class="toc">
-        <a href="#tanks">Aquariums & Tanks</a>
+      <h1>Supplies &amp; Equipment</h1>
+      <p class="muted">Everything you need for healthy, beautiful systems: tanks, filters, heaters, lights, pumps, test kits, additives, substrate &amp; décor, plus reptile gear and general accessories. If it’s not in stock, we can special-order it.</p>
+      <div class="toc" aria-label="Supply categories">
+        <a href="#tanks">Aquariums &amp; Tanks</a>
         <a href="#filtration">Filtration</a>
-        <a href="#heat-light">Heating & Lighting</a>
-        <a href="#pumps">Pumps & Flow</a>
-        <a href="#testing">Testing & Additives</a>
-        <a href="#substrate">Substrates & Décor</a>
+        <a href="#heat-light">Heating &amp; Lighting</a>
+        <a href="#pumps">Pumps &amp; Flow</a>
+        <a href="#testing">Testing &amp; Additives</a>
+        <a href="#substrate">Substrates &amp; Décor</a>
         <a href="#reptile-gear">Reptile Gear</a>
         <a href="#accessories">Accessories</a>
       </div>
     </section>
 
     <!-- Quick buttons to shop categories -->
-    <section class="grid cols-3">
-      <div class="card"><div class="tile">Aquariums & Tanks</div><div class="pad"><a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a></div></div>
+    <section class="grid cols-3" aria-label="Shop by category">
+      <div class="card"><div class="tile">Aquariums &amp; Tanks</div><div class="pad"><a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a></div></div>
       <div class="card"><div class="tile">Filtration</div><div class="pad"><a class="btn" data-square-cat="filtration" href="#">Shop Filtration</a></div></div>
-      <div class="card"><div class="tile">Heating & Lighting</div><div class="pad"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat & Light</a></div></div>
-      <div class="card"><div class="tile">Pumps & Flow</div><div class="pad"><a class="btn" data-square-cat="pumpsFlow" href="#">Shop Pumps</a></div></div>
-      <div class="card"><div class="tile">Testing & Additives</div><div class="pad"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test & Add</a></div></div>
-      <div class="card"><div class="tile">Substrates & Décor</div><div class="pad"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div></div>
+      <div class="card"><div class="tile">Heating &amp; Lighting</div><div class="pad"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat &amp; Light</a></div></div>
+      <div class="card"><div class="tile">Pumps &amp; Flow</div><div class="pad"><a class="btn" data-square-cat="pumpsFlow" href="#">Shop Pumps</a></div></div>
+      <div class="card"><div class="tile">Testing &amp; Additives</div><div class="pad"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a></div></div>
+      <div class="card"><div class="tile">Substrates &amp; Décor</div><div class="pad"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div></div>
       <div class="card"><div class="tile">Reptile Gear</div><div class="pad"><a class="btn" data-square-cat="reptileGear" href="#">Shop Reptile Gear</a></div></div>
       <div class="card"><div class="tile">Accessories</div><div class="pad"><a class="btn" data-square-cat="petAccessories" href="#">Shop Accessories</a></div></div>
     </section>
 
     <section id="tanks" class="card">
-      <h2>Aquariums & Tanks</h2>
-      <p class="muted">Glass and acrylic tanks, all‑in‑ones, stands, lids, and starter kits. Ask about delivery and installation packages.</p>
+      <h2>Aquariums &amp; Tanks</h2>
+      <p class="muted">Glass and acrylic tanks, all-in-ones, stands, lids, and starter kits. Ask about delivery and installation packages.</p>
       <a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a>
     </section>
 
     <section id="filtration" class="card">
       <h2>Filtration</h2>
-      <p class="muted">Hang‑on‑back, canisters, sumps, skimmers, media reactors, and biological media to keep water crystal clear.</p>
+      <p class="muted">Hang-on-back, canisters, sumps, skimmers, media reactors, and biological media to keep water crystal clear.</p>
       <ul class="list">
         <li>Match filter flow to tank size; aim for 4–10× turnover, higher for reefs.</li>
-        <li>Use quality bio‑media and rinse mechanical media regularly.</li>
+        <li>Use quality bio-media and rinse mechanical media regularly.</li>
       </ul>
       <a class="btn" data-square-cat="filtration" href="#">Shop Filtration</a>
     </section>
 
     <section id="heat-light" class="card">
-      <h2>Heating & Lighting</h2>
+      <h2>Heating &amp; Lighting</h2>
       <p class="muted">Reliable heaters, temperature controllers, LED fixtures for freshwater and reef, and reptile UVB/heat lamps.</p>
       <ul class="list">
         <li>Use controllers for heater safety; keep spares for emergencies.</li>
         <li>Pick lighting by livestock needs (see <a href="care-guides.html#lighting">Reef Lighting</a>).</li>
       </ul>
-      <a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat & Light</a>
+      <a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat &amp; Light</a>
     </section>
 
     <section id="pumps" class="card">
-      <h2>Pumps & Flow</h2>
+      <h2>Pumps &amp; Flow</h2>
       <p class="muted">Return pumps, powerheads, wave makers, and air pumps for oxygenation and nutrient export.</p>
       <ul class="list">
         <li>Flow patterns help avoid dead spots; adjust for coral placement.</li>
@@ -112,23 +127,23 @@
     </section>
 
     <section id="testing" class="card">
-      <h2>Testing & Additives</h2>
-      <p class="muted">Test kits, refractometers, conditioners, salt mix, buffers, and reef additives. Bring a sample for in‑store testing.</p>
+      <h2>Testing &amp; Additives</h2>
+      <p class="muted">Test kits, refractometers, conditioners, salt mix, buffers, and reef additives. Bring a sample for in-store testing.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" data-square-cat="testingAdditives" href="#">Shop Test & Add</a>
+        <a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a>
         <a class="btn ghost" href="services.html">Book Water Test</a>
       </div>
     </section>
 
     <section id="substrate" class="card">
-      <h2>Substrates & Décor</h2>
+      <h2>Substrates &amp; Décor</h2>
       <p class="muted">Live sand, crushed coral, gravel, rock, wood, and aquascaping supplies to create natural habitats.</p>
       <a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a>
     </section>
 
     <section id="reptile-gear" class="card">
       <h2>Reptile Gear</h2>
-      <p class="muted">Terrariums, UVB & heat lamps, thermostats, hides, branches, bowls, bedding and more.</p>
+      <p class="muted">Terrariums, UVB &amp; heat lamps, thermostats, hides, branches, bowls, bedding and more.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" data-square-cat="reptileGear" href="#">Shop Reptile Gear</a>
         <a class="btn ghost" href="food.html#specialty">Shop Reptile Foods</a>
@@ -143,21 +158,24 @@
 
     <section class="card">
       <h2>Our Partners</h2>
-      <p class="muted">We source high‑quality equipment and media from trusted brands. If we don’t have it, we’ll special‑order it.</p>
-      <div class="badges">
-        <span class="badge">Reef Nutrition</span>
-        <span class="badge">AlgaeBarn</span>
-        <span class="badge">Quality Marine</span>
-        <span class="badge">Eye Catching Coral</span>
-        <span class="badge">UGR Wholesale</span>
+      <p class="muted">We source high-quality equipment and media from trusted brands. If we don’t have it, we’ll special-order it.</p>
+      <div class="badges" role="list">
+        <span class="badge" role="listitem">Reef Nutrition</span>
+        <span class="badge" role="listitem">AlgaeBarn</span>
+        <span class="badge" role="listitem">Quality Marine</span>
+        <span class="badge" role="listitem">Eye Catching Coral</span>
+        <span class="badge" role="listitem">UGR Wholesale</span>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+      <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
