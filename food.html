@@ -53,17 +53,24 @@
 </head>
 <body>
   <header>
+    <!-- Compact brand row -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
     <nav aria-label="Main">
-      <!-- logo spot (works with your current CSS) -->
-      <a href="index.html" class="brand" aria-label="Bruno’s Aquarium — Home">
-        <img src="assets/img/logo.svg" alt="Bruno’s Aquarium logo" width="40" height="40" style="border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px">
-        <span>Bruno’s Aquarium</span>
-      </a>
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
-      <a class="active" href="food.html">Food</a>
-      <a href="supplies.html">Supplies</a>
-      <a href="services.html">Services</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
@@ -75,8 +82,8 @@
     <section class="card">
       <h1>Food</h1>
       <p class="muted">
-        Fuel for healthy growth and color. We stock frozen and dry foods for <strong>saltwater & freshwater fish, corals, inverts, and reptiles</strong>,
-        plus live foods like pods & phyto. Ask about special orders.
+        Fuel for healthy growth and color. We stock frozen and dry foods for <strong>saltwater &amp; freshwater fish, corals, inverts, and reptiles</strong>,
+        plus live foods like pods &amp; phyto. Ask about special orders.
         <br><span class="note">New to feeding schedules? See <a href="care-guides.html#feeding">Care Guides → Feeding</a>.</span>
       </p>
       <div class="toc" aria-label="Food categories">
@@ -84,8 +91,8 @@
         <a href="#frozen-coral">Frozen Coral Food</a>
         <a href="#pellets-fish">Pellets — Fish</a>
         <a href="#pellets-coral">Pellets — Corals</a>
-        <a href="#live-food">Live Food (Pods & Phyto)</a>
-        <a href="#specialty">Specialty & Other</a>
+        <a href="#live-food">Live Food (Pods &amp; Phyto)</a>
+        <a href="#specialty">Specialty &amp; Other</a>
       </div>
     </section>
 
@@ -95,8 +102,8 @@
       <div class="card"><div class="tile">Frozen Coral Food</div><div class="pad"><a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a></div></div>
       <div class="card"><div class="tile">Pellets — Fish</div><div class="pad"><a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a></div></div>
       <div class="card"><div class="tile">Pellets — Corals</div><div class="pad"><a class="btn" data-square-cat="pelletsCoral" href="#">Shop Pellets (Coral)</a></div></div>
-      <div class="card"><div class="tile">Live Food (Pods & Phyto)</div><div class="pad"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div></div>
-      <div class="card"><div class="tile">Specialty & Other</div><div class="pad"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div></div>
+      <div class="card"><div class="tile">Live Food (Pods &amp; Phyto)</div><div class="pad"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div></div>
+      <div class="card"><div class="tile">Specialty &amp; Other</div><div class="pad"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div></div>
     </section>
 
     <section id="frozen-fish" class="card">
@@ -137,7 +144,7 @@
     </section>
 
     <section id="live-food" class="card">
-      <h2>Live Food (Pods & Phyto)</h2>
+      <h2>Live Food (Pods &amp; Phyto)</h2>
       <p class="muted">Excellent for finicky fish and filter feeders. Live copepods support mandarins and wrasses; phytoplankton feeds corals and boosts microfauna.</p>
       <ul class="list">
         <li>Seed refugiums and rockwork with pods; dose phyto regularly for stability.</li>
@@ -150,7 +157,7 @@
     </section>
 
     <section id="specialty" class="card">
-      <h2>Specialty & Other</h2>
+      <h2>Specialty &amp; Other</h2>
       <p class="muted">Diets for reptiles, inverts, and species with unique needs. If it’s not in stock, we can order it.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a>
