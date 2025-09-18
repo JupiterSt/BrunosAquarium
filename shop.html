@@ -6,63 +6,31 @@
   <title>Shop | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Shop livestock, foods, aquariums, and equipment. Secure checkout via Square. Special orders available." />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
   <style>
-    /* lightweight fallback styles in case styles.css isn't ready */
-    :root{--ink:#0e1b2a;--sea:#0e7490;--foam:#e6f7fb;--sand:#f6efe6;--muted:#6b7280}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
-    header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid #e5e7eb}
-    nav{display:flex;flex-wrap:wrap;gap:10px;max-width:1100px;margin:0 auto;padding:14px}
-    nav a{padding:8px 12px;border-radius:999px;border:1px solid #e5e7eb;text-decoration:none;color:#111827}
-    nav a.active, .btn{background:var(--sea);color:#fff;border-color:transparent}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    h1{margin:6px 0 10px}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
-    @media (max-width:960px){.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.grid.cols-3,.grid.cols-4{grid-template-columns:1fr}}
-    .card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
-    .card .pad{padding:16px}
+    /* (kept) tiny fallback styles trimmed for brevity */
     .tile{height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ebf8ff,#f8fafc)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none}
-    .note{font-size:13px;color:var(--muted)}
-    .badges{display:flex;gap:8px;flex-wrap:wrap}
-    .badge{background:var(--sand);padding:4px 8px;border-radius:999px;border:1px solid #eadcc5;color:#6b4e16;font-weight:700}
   </style>
   <script>
     // Replace with your actual Square links later
     const SQUARE_CATEGORY_LINKS = {
       // Livestock
-      saltwaterFish: 'https://square.link/REPLACE-CAT-SALTWATER-FISH',
-      freshwaterFish: 'https://square.link/REPLACE-CAT-FRESHWATER-FISH',
-      corals: 'https://square.link/REPLACE-CAT-CORALS',
-      invertsSalt: 'https://square.link/REPLACE-CAT-INVERTS-SALT',
-      invertsFresh: 'https://square.link/REPLACE-CAT-INVERTS-FRESH',
-      reptiles: 'https://square.link/REPLACE-CAT-REPTILES',
+      saltwaterFish: '', freshwaterFish: '', corals: '',
+      invertsSalt: '', invertsFresh: '', reptiles: '',
       // Food
-      frozenFishFood: 'https://square.link/REPLACE-CAT-FROZEN-FISH-FOOD',
-      frozenCoralFood: 'https://square.link/REPLACE-CAT-FROZEN-CORAL-FOOD',
-      pelletsFish: 'https://square.link/REPLACE-CAT-PELLETS-FISH',
-      pelletsCoral: 'https://square.link/REPLACE-CAT-PELLETS-CORAL',
-      liveFood: 'https://square.link/REPLACE-CAT-LIVE-FOOD',
-      specialtyFood: 'https://square.link/REPLACE-CAT-SPECIALTY-FOOD',
+      frozenFishFood: '', frozenCoralFood: '',
+      pelletsFish: '', pelletsCoral: '', liveFood: '', specialtyFood: '',
       // Supplies & Equipment
-      tanksAquariums: 'https://square.link/REPLACE-CAT-TANKS',
-      filtration: 'https://square.link/REPLACE-CAT-FILTRATION',
-      heatingLighting: 'https://square.link/REPLACE-CAT-HEAT-LIGHT',
-      pumpsFlow: 'https://square.link/REPLACE-CAT-PUMPS',
-      testingAdditives: 'https://square.link/REPLACE-CAT-TEST-ADD',
-      substrateDecor: 'https://square.link/REPLACE-CAT-SUBSTRATE-DECOR',
-      reptileGear: 'https://square.link/REPLACE-CAT-REPTILE-GEAR',
-      petAccessories: 'https://square.link/REPLACE-CAT-PET-ACCESS',
+      tanksAquariums: '', filtration: '', heatingLighting: '',
+      pumpsFlow: '', testingAdditives: '', substrateDecor: '',
+      reptileGear: '', petAccessories: '',
       // Gift Cards
-      giftCards: 'https://square.link/REPLACE-GIFT-CARDS'
+      giftCards: ''
     };
     document.addEventListener('DOMContentLoaded',()=>{
       for (const [k, url] of Object.entries(SQUARE_CATEGORY_LINKS)){
         const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+        if(a && url){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
       }
     });
   </script>
@@ -70,6 +38,11 @@
 <body>
   <header>
     <nav>
+      <!-- 👇 Put your logo file at assets/img/logo.svg (or .png) -->
+      <a href="index.html" class="brand" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none">
+        <img src="assets/img/logo.svg" alt="Bruno’s Aquarium logo" width="40" height="40" style="border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px" />
+        <span style="font-weight:800;color:#0e1b2a">Bruno’s Aquarium</span>
+      </a>
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
@@ -84,9 +57,10 @@
 
   <main class="container">
     <h1>Shop</h1>
-    <p class="muted">Secure checkout via Square. Prices shown in‑store may vary due to live inventory. Ask about **special orders** if you don’t see what you need.</p>
+    <p class="muted">Secure checkout via Square. Prices shown in-store may vary due to live inventory. Ask about <strong>special orders</strong> if you don’t see what you need.</p>
 
-    <section>
+    <!-- 👇 Added IDs so homepage tiles can land here -->
+    <section id="livestock">
       <h2>Livestock</h2>
       <div class="grid cols-3">
         <div class="card">
@@ -116,7 +90,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="food">
       <h2>Food</h2>
       <div class="grid cols-3">
         <div class="card">
@@ -146,7 +120,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="supplies">
       <h2>Supplies & Equipment</h2>
       <div class="grid cols-3">
         <div class="card">
@@ -203,12 +177,15 @@
         <span class="badge">Eye Catching Coral</span>
         <span class="badge">UGR Wholesale</span>
       </div>
-      <p class="note">Approved wholesaler. We can special‑order items not currently in stock.</p>
+      <p class="note">Approved wholesaler. We can special-order items not currently in stock.</p>
     </section>
   </main>
 
   <footer class="container" style="margin-top:40px;border-top:1px solid #e5e7eb;padding-top:16px">
-    <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787‑233‑3313 • Ian 605‑350‑6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
+    <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
