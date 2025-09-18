@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Shop livestock, foods, aquariums, and equipment. Secure checkout via Square. Special orders available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
   <style>
-    /* (kept) tiny fallback styles trimmed for brevity */
+    /* tiny fallback tile bg (kept) */
     .tile{height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ebf8ff,#f8fafc)}
   </style>
   <script>
@@ -37,17 +40,24 @@
 </head>
 <body>
   <header>
-    <nav>
-      <!-- 👇 Put your logo file at assets/img/logo.svg (or .png) -->
-      <a href="index.html" class="brand" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none">
-        <img src="assets/img/logo.svg" alt="Bruno’s Aquarium logo" width="40" height="40" style="border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px" />
-        <span style="font-weight:800;color:#0e1b2a">Bruno’s Aquarium</span>
-      </a>
+    <!-- Compact brand row (shared across pages) -->
+    <div class="brandbar">
+      <div class="brand-inner">
+        <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <span>Bruno’s Aquarium</span>
+        </a>
+        <div class="brand-meta">Huron, SD • Est. 2025</div>
+      </div>
+    </div>
+
+    <!-- Unified tabs -->
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies</a>
-      <a href="services.html">Services</a>
+      <a href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a class="active" href="shop.html">Shop</a>
@@ -59,7 +69,7 @@
     <h1>Shop</h1>
     <p class="muted">Secure checkout via Square. Prices shown in-store may vary due to live inventory. Ask about <strong>special orders</strong> if you don’t see what you need.</p>
 
-    <!-- 👇 Added IDs so homepage tiles can land here -->
+    <!-- 👇 IDs so homepage tiles can land here -->
     <section id="livestock">
       <h2>Livestock</h2>
       <div class="grid cols-3">
@@ -114,17 +124,17 @@
           <div class="pad"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div>
         </div>
         <div class="card">
-          <div class="tile"><strong>Specialty & Other</strong></div>
+          <div class="tile"><strong>Specialty &amp; Other</strong></div>
           <div class="pad"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div>
         </div>
       </div>
     </section>
 
     <section id="supplies">
-      <h2>Supplies & Equipment</h2>
+      <h2>Supplies &amp; Equipment</h2>
       <div class="grid cols-3">
         <div class="card">
-          <div class="tile"><strong>Aquariums & Tanks</strong></div>
+          <div class="tile"><strong>Aquariums &amp; Tanks</strong></div>
           <div class="pad"><a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a></div>
         </div>
         <div class="card">
@@ -132,19 +142,19 @@
           <div class="pad"><a class="btn" data-square-cat="filtration" href="#">Shop Filtration</a></div>
         </div>
         <div class="card">
-          <div class="tile"><strong>Heating & Lighting</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat & Light</a></div>
+          <div class="tile"><strong>Heating &amp; Lighting</strong></div>
+          <div class="pad"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat &amp; Light</a></div>
         </div>
         <div class="card">
-          <div class="tile"><strong>Pumps & Flow</strong></div>
+          <div class="tile"><strong>Pumps &amp; Flow</strong></div>
           <div class="pad"><a class="btn" data-square-cat="pumpsFlow" href="#">Shop Pumps</a></div>
         </div>
         <div class="card">
-          <div class="tile"><strong>Testing & Additives</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test & Add</a></div>
+          <div class="tile"><strong>Testing &amp; Additives</strong></div>
+          <div class="pad"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a></div>
         </div>
         <div class="card">
-          <div class="tile"><strong>Substrates & Décor</strong></div>
+          <div class="tile"><strong>Substrates &amp; Décor</strong></div>
           <div class="pad"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div>
         </div>
         <div class="card">
@@ -170,14 +180,14 @@
 
     <section>
       <h2>Suppliers</h2>
-      <div class="badges">
-        <span class="badge">Reef Nutrition</span>
-        <span class="badge">AlgaeBarn</span>
-        <span class="badge">Quality Marine</span>
-        <span class="badge">Eye Catching Coral</span>
-        <span class="badge">UGR Wholesale</span>
+      <div class="badges" role="list">
+        <span class="badge" role="listitem">Reef Nutrition</span>
+        <span class="badge" role="listitem">AlgaeBarn</span>
+        <span class="badge" role="listitem">Quality Marine</span>
+        <span class="badge" role="listitem">Eye Catching Coral</span>
+        <span class="badge" role="listitem">UGR Wholesale</span>
       </div>
-      <p class="note">Approved wholesaler. We can special-order items not currently in stock.</p>
+      <p class="muted">Approved wholesaler. We can special-order items not currently in stock.</p>
     </section>
   </main>
 
