@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
+
   <!-- LocalBusiness JSON-LD -->
   <script type="application/ld+json">
   {
@@ -16,7 +18,8 @@
     "@type": "PetStore",
     "name": "Bruno’s Aquarium",
     "url": "https://brunosaquarium.com/contact.html",
-    "telephone": ["+1-787-233-3313","+1-605-350-6478"],
+    "image": "https://brunosaquarium.com/assets/img/logo.svg",
+    "telephone": "+1-787-233-3313",
     "email": "brunosaquarium@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -26,14 +29,22 @@
       "postalCode": "57350",
       "addressCountry": "US"
     },
+    "contactPoint": [
+      { "@type": "ContactPoint", "telephone": "+1-787-233-3313", "contactType": "owner", "name": "Jose Escribano" },
+      { "@type": "ContactPoint", "telephone": "+1-605-350-6478", "contactType": "manager", "name": "Ian Escribano" }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61580495271761"
+    ],
     "openingHoursSpecification": [
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday"],"opens":"10:00","closes":"20:00"},
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday"],"opens":"10:00","closes":"20:00"},
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"10:00","closes":"20:00"},
-      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday"],"opens":"10:00","closes":"20:00"}
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Thursday"], "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Friday"],   "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Saturday"], "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday"], "opens":"10:00", "closes":"20:00" }
     ]
   }
   </script>
+
   <style>
     /* minimal extras specific to this page */
     .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
@@ -45,7 +56,7 @@
 </head>
 <body>
   <header>
-    <nav>
+    <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
@@ -67,13 +78,17 @@
         <div class="card">
           <h2>Get in touch</h2>
           <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
+            <!-- Spam honeypot -->
+            <input type="text" name="_honey" style="display:none">
+            <!-- Optional subject for your inbox -->
+            <input type="hidden" name="_subject" value="Website Contact — Bruno’s Aquarium">
+
             <div class="grid cols-2">
               <label>Full name<br><input name="name" required></label>
-              <label>Phone<br><input name="phone" required></label>
+              <label>Phone<br><input type="tel" name="phone" required></label>
             </div>
             <div class="grid cols-2" style="margin-top:10px">
-              <label>Email<br><input type="email" name="email"></label>
+              <label>Email<br><input type="email" name="email" placeholder="optional"></label>
               <label>Subject<br><input name="subject" placeholder="Question, special order, service…"></label>
             </div>
             <label style="display:block;margin-top:10px">Message<br>
@@ -104,16 +119,16 @@
         <div class="card">
           <h2>Visit Us</h2>
           <p>258 Dakota Ave S, Huron SD 57350</p>
-          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed"></iframe>
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed" title="Map to Bruno’s Aquarium, Huron SD"></iframe>
         </div>
         <div class="card contact-cards">
           <div>
             <h3>Owner</h3>
-            <p>Jose Escribano<br><a href="tel:+17872333313">787‑233‑3313</a></p>
+            <p>Jose Escribano<br><a href="tel:+17872333313">787-233-3313</a></p>
           </div>
           <div>
             <h3>Manager</h3>
-            <p>Ian Escribano<br><a href="tel:+16053506478">605‑350‑6478</a></p>
+            <p>Ian Escribano<br><a href="tel:+16053506478">605-350-6478</a></p>
           </div>
           <div>
             <h3>Email</h3>
@@ -126,10 +141,10 @@
     <section style="margin-top:16px">
       <div class="card">
         <h2>Social</h2>
-        <p class="muted">Add your links when ready:</p>
-        <ul class="list">
-          <li>Facebook — <a href="#">https://www.facebook.com/profile.php?id=61580495271761</a> (TODO)</li>
-        </ul>
+        <p class="muted">Follow our updates, livestock arrivals, and specials:</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61580495271761">Facebook</a>
+        </div>
       </div>
     </section>
   </main>
@@ -140,5 +155,8 @@
       <p class="muted"><a href="shop.html">Shop</a> • <a href="services.html">Services</a></p>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
