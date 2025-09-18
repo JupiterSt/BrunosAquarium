@@ -4,52 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Services & Maintenance | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Professional aquarium services in Huron, SD: in‑store water testing, on‑site tank cleaning & maintenance, and installation/setup packages. Special orders welcome." />
+  <meta name="description" content="Professional aquarium services in Huron, SD: in-store water testing, on-site tank cleaning & maintenance, and installation/setup packages. Special orders welcome." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.ico">
+
   <style>
-    :root{--ink:#0e1b2a;--sea:#0e7490;--foam:#e6f7fb;--sand:#f6efe6;--accent:#ffd166;--muted:#6b7280;--radius:18px}
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--foam),#fff);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:var(--sea);text-decoration:none}
-    header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:blur(8px);border-bottom:1px solid #e5e7eb;z-index:50}
-    .container{max-width:1100px;margin-inline:auto;padding:20px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--sea), #083344);box-shadow:0 6px 18px #00000025}
-    .title{font-weight:800}
-    .note{font-size:13px;color:var(--muted)}
-    nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .tab{padding:10px 14px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#111827}
-    .tab:hover{border-color:#cbd5e1}
-    .tab.active{background:var(--sea);color:#fff;border-color:transparent}
+    /* Page-specific helpers (sitewide tab styles come from assets/css/styles.css) */
     .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:26px 0}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);box-shadow:0 6px 22px #0e1b2a12}
-    .pad{padding:20px}
     .grid{display:grid;gap:16px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     @media (max-width:960px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;background:var(--sea);color:#fff;font-weight:700;border:0}
-    .btn.ghost{background:#fff;border:1px solid #e5e7eb;color:#111827}
     .section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
     .price{font-weight:800}
     .kicker{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-    .bullet{display:flex;gap:10px;align-items:flex-start}
-    .bullet svg{flex:none;margin-top:3px}
-    .badge{background:var(--sand);color:#6b4e16;padding:4px 8px;border-radius:999px;border:1px solid #eadcc5;font-weight:700}
-    footer{margin-top:60px;padding:36px 0;border-top:1px solid #e5e7eb;background:#fff}
-    .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    @media (max-width:900px){.cols{grid-template-columns:1fr}}
-    .hours{display:grid;grid-template-columns:1fr auto;gap:6px;font-weight:600}
-    .map{border:0;width:100%;height:260px;border-radius:12px}
-    .supplier{border:1px dashed #cbd5e1;border-radius:12px;padding:12px;background:#f8fafc}
+    .badge{background:var(--sand);color:#6B4E16;padding:4px 8px;border-radius:999px;border:1px solid #eadcc5;font-weight:700}
     .pill{padding:6px 10px;background:#eefaf3;border:1px solid #c7efd9;color:#155e3b;border-radius:999px;font-weight:700}
-    .muted{color:var(--muted)}
+    .supplier{border:1px dashed #cbd5e1;border-radius:12px;padding:12px;background:#f8fafc}
+    .map{border:0;width:100%;height:260px;border-radius:16px}
     .todo{color:#b45309;background:#fff7ed;border:1px solid #fed7aa;padding:8px 12px;border-radius:10px;font-weight:600}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
+
   <script>
     // Replace these with your real Square Checkout Links later.
     const SQUARE_LINKS = {
@@ -63,10 +42,11 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for (const [key, url] of Object.entries(SQUARE_LINKS)){
         const el = document.querySelector(`[data-square="${key}"]`);
-        if(el){ el.href = url; }
+        if(el && url){ el.href = url; }
       }
     });
   </script>
+
   <!-- LocalBusiness JSON-LD -->
   <script type="application/ld+json">
   {
@@ -95,32 +75,24 @@
   </script>
 </head>
 <body>
+  <!-- Standard sitewide tabs -->
   <header>
-    <div class="container">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div class="title">Bruno’s Aquarium</div>
-          <div class="note">Huron, South Dakota • Est. 2025</div>
-        </div>
-      </div>
-      <nav aria-label="Main">
-        <a class="tab" href="/">Home</a>
-        <a class="tab" href="/livestock.html">Livestock</a>
-        <a class="tab" href="/food.html">Food</a>
-        <a class="tab" href="/supplies.html">Supplies & Equipment</a>
-        <a class="tab active" href="/services.html">Services & Maintenance</a>
-        <a class="tab" href="/special-orders.html">Special Orders</a>
-        <a class="tab" href="/care-guides.html">Care Guides</a>
-        <a class="tab" href="/shop.html">Shop</a>
-        <a class="tab" href="/contact.html">Contact</a>
-      </nav>
-    </div>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="livestock.html">Livestock</a>
+      <a href="food.html">Food</a>
+      <a href="supplies.html">Supplies &amp; Equipment</a>
+      <a href="services.html">Services &amp; Maintenance</a>
+      <a href="special-orders.html">Special Orders</a>
+      <a href="care-guides.html">Care Guides</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="card pad">
+      <div class="card">
         <div class="kicker">Services & Maintenance</div>
         <h1 style="margin:6px 0 8px">Water Testing, Maintenance & Installations</h1>
         <p class="muted">Saltwater • Freshwater • Reptiles. We keep your system healthy, clean, and looking beautiful. Special orders welcome.</p>
@@ -129,7 +101,7 @@
           <a class="btn ghost" href="#request">Request Service</a>
         </div>
       </div>
-      <div class="card pad">
+      <div class="card">
         <div class="supplier">
           <div class="kicker">Trusted suppliers</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px">
@@ -139,28 +111,28 @@
             <span class="badge">Eye Catching Coral</span>
             <span class="badge">UGR Wholesale</span>
           </div>
-          <p class="muted" style="margin:6px 0 0">We’re approved wholesalers and can special‑order if it’s not in stock.</p>
+          <p class="muted" style="margin:6px 0 0">We’re approved wholesalers and can special-order if it’s not in stock.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-title"><h2>In‑store Water Testing</h2><span class="pill">Hanna‑based</span></div>
+      <div class="section-title"><h2>In-store Water Testing</h2><span class="pill">Hanna-based</span></div>
       <div class="grid cols-3">
-        <div class="card pad">
+        <div class="card">
           <h3>Basic Fresh/Salt Panel</h3>
           <p class="muted">Ammonia, nitrite, nitrate, pH. Quick health check + recommendations.</p>
           <p><span class="price">$—</span> <span class="muted">(set in Square)</span></p>
           <a class="btn" data-square="waterTestBasic" href="#">Book Basic Test</a>
         </div>
-        <div class="card pad">
+        <div class="card">
           <h3>Reef Panel</h3>
           <p class="muted">Alkalinity, calcium, magnesium, phosphate + core parameters.</p>
           <p><span class="price">$—</span> <span class="muted">(set in Square)</span></p>
           <a class="btn" data-square="waterTestReef" href="#">Book Reef Test</a>
         </div>
-        <div class="card pad">
-          <h3>Follow‑up Consult</h3>
+        <div class="card">
+          <h3>Follow-up Consult</h3>
           <p class="muted">Dosing, nutrient control, and upgrade planning.</p>
           <p><span class="price">$—</span> <span class="muted">(set in Square)</span></p>
           <a class="btn ghost" href="#request">Request Consult</a>
@@ -169,22 +141,22 @@
     </section>
 
     <section>
-      <div class="section-title"><h2>On‑site Cleaning & Maintenance</h2><span class="pill">Salt & Fresh</span></div>
+      <div class="section-title"><h2>On-site Cleaning & Maintenance</h2><span class="pill">Salt & Fresh</span></div>
       <div class="grid cols-2">
-        <div class="card pad">
+        <div class="card">
           <h3>Standard Visit</h3>
           <ul style="margin:0;padding-left:18px">
             <li>Water change & substrate clean</li>
             <li>Glass/acrylic scrape & detail</li>
-            <li>Filter media service & top‑off</li>
+            <li>Filter media service & top-off</li>
             <li>Parameter checks</li>
           </ul>
           <p style="margin-top:8px"><span class="price">$—/hr</span> <span class="muted">(price set in Square)</span></p>
           <a class="btn" data-square="maintHourly" href="#">Book Maintenance</a>
         </div>
-        <div class="card pad">
+        <div class="card">
           <h3>Recurring Plans</h3>
-          <p class="muted">Weekly, bi‑weekly, or monthly to keep your tank pristine.</p>
+          <p class="muted">Weekly, bi-weekly, or monthly to keep your tank pristine.</p>
           <p class="todo">TODO: Link to recurring plan item or contact form once created in Square.</p>
           <a class="btn ghost" href="#request">Request a Quote</a>
         </div>
@@ -192,17 +164,17 @@
     </section>
 
     <section>
-      <div class="section-title"><h2>Installation & New Setup</h2><span class="pill">Turn‑key</span></div>
+      <div class="section-title"><h2>Installation & New Setup</h2><span class="pill">Turn-key</span></div>
       <div class="grid cols-2">
-        <div class="card pad">
+        <div class="card">
           <h3>Starter Tank Package</h3>
           <p class="muted">Delivery, assembly, aquascape basics, leak test, filter/heater/light setup, cycle guidance.</p>
           <p><span class="price">$—</span> <span class="muted">(set in Square)</span></p>
           <a class="btn" data-square="installStarter" href="#">Book Starter Install</a>
         </div>
-        <div class="card pad">
+        <div class="card">
           <h3>Reef Package</h3>
-          <p class="muted">Includes reef‑ready lighting, skimmer and initial parameter dialing.</p>
+          <p class="muted">Includes reef-ready lighting, skimmer and initial parameter dialing.</p>
           <p><span class="price">$—</span> <span class="muted">(set in Square)</span></p>
           <a class="btn" data-square="installReef" href="#">Book Reef Install</a>
         </div>
@@ -210,21 +182,21 @@
     </section>
 
     <section>
-      <div class="section-title"><h2>Emergency Visit</h2><span class="pill">As‑available</span></div>
-      <div class="card pad">
+      <div class="section-title"><h2>Emergency Visit</h2><span class="pill">As-available</span></div>
+      <div class="card">
         <p class="muted">Power loss, equipment failure, livestock distress. We’ll do our best to help fast.</p>
-        <p><span class="price">$— call‑out fee</span> <span class="muted">(set in Square)</span></p>
+        <p><span class="price">$— call-out fee</span> <span class="muted">(set in Square)</span></p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn" data-square="emergency" href="#">Request Emergency Visit</a>
-          <a class="btn ghost" href="tel:+16053506478">Call Ian (605‑350‑6478)</a>
-          <a class="btn ghost" href="tel:+17872333313">Call Jose (787‑233‑3313)</a>
+          <a class="btn ghost" href="tel:+16053506478">Call Ian (605-350-6478)</a>
+          <a class="btn ghost" href="tel:+17872333313">Call Jose (787-233-3313)</a>
         </div>
       </div>
     </section>
 
     <section id="request">
       <div class="section-title"><h2>Request Service</h2><span class="pill">Fastest way</span></div>
-      <div class="card pad">
+      <div class="card">
         <p class="muted">Use the quick form below. We’ll confirm by phone or email. You can also email <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a>.</p>
         <!-- TODO: Replace this iFrame with your Google Form embed once created. -->
         <div class="todo" style="margin-bottom:12px">TODO: Paste Google Form embed here.</div>
@@ -240,8 +212,8 @@
           </div>
           <label style="display:block;margin-top:10px">Service needed<br>
             <select name="service" required style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px">
-              <option value="Water Test (in‑store)">Water Test (in‑store)</option>
-              <option value="Maintenance (on‑site)">Maintenance (on‑site)</option>
+              <option value="Water Test (in-store)">Water Test (in-store)</option>
+              <option value="Maintenance (on-site)">Maintenance (on-site)</option>
               <option value="Installation — Starter">Installation — Starter</option>
               <option value="Installation — Reef">Installation — Reef</option>
               <option value="Emergency Visit">Emergency Visit</option>
@@ -261,12 +233,12 @@
   </main>
 
   <footer>
-    <div class="container cols">
+    <div class="container grid cols-2">
       <div>
         <h3>Visit Us</h3>
         <p>
           258 Dakota Ave S, Huron SD 57350<br>
-          <strong>Hours:</strong> Thu–Sat 10 AM–8 PM; Sun Closed; Mon–Wed 10 AM–8 PM
+          <strong>Hours:</strong> Thu–Sat 10 AM–8 PM; Sun Closed; Mon–Wed 10 AM–8 PM
         </p>
         <div class="hours">
           <div>Thursday</div><div>10:00 AM – 8:00 PM</div>
@@ -281,13 +253,16 @@
       <div>
         <h3>Contact</h3>
         <p>
-          Owner: Jose — <a href="tel:+17872333313">787‑233‑3313</a><br>
-          Manager: Ian — <a href="tel:+16053506478">605‑350‑6478</a><br>
+          Owner: Jose — <a href="tel:+17872333313">787-233-3313</a><br>
+          Manager: Ian — <a href="tel:+16053506478">605-350-6478</a><br>
           Email: <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a>
         </p>
-        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed"></iframe>
+        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed" title="Map to Bruno’s Aquarium, Huron SD"></iframe>
       </div>
     </div>
   </footer>
+
+  <!-- Shared helpers -->
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
