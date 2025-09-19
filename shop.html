@@ -5,15 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Shop livestock, foods, aquariums, and equipment. Secure checkout via Square. Special orders available." />
+  <meta name="theme-color" content="#0e7490" />
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Shop | Bruno’s Aquarium — Huron, SD" />
+  <meta property="og:description" content="Shop livestock, foods, aquariums, and equipment. Secure checkout via Square. Special orders available." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/assets/img/logo.png" />
+  <link rel="canonical" href="https://brunosaquarium.com/shop.html" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
+
   <style>
     /* tiny fallback tile bg (kept) */
     .tile{height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ebf8ff,#f8fafc)}
+
+    /* Brand bar quick styles (shared look) */
+    .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
+    .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0e1b2a;text-decoration:none}
+    .brand-meta{color:#6b7280;font-weight:600}
+    .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
+
+    /* Prevent sticky header overlap when jumping to #livestock/#food/#supplies */
+    section[id]{scroll-margin-top:100px}
   </style>
+
   <script>
     // Replace with your actual Square links later
     const SQUARE_CATEGORY_LINKS = {
@@ -44,7 +67,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo">
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -60,7 +83,7 @@
       <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
-      <a class="active" href="shop.html">Shop</a>
+      <a class="active" aria-current="page" href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
@@ -70,7 +93,7 @@
     <p class="muted">Secure checkout via Square. Prices shown in-store may vary due to live inventory. Ask about <strong>special orders</strong> if you don’t see what you need.</p>
 
     <!-- 👇 IDs so homepage tiles can land here -->
-    <section id="livestock">
+    <section id="livestock" aria-label="Livestock">
       <h2>Livestock</h2>
       <div class="grid cols-3">
         <div class="card">
@@ -100,7 +123,7 @@
       </div>
     </section>
 
-    <section id="food">
+    <section id="food" aria-label="Food">
       <h2>Food</h2>
       <div class="grid cols-3">
         <div class="card">
@@ -130,7 +153,7 @@
       </div>
     </section>
 
-    <section id="supplies">
+    <section id="supplies" aria-label="Supplies & Equipment">
       <h2>Supplies &amp; Equipment</h2>
       <div class="grid cols-3">
         <div class="card">
