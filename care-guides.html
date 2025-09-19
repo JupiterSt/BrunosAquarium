@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Care Guides | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Beginner-friendly aquarium care guides and downloadable PDFs. Saltwater • Freshwater • Reptiles • Birds • Inverts." />
+  <meta name="theme-color" content="#0e7490">
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Care Guides | Bruno’s Aquarium — Huron, SD">
+  <meta property="og:description" content="Beginner-friendly aquarium care guides and downloadable PDFs for saltwater, freshwater, reptiles, birds & inverts.">
+  <meta property="og:image" content="assets/assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -14,6 +23,9 @@
   <style>
     .toc{display:flex;flex-wrap:wrap;gap:10px}
     .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
+
+    /* Ensure anchored sections aren’t hidden behind the sticky header */
+    section[id]{scroll-margin-top:100px}
 
     /* Care Forms */
     details.care-form{border:1px solid #e5e7eb;border-radius:12px;padding:0;background:#fff}
@@ -41,6 +53,12 @@
       .print-target, .print-target *{visibility:visible !important}
       .print-target{position:static !important; inset:auto !important}
     }
+
+    /* Real semantic table styling (replaces the div “table”) */
+    table.kv{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff}
+    table.kv th, table.kv td{padding:12px 14px;vertical-align:top}
+    table.kv tr+tr td, table.kv tr+tr th{border-top:1px solid #e5e7eb}
+    table.kv th{width:260px;background:#f8fafc;text-align:left}
   </style>
 
   <script>
@@ -66,7 +84,6 @@
     };
 
     // Google Drive folders (your links filled in)
-    // Use the full sharing URL to keep it simple.
     const DRIVE_LINKS = {
       all: 'https://drive.google.com/drive/folders/1L6Uc3W-fHNaSeSyT3Oaumr8w0jU1ZV8-?usp=drive_link',
       fishSalt: 'https://drive.google.com/drive/folders/14zY3wacnCIT7bZ2lHievWE_LwhZhdQLZ?usp=drive_link',
@@ -174,7 +191,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo" width="40" height="40">
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -189,7 +206,7 @@
       <a href="supplies.html">Supplies &amp; Equipment</a>
       <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
-      <a href="care-guides.html">Care Guides</a>
+      <a class="active" href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -206,7 +223,7 @@
     <section id="downloads" class="card">
       <h2>Downloads (Google Drive)</h2>
       <p class="muted">Browse and download our PDF care sheets. Buttons open Google Drive in a new tab.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px" role="navigation" aria-label="Download categories">
         <a class="btn" data-drive="all" href="#">Browse All PDFs</a>
         <a class="btn ghost" data-drive="fishSalt" href="#">Saltwater Fish</a>
         <a class="btn ghost" data-drive="fishFresh" href="#">Freshwater Fish</a>
@@ -217,7 +234,7 @@
 
       <!-- Optional embedded viewer for All PDFs -->
       <div class="drive-wrap">
-        <iframe id="drive-embed" class="drive-embed" hidden title="Care Guides — Google Drive folder (All)"></iframe>
+        <iframe id="drive-embed" class="drive-embed" hidden loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Care Guides — Google Drive folder (All)"></iframe>
       </div>
       <p class="note" style="margin-top:8px">
         Tip: If you add or rename PDFs in Drive, they’ll show here automatically. Make sure your Drive folders are shared as
@@ -228,7 +245,7 @@
 
     <div class="card">
       <div class="kicker">Jump to</div>
-      <div class="toc">
+      <nav class="toc" aria-label="Table of contents">
         <a href="#forms">Care Sheet Forms</a>
         <a href="#acclimation">Acclimation</a>
         <a href="#cycling">Cycling</a>
@@ -237,7 +254,7 @@
         <a href="#feeding">Feeding</a>
         <a href="#compatibility">Compatibility</a>
         <a href="#quarantine">Quarantine</a>
-      </div>
+      </nav>
     </div>
 
     <!-- ================== CARE SHEET FORMS ================== -->
@@ -529,24 +546,24 @@
 
     <section id="parameters" class="card">
       <h2>Water Parameters (Quick Targets)</h2>
-      <div class="table">
-        <div class="row">
-          <div class="cell"><strong>Saltwater (Fish-only)</strong></div>
-          <div class="cell">Temp 77–79°F • SG 1.020–1.023 • pH 8.0–8.3 • NH3/NH4 0 • NO2 0 • NO3 &lt; 30 ppm</div>
-        </div>
-        <div class="row">
-          <div class="cell"><strong>Reef</strong></div>
-          <div class="cell">Temp 77–79°F • SG 1.025 • Alk 8–9 dKH • Ca 420–450 • Mg 1300–1400 • NO3 2–10 ppm • PO4 0.03–0.10 ppm</div>
-        </div>
-        <div class="row">
-          <div class="cell"><strong>Freshwater (Community)</strong></div>
-          <div class="cell">Temp 74–78°F • pH 6.8–7.6 • NH3/NH4 0 • NO2 0 • NO3 &lt; 40 ppm</div>
-        </div>
-        <div class="row">
-          <div class="cell"><strong>Reptiles (enclosures)</strong></div>
-          <div class="cell">Match species humidity/temperature gradients; provide UVB/heat per species guidelines.</div>
-        </div>
-      </div>
+      <table class="kv" aria-label="Quick target water parameters">
+        <tr>
+          <th scope="row">Saltwater (Fish-only)</th>
+          <td>Temp 77–79°F • SG 1.020–1.023 • pH 8.0–8.3 • NH3/NH4 0 • NO2 0 • NO3 &lt; 30 ppm</td>
+        </tr>
+        <tr>
+          <th scope="row">Reef</th>
+          <td>Temp 77–79°F • SG 1.025 • Alk 8–9 dKH • Ca 420–450 • Mg 1300–1400 • NO3 2–10 ppm • PO4 0.03–0.10 ppm</td>
+        </tr>
+        <tr>
+          <th scope="row">Freshwater (Community)</th>
+          <td>Temp 74–78°F • pH 6.8–7.6 • NH3/NH4 0 • NO2 0 • NO3 &lt; 40 ppm</td>
+        </tr>
+        <tr>
+          <th scope="row">Reptiles (enclosures)</th>
+          <td>Match species humidity/temperature gradients; provide UVB/heat per species guidelines.</td>
+        </tr>
+      </table>
     </section>
 
     <section id="lighting" class="card">
@@ -571,17 +588,17 @@
           <a class="btn" data-square="shopFoods" href="#">Shop Foods</a>
         </div>
         <div>
-          <h3>Corals & Filter Feeders</h3>
+          <h3>Corals &amp; Filter Feeders</h3>
           <ul class="checklist">
             <li><span class="check"></span> Target feed appropriate particle size.</li>
-            <li><span class="check"></span> Use live foods when possible (<a data-square="shopLiveFood" href="#">pods & phyto</a>).</li>
+            <li><span class="check"></span> Use live foods when possible (<a data-square="shopLiveFood" href="#">pods &amp; phyto</a>).</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="compatibility" class="card">
-      <h2>Compatibility & Stocking</h2>
+      <h2>Compatibility &amp; Stocking</h2>
       <ul class="checklist">
         <li><span class="check"></span> Research temperament; avoid mixing known aggressors.</li>
         <li><span class="check"></span> Quarantine when possible; add most peaceful fish first, territorial species last.</li>
