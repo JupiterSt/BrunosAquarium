@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Services & Maintenance | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Professional aquarium services in Huron, SD: in-store water testing, on-site tank cleaning & maintenance, and installation/setup packages. Special orders welcome." />
+  <meta name="theme-color" content="#0e7490" />
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Services & Maintenance | Bruno’s Aquarium — Huron, SD" />
+  <meta property="og:description" content="Water testing, maintenance, installations, and emergency visits for saltwater, freshwater, and reptiles." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/assets/img/logo.png" />
+  <link rel="canonical" href="https://brunosaquarium.com/services.html" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
 
@@ -22,30 +33,18 @@
     .section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
     .price{font-weight:800}
     .kicker{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-    .badge{background:var(--sand);color:#6B4E16;padding:4px 8px;border-radius:999px;border:1px solid #eadcc5;font-weight:700}
     .pill{padding:6px 10px;background:#eefaf3;border:1px solid #c7efd9;color:#155e3b;border-radius:999px;font-weight:700}
-    .supplier{border:1px dashed #cbd5e1;border-radius:12px;padding:12px;background:#f8fafc}
     .map{border:0;width:100%;height:260px;border-radius:16px}
     .todo{color:#b45309;background:#fff7ed;border:1px solid #fed7aa;padding:8px 12px;border-radius:10px;font-weight:600}
+    /* Brand bar quick styles */
+    .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
+    .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0e1b2a;text-decoration:none}
+    .brand-meta{color:#6b7280;font-weight:600}
+    .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
+    /* Prevent sticky header overlap when jumping to #request */
+    section[id]{scroll-margin-top:100px}
   </style>
-
-  <script>
-    // Replace these with your real Square Checkout Links later.
-    const SQUARE_LINKS = {
-      waterTestBasic: 'https://square.link/REPLACE-WATER-TEST-BASIC',
-      waterTestReef: 'https://square.link/REPLACE-WATER-TEST-REEF',
-      maintHourly: 'https://square.link/REPLACE-MAINT-HOURLY',
-      installStarter: 'https://square.link/REPLACE-INSTALL-STARTER',
-      installReef: 'https://square.link/REPLACE-INSTALL-REEF',
-      emergency: 'https://square.link/REPLACE-EMERGENCY'
-    };
-    document.addEventListener('DOMContentLoaded',()=>{
-      for (const [key, url] of Object.entries(SQUARE_LINKS)){
-        const el = document.querySelector(`[data-square="${key}"]`);
-        if(el && url){ el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
-      }
-    });
-  </script>
 
   <!-- LocalBusiness JSON-LD -->
   <script type="application/ld+json">
@@ -53,7 +52,7 @@
     "@context": "https://schema.org",
     "@type": "PetStore",
     "name": "Bruno’s Aquarium",
-    "url": "https://brunosaquarium.com",
+    "url": "https://brunosaquarium.com/services.html",
     "telephone": "+1-605-350-6478",
     "email": "brunosaquarium@gmail.com",
     "address": {
@@ -73,6 +72,24 @@
     "geo": {"@type": "GeoCoordinates", "latitude": 44.3636, "longitude": -98.2149}
   }
   </script>
+
+  <script>
+    // Replace these with your real Square Checkout Links later.
+    const SQUARE_LINKS = {
+      waterTestBasic: 'https://square.link/REPLACE-WATER-TEST-BASIC',
+      waterTestReef: 'https://square.link/REPLACE-WATER-TEST-REEF',
+      maintHourly: 'https://square.link/REPLACE-MAINT-HOURLY',
+      installStarter: 'https://square.link/REPLACE-INSTALL-STARTER',
+      installReef: 'https://square.link/REPLACE-INSTALL-REEF',
+      emergency: 'https://square.link/REPLACE-EMERGENCY'
+    };
+    document.addEventListener('DOMContentLoaded',()=>{
+      for (const [key, url] of Object.entries(SQUARE_LINKS)){
+        const el = document.querySelector(`[data-square="${key}"]`);
+        if(el && url){ el.href = url; el.target = '_blank'; el.rel = 'noopener'; }
+      }
+    });
+  </script>
 </head>
 <body>
   <!-- Standard sitewide header -->
@@ -81,7 +98,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo">
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -94,7 +111,7 @@
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
       <a href="supplies.html">Supplies &amp; Equipment</a>
-      <a href="services.html">Services &amp; Maintenance</a>
+      <a class="active" aria-current="page" href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
@@ -113,7 +130,7 @@
           <a class="btn ghost" href="#request">Request Service</a>
         </div>
       </div>
-      <!-- Removed the Trusted suppliers card -->
+      <!-- Trusted suppliers card removed -->
     </section>
 
     <section>
