@@ -4,7 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Food | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Frozen fish food, frozen coral food, pellets for fish & corals, live foods (pods & phyto), and specialty diets for reptiles & inverts. Square-ready." />
+  <meta name="description" content="Frozen fish & coral foods, pellets, live foods (pods & phyto), and specialty diets for reptiles & inverts. Square checkout ready." />
+  <meta name="theme-color" content="#0e7490">
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Food | Bruno’s Aquarium — Huron, SD">
+  <meta property="og:description" content="Frozen & dry foods for saltwater, freshwater, corals, and reptiles. Plus live pods & phyto.">
+  <meta property="og:image" content="assets/assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://brunosaquarium.com/food.html">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -14,6 +23,8 @@
   <style>
     .toc{display:flex;flex-wrap:wrap;gap:10px}
     .toc a{border:1px solid #e5e7eb;padding:8px 12px;border-radius:999px;background:#fff}
+    /* make anchor jumps clear the sticky header */
+    section[id]{scroll-margin-top:100px}
   </style>
 
   <script>
@@ -29,12 +40,12 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for(const [k,url] of Object.entries(SQUARE_CATEGORY_LINKS)){
         const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a){ a.href=url; a.target='_blank'; a.rel='noopener'; }
+        if(a && url){ a.href=url; a.target='_blank'; a.rel='noopener'; }
       }
     });
   </script>
 
-  <!-- Optional: category ItemList schema (enable if you want SEO boost)
+  <!-- Enable ItemList schema (helps category snippets) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -49,7 +60,7 @@
       {"@type":"ListItem","position":6,"name":"Specialty & Other","url":"https://brunosaquarium.com/food.html#specialty"}
     ]
   }
-  </script> -->
+  </script>
 </head>
 <body>
   <header>
@@ -57,7 +68,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo" width="40" height="40">
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -68,7 +79,7 @@
     <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
-      <a href="food.html">Food</a>
+      <a class="active" aria-current="page" href="food.html">Food</a>
       <a href="supplies.html">Supplies &amp; Equipment</a>
       <a href="services.html">Services &amp; Maintenance</a>
       <a href="special-orders.html">Special Orders</a>
