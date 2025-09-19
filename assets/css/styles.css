@@ -1,4 +1,4 @@
-/* assets/css/styles.css — Bruno’s Aquarium (unified nav + brand slot) */
+/* assets/css/styles.css — Bruno’s Aquarium (brand row + unified tabs) */
 
 :root{
   --ink:#0e1b2a;           /* deep navy */
@@ -32,37 +32,48 @@ a:hover{text-decoration:underline}
   text-decoration:none;
 }
 
-/* ---------- Header & Navigation (sticky, scrollable, brand slot) ---------- */
+/* ---------- Header (sticky) ---------- */
 header{
-  position:sticky; top:0;
+  position:sticky; top:0; z-index:50;
   background:#ffffffcc; backdrop-filter:blur(8px);
-  border-bottom:1px solid #e5e7eb; z-index:50;
 }
 
-/* single row; scroll horizontally if it overflows */
+/* Compact brand row (logo + name) */
+.brandbar{
+  border-bottom:1px solid #e5e7eb;
+}
+.brand-inner{
+  max-width:1100px; margin:0 auto;
+  padding:10px 14px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{
+  display:inline-flex; align-items:center; gap:10px;
+  font-weight:800; color:var(--ink);
+  text-decoration:none; white-space:nowrap;
+}
+.brand:hover{ text-decoration:none }
+.brand-logo{
+  width:40px; height:40px; border-radius:8px; object-fit:contain;
+  background:#fff; border:1px solid #e5e7eb; padding:4px;
+  display:block;
+}
+.brand-meta{font-size:13px;color:var(--muted)}
+
+/* ---------- Navigation tabs (single row; scrolls horizontally if needed) ---------- */
 header nav{
   display:flex; align-items:center; gap:10px;
   max-width:1100px; margin:0 auto; padding:10px 14px;
   flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
   scrollbar-width:thin; background:transparent;
 }
-
-/* subtle scrollbar for WebKit */
 header nav::-webkit-scrollbar{height:8px}
 header nav::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:999px}
 header nav::-webkit-scrollbar-track{background:transparent}
 
-/* brand link (logo + name) — not a tab */
+/* brand inside <nav> (if you keep it there on some pages) */
 header nav a.brand{
-  display:inline-flex; align-items:center; gap:10px;
-  font-weight:800; color:var(--ink);
-  border:none; padding:0; background:transparent;
-  white-space:nowrap; flex:0 0 auto; text-decoration:none;
-}
-header nav a.brand:hover{ text-decoration:none }
-header nav a.brand img{
-  width:40px; height:40px; border-radius:8px; object-fit:contain;
-  background:#fff; border:1px solid #e5e7eb; padding:4px;
+  padding:0; border:0; background:transparent; flex:0 0 auto;
 }
 
 /* tabs (all nav links except .brand) */
@@ -94,7 +105,7 @@ header nav a.active{ background:var(--sea); color:#fff !important; border-color:
 }
 .btn:hover{ filter:brightness(.98); transform:translateY(-1px) }
 .btn.ghost{ background:#fff; color:var(--ink); border:1px solid #e5e7eb }
-/* make primary look like active tab */
+/* primary like active tab */
 .btn:not(.ghost){ background:var(--sea); color:#fff; border-color:transparent }
 
 /* ---------- Utilities ---------- */
