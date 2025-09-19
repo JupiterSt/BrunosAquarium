@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Special Orders | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Request special-order livestock, foods, and equipment. We’ll confirm price & ETA, then invoice via Square." />
+  <meta name="description" content="If we don’t have it in-store, we can special-order it: fish, freshwater plants, algae, corals, aquarium chemicals, reptile supplies, dog accessories, and more. We’ll confirm price & ETA, then invoice via Square." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -18,6 +18,9 @@
     .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
     @media (max-width:960px){.cols{grid-template-columns:1fr}}
     .policy{background:#fff7ed;border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:12px}
+    .checklist{display:grid;gap:6px;margin:6px 0 0}
+    .checklist li{list-style:none;padding-left:24px;position:relative}
+    .checklist li::before{content:"✓";position:absolute;left:0;top:0}
   </style>
 
   <script>
@@ -65,7 +68,10 @@
 
   <main class="container">
     <h1>Special Orders</h1>
-    <p class="muted">If it’s not on the shelf, we can usually get it. Tell us what you need — we’ll confirm price and ETA, then invoice you securely via Square.</p>
+    <p class="muted">
+      If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals & treatments, reptile supplies, dog accessories, and a lot more. 
+      Tell us what you need and we’ll confirm price & ETA, then invoice securely via Square.
+    </p>
 
     <section class="cols">
       <div>
@@ -74,11 +80,11 @@
           <div class="steps">
             <div class="step">
               <div class="dot">1</div>
-              <div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget).</div>
+              <div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget). We can source fish, plants, algae, chemicals, gear, and pet accessories.</div>
             </div>
             <div class="step">
               <div class="dot">2</div>
-              <div>We <strong>check availability</strong> with suppliers and message you with price &amp; ETA.</div>
+              <div>We <strong>check availability</strong> and message you with price &amp; ETA.</div>
             </div>
             <div class="step">
               <div class="dot">3</div>
@@ -120,7 +126,8 @@
               </label>
             </div>
             <label style="display:block;margin-top:10px">What do you want to order?<br>
-              <textarea name="details" rows="5" placeholder="Species/equipment, size, qty, budget. Example: Yellow Tang (SM), 1; Reef Nutrition TDO Chroma Boost; 75g glass tank with stand."></textarea>
+              <textarea name="details" rows="5" placeholder="Give as much detail as you can: species/equipment, size, quantity, budget.
+Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Reef Nutrition TDO Chroma Boost; 75g glass tank w/ stand; Dog accessories—medium harness & leash; Water treatment—Prime 500ml."></textarea>
             </label>
             <div class="grid cols-2" style="margin-top:10px">
               <label>Deadline or event date (optional)<br><input name="deadline" placeholder="MM/DD/YYYY"></label>
@@ -141,12 +148,25 @@
 
       <aside>
         <div class="card">
+          <h2>What we can order</h2>
+          <ul class="checklist">
+            <li>Freshwater & saltwater fish</li>
+            <li>Live plants & algae</li>
+            <li>Corals & invertebrates</li>
+            <li>Aquarium chemicals & treatments</li>
+            <li>Filters, media, lights, tanks & stands</li>
+            <li>Reptile supplies</li>
+            <li>Dog accessories (leashes, harnesses, toys, etc.)</li>
+          </ul>
+        </div>
+
+        <div class="card">
           <h2>Policies</h2>
           <div class="policy">
             <strong>Deposits:</strong> Non-refundable once ordered from supplier. Applied to final balance.
           </div>
           <div class="policy" style="margin-top:10px">
-            <strong>Live Arrival:</strong> For livestock, we follow industry-standard DOA procedures. Inspect at pickup; contact us immediately with concerns.
+            <strong>Live Arrival:</strong> For livestock, we follow standard DOA procedures. Inspect at pickup; contact us immediately with concerns.
           </div>
           <div class="policy" style="margin-top:10px">
             <strong>Timing:</strong> ETAs depend on supplier schedules and weather. We’ll provide the best estimate and updates.
