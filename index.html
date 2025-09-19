@@ -5,8 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bruno’s Aquarium | Huron, SD</title>
   <meta name="description" content="Salt & freshwater fish, corals, inverts, reptiles, foods, tanks, equipment & professional services. Special orders welcome. Huron, South Dakota." />
+  <meta name="theme-color" content="#0e7490" />
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Bruno’s Aquarium | Huron, SD" />
+  <meta property="og:description" content="Salt & freshwater fish, corals, inverts, reptiles, foods, tanks, equipment & services. Special orders welcome." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/assets/img/logo.png" />
+  <link rel="canonical" href="https://brunosaquarium.com/" />
+
+  <!-- Font (to match your CSS that uses Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
+
+  <!-- Small brandbar helpers so the logo renders nicely on every page -->
+  <style>
+    .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
+    .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0e1b2a;text-decoration:none}
+    .brand-meta{color:#6b7280;font-weight:600}
+    .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
+    /* make anchor jumps clear sticky header if you add in-page links later */
+    section[id]{scroll-margin-top:100px}
+  </style>
+
+  <!-- LocalBusiness JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetStore",
+    "name": "Bruno’s Aquarium",
+    "url": "https://brunosaquarium.com/",
+    "image": "https://brunosaquarium.com/assets/assets/img/logo.png",
+    "telephone": "+1-787-233-3313",
+    "email": "brunosaquarium@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "258 Dakota Ave S",
+      "addressLocality": "Huron",
+      "addressRegion": "SD",
+      "postalCode": "57350",
+      "addressCountry": "US"
+    },
+    "contactPoint": [
+      { "@type": "ContactPoint", "telephone": "+1-787-233-3313", "contactType": "owner", "name": "Jose Escribano" },
+      { "@type": "ContactPoint", "telephone": "+1-605-350-6478", "contactType": "manager", "name": "Ian Escribano" }
+    ],
+    "sameAs": ["https://www.facebook.com/profile.php?id=61580495271761"],
+    "openingHoursSpecification": [
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Thursday"], "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Friday"],   "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Saturday"], "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday"], "opens":"10:00", "closes":"20:00" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -14,7 +71,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo" />
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -23,7 +80,7 @@
 
     <!-- Unified tabs -->
     <nav aria-label="Main">
-      <a href="index.html">Home</a>
+      <a class="active" aria-current="page" href="index.html">Home</a>
       <a href="livestock.html">Livestock</a>
       <a href="food.html">Food</a>
       <a href="supplies.html">Supplies &amp; Equipment</a>
@@ -69,7 +126,6 @@
         <a class="card" href="shop.html#livestock"><div class="tile">Livestock</div></a>
         <a class="card" href="shop.html#food"><div class="tile">Food</div></a>
         <a class="card" href="shop.html#supplies"><div class="tile">Supplies &amp; Equipment</div></a>
-        <!-- Or point directly to the dedicated page: href="supplies.html" -->
       </div>
     </section>
 
@@ -79,12 +135,10 @@
         <h2 style="margin-top:0">Special Orders</h2>
         <p class="muted">
           Don’t see what you’re looking for in-store? We can special order almost anything — 
-          from freshwater & saltwater fish, live plants, algae, corals, and aquarium chemicals 
+          from freshwater &amp; saltwater fish, live plants, algae, corals, and aquarium chemicals 
           to reptile supplies, dog accessories, and much more.
         </p>
-        <p style="margin:0">
-          Just ask us and we’ll get it in for you!
-        </p>
+        <p style="margin:0">Just ask us and we’ll get it in for you!</p>
       </div>
     </section>
 
