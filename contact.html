@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Bruno’s Aquarium — Huron, SD</title>
   <meta name="description" content="Contact Bruno’s Aquarium in Huron, SD. Hours, phone, email, address, and a quick contact form. We’re here to help with livestock, equipment, and services." />
+  <meta name="theme-color" content="#0e7490">
+
+  <!-- Share/SEO -->
+  <meta property="og:title" content="Contact | Bruno’s Aquarium — Huron, SD">
+  <meta property="og:description" content="Hours, phone, address, email, and a quick contact form for Bruno’s Aquarium in Huron, SD.">
+  <meta property="og:image" content="assets/assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -18,8 +27,8 @@
     "@type": "PetStore",
     "name": "Bruno’s Aquarium",
     "url": "https://brunosaquarium.com/contact.html",
-    "image": "https://brunosaquarium.com/assets/img/logo.svg",
-    "telephone": "+1-787-233-3313",
+    "image": "https://brunosaquarium.com/assets/assets/img/logo.png",
+    "telephone": "+1-605-350-6478",
     "email": "brunosaquarium@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -52,6 +61,9 @@
     .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     @media (max-width:960px){.contact-cards{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.contact-cards{grid-template-columns:1fr}}
+
+    /* make anchor jumps clear the sticky header if you add #links later */
+    section[id]{scroll-margin-top:100px}
   </style>
 </head>
 <body>
@@ -60,7 +72,7 @@
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
-          <img class="brand-logo" src="assets/img/logo.svg" alt="Bruno’s Aquarium logo">
+          <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo" width="40" height="40">
           <span>Bruno’s Aquarium</span>
         </a>
         <div class="brand-meta">Huron, SD • Est. 2025</div>
@@ -77,7 +89,7 @@
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
+      <a class="active" href="contact.html">Contact</a>
     </nav>
   </header>
 
@@ -98,12 +110,20 @@
             <input type="hidden" name="_captcha" value="false">
 
             <div class="grid cols-2">
-              <label>Full name<br><input name="name" required></label>
-              <label>Phone<br><input type="tel" name="phone" required></label>
+              <label>Full name<br>
+                <input name="name" autocomplete="name" required>
+              </label>
+              <label>Phone<br>
+                <input type="tel" name="phone" inputmode="tel" autocomplete="tel" required>
+              </label>
             </div>
             <div class="grid cols-2" style="margin-top:10px">
-              <label>Email<br><input type="email" name="email" placeholder="optional"></label>
-              <label>Subject<br><input name="subject" placeholder="Question, special order, service…"></label>
+              <label>Email<br>
+                <input type="email" name="email" autocomplete="email" placeholder="optional">
+              </label>
+              <label>Subject<br>
+                <input name="subject" placeholder="Question, special order, service…">
+              </label>
             </div>
             <label style="display:block;margin-top:10px">Message<br>
               <textarea name="message" rows="5" placeholder="Tell us what you’re looking for or how we can help."></textarea>
@@ -115,16 +135,16 @@
           </form>
         </div>
 
-        <div class="card">
-          <h2>Store Hours</h2>
-          <div class="hours">
-            <div>Thursday</div><div>10:00 AM – 8:00 PM</div>
-            <div>Friday</div><div>10:00 AM – 8:00 PM</div>
-            <div>Saturday</div><div>10:00 AM – 8:00 PM</div>
-            <div>Sunday</div><div>Closed</div>
-            <div>Monday</div><div>10:00 AM – 8:00 PM</div>
-            <div>Tuesday</div><div>10:00 AM – 8:00 PM</div>
-            <div>Wednesday</div><div>10:00 AM – 8:00 PM</div>
+        <div class="card" aria-labelledby="hours-title">
+          <h2 id="hours-title">Store Hours</h2>
+          <div class="hours" role="list">
+            <div role="listitem">Thursday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Friday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Saturday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Sunday</div><div role="listitem">Closed</div>
+            <div role="listitem">Monday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Tuesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Wednesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
           </div>
         </div>
       </div>
@@ -157,7 +177,7 @@
         <h2>Social</h2>
         <p class="muted">Follow our updates, livestock arrivals, and specials:</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" href="https://www.facebook.com/profile.php?id=61580495271761">Facebook</a>
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61580495271761" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
     </section>
