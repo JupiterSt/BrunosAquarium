@@ -27,25 +27,7 @@
     section[id]{scroll-margin-top:100px}
   </style>
 
-  <script>
-    // Square category links (replace later)
-    const SQUARE_CATEGORY_LINKS = {
-      frozenFishFood: 'https://square.link/REPLACE-CAT-FROZEN-FISH-FOOD',
-      frozenCoralFood: 'https://square.link/REPLACE-CAT-FROZEN-CORAL-FOOD',
-      pelletsFish: 'https://square.link/REPLACE-CAT-PELLETS-FISH',
-      pelletsCoral: 'https://square.link/REPLACE-CAT-PELLETS-CORAL',
-      liveFood: 'https://square.link/REPLACE-CAT-LIVE-FOOD',
-      specialtyFood: 'https://square.link/REPLACE-CAT-SPECIALTY-FOOD'
-    };
-    document.addEventListener('DOMContentLoaded',()=>{
-      for(const [k,url] of Object.entries(SQUARE_CATEGORY_LINKS)){
-        const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a && url){ a.href=url; a.target='_blank'; a.rel='noopener'; }
-      }
-    });
-  </script>
-
-  <!-- Enable ItemList schema (helps category snippets) -->
+  <!-- Category list schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -109,12 +91,12 @@
 
     <!-- Quick buttons to shop categories -->
     <section class="grid cols-3" aria-label="Shop by category">
-      <div class="card"><div class="tile">Frozen Fish Food</div><div class="pad"><a class="btn" data-square-cat="frozenFishFood" href="#">Shop Frozen Fish</a></div></div>
-      <div class="card"><div class="tile">Frozen Coral Food</div><div class="pad"><a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a></div></div>
-      <div class="card"><div class="tile">Pellets — Fish</div><div class="pad"><a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a></div></div>
-      <div class="card"><div class="tile">Pellets — Corals</div><div class="pad"><a class="btn" data-square-cat="pelletsCoral" href="#">Shop Pellets (Coral)</a></div></div>
-      <div class="card"><div class="tile">Live Food (Pods &amp; Phyto)</div><div class="pad"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div></div>
-      <div class="card"><div class="tile">Specialty &amp; Other</div><div class="pad"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div></div>
+      <div class="card"><div class="tile">Frozen Fish Food</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Frozen Fish</a></div></div>
+      <div class="card"><div class="tile">Frozen Coral Food</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Frozen Coral</a></div></div>
+      <div class="card"><div class="tile">Pellets — Fish</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Pellets (Fish)</a></div></div>
+      <div class="card"><div class="tile">Pellets — Corals</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Pellets (Coral)</a></div></div>
+      <div class="card"><div class="tile">Live Food (Pods &amp; Phyto)</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Live Food</a></div></div>
+      <div class="card"><div class="tile">Specialty &amp; Other</div><div class="pad"><a class="btn" data-square-cat="food" href="#">Shop Specialty</a></div></div>
     </section>
 
     <section id="frozen-fish" class="card">
@@ -124,7 +106,7 @@
         <li>Great for picky eaters; thaw in tank water and target feed when needed.</li>
         <li>Remove uneaten food to keep nutrients in check.</li>
       </ul>
-      <a class="btn" data-square-cat="frozenFishFood" href="#">Shop Frozen Fish</a>
+      <a class="btn" data-square-cat="food" href="#">Shop Frozen Fish</a>
     </section>
 
     <section id="frozen-coral" class="card">
@@ -133,7 +115,7 @@
       <ul class="list">
         <li>Target feed with flow turned down; avoid overfeeding.</li>
       </ul>
-      <a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a>
+      <a class="btn" data-square-cat="food" href="#">Shop Frozen Coral</a>
     </section>
 
     <section id="pellets-fish" class="card">
@@ -142,7 +124,7 @@
       <ul class="list">
         <li>Soak briefly if buoyancy causes gulping; feed small portions 1–2× daily.</li>
       </ul>
-      <a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a>
+      <a class="btn" data-square-cat="food" href="#">Shop Pellets (Fish)</a>
     </section>
 
     <section id="pellets-coral" class="card">
@@ -151,7 +133,7 @@
       <ul class="list">
         <li>Turn down flow and use a feeding pipette; rinse filters if needed.</li>
       </ul>
-      <a class="btn" data-square-cat="pelletsCoral" href="#">Shop Pellets (Coral)</a>
+      <a class="btn" data-square-cat="food" href="#">Shop Pellets (Coral)</a>
     </section>
 
     <section id="live-food" class="card">
@@ -162,7 +144,7 @@
         <li>Refrigerate per label and check expiration dates.</li>
       </ul>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a>
+        <a class="btn" data-square-cat="food" href="#">Shop Live Food</a>
         <a class="btn ghost" href="special-orders.html">Request Special Order</a>
       </div>
     </section>
@@ -171,7 +153,7 @@
       <h2>Specialty &amp; Other</h2>
       <p class="muted">Diets for reptiles, inverts, and species with unique needs. If it’s not in stock, we can order it.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a>
+        <a class="btn" data-square-cat="food" href="#">Shop Specialty</a>
         <a class="btn ghost" href="special-orders.html">Request Special Order</a>
       </div>
     </section>
