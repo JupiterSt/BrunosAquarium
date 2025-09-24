@@ -1,12 +1,53 @@
-/* assets/js/main.js — Bruno’s Aquarium */
+/* assets/js/main.js — Bruno’s Aquarium (with Square category linker) */
 (function(){
   document.addEventListener('DOMContentLoaded', () => {
     highlightActiveNav();
     smoothAnchors();
-    externalLinkSafety();
+    wireSquareCategoryLinks();     // <-- NEW: set Square hrefs first
+    externalLinkSafety();          // then mark http(s) links as external safely
     loadFeaturedGrid();
   });
 
+  /* ===========================
+     Central Square link map
+     Add data-square-cat="key" on any <a> to auto-link.
+     =========================== */
+  const SQUARE_CATEGORY_LINKS = {
+    // Full catalog / rollups
+    eshop: 'https://brunos-aquarium.square.site/s/shop',
+    livestock: 'https://brunos-aquarium.square.site/shop/livestock/DHBVDEXHF24SQYM2JPIIVU2X?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
+    // Livestock categories
+    saltwaterFish: 'https://brunos-aquarium.square.site/shop/saltwater-fish/BROX7ZL7KQQZZYPXN2UEMDYI?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    saltwaterInverts: 'https://brunos-aquarium.square.site/shop/saltwater-inverts/GBYGSII7V6L5ZCKZB7CPF677?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    corals: 'https://brunos-aquarium.square.site/shop/corals/OJ63OW4KC6IRFGICS753EBLC?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    freshwaterFish: 'https://brunos-aquarium.square.site/shop/freshwater-fish/7A4EOHCYOJGA2OEM7IPPRLIJ?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    freshwaterInverts: 'https://brunos-aquarium.square.site/shop/freshwater-inverts/44VOENIFWWUDWIN3PEONUFO3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    freshwaterPlants: 'https://brunos-aquarium.square.site/shop/freshwater-plants/AWRCUU5P2LNBBBNN6W3QKYKO?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
+    // Food
+    food: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
+    // Supplies / equipment
+    aquariumEquipments: 'https://brunos-aquarium.square.site/shop/aquarium-equipments/EYJAES4GMDJ7AH67QXPMWC56?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    tankEcosystemEssentials: 'https://brunos-aquarium.square.site/shop/tank-ecosystem-essentials/4T5R36KEU4G4G3R2ZVAXWM72?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    dryGoods: 'https://brunos-aquarium.square.site/shop/dry-goods/2RRGBAN3LJF5CF3F5UDLMNK3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    reptileEssential: 'https://brunos-aquarium.square.site/shop/reptile-essential/PCVRUSATI5TCLCMLNQIEFHTS?page=1&limit=30&sort_by=category_order&sort_order=asc',
+    otherCreaturesEssential: 'https://brunos-aquarium.square.site/shop/other-creatures-essential/LHDM7U7KAXY4J6S6J2FZSFYJ?page=1&limit=30&sort_by=category_order&sort_order=asc'
+  };
+
+  function wireSquareCategoryLinks(){
+    for (const [key, url] of Object.entries(SQUARE_CATEGORY_LINKS)){
+      document.querySelectorAll(`[data-square-cat="${key}"]`).forEach(a => {
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.dataset.squareLinked = '1';
+      });
+    }
+  }
+
+  /* ---------- Existing helpers ---------- */
   function getFilename(path){
     const last = (path || '').split('/').pop();
     return last && last.length ? last : 'index.html';
@@ -53,7 +94,7 @@
       const data = await res.json();
       const items = (data.featured || []).slice(0, 8);
       grid.innerHTML = items.map(toCard).join('');
-      // Wire Square links when provided per item
+      // Wire per-item Square links (if provided)
       items.forEach(item => {
         if (item.squareLink){
           const btn = grid.querySelector(`[data-sku="${cssEscape(item.sku || '')}"]`);
