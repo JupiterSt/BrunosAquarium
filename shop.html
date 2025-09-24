@@ -11,7 +11,7 @@
   <meta property="og:title" content="Shop | Bruno’s Aquarium — Huron, SD" />
   <meta property="og:description" content="Shop livestock, foods, aquariums, and equipment. Secure checkout via Square. Special orders available." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/assets/img/logo.png" />
+  <meta property="og:image" content="https://brunosaquarium.com/assets/assets/img/logo.png" />
   <link rel="canonical" href="https://brunosaquarium.com/shop.html" />
 
   <!-- Fonts -->
@@ -38,26 +38,51 @@
   </style>
 
   <script>
-    // Replace with your actual Square links later
+    // Square category deep-links + safe fallback
+    const SHOP_ROOT = 'https://brunos-aquarium.square.site/s/shop';
+
     const SQUARE_CATEGORY_LINKS = {
       // Livestock
-      saltwaterFish: '', freshwaterFish: '', corals: '',
-      invertsSalt: '', invertsFresh: '', reptiles: '',
-      // Food
-      frozenFishFood: '', frozenCoralFood: '',
-      pelletsFish: '', pelletsCoral: '', liveFood: '', specialtyFood: '',
+      saltwaterFish: 'https://brunos-aquarium.square.site/shop/saltwater-fish/BROX7ZL7KQQZZYPXN2UEMDYI?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      freshwaterFish: 'https://brunos-aquarium.square.site/shop/freshwater-fish/7A4EOHCYOJGA2OEM7IPPRLIJ?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      corals: 'https://brunos-aquarium.square.site/shop/corals/OJ63OW4KC6IRFGICS753EBLC?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      invertsSalt: 'https://brunos-aquarium.square.site/shop/saltwater-inverts/GBYGSII7V6L5ZCKZB7CPF677?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      invertsFresh: 'https://brunos-aquarium.square.site/shop/freshwater-inverts/44VOENIFWWUDWIN3PEONUFO3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      reptiles: 'https://brunos-aquarium.square.site/shop/livestock/DHBVDEXHF24SQYM2JPIIVU2X?page=1&limit=30&sort_by=category_order&sort_order=asc', // no dedicated reptiles category: send to Livestock
+
+      // Optional: Plants (add a tile if you want this visible)
+      freshwaterPlants: 'https://brunos-aquarium.square.site/shop/freshwater-plants/AWRCUU5P2LNBBBNN6W3QKYKO?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
+      // Food → all map to your Food bucket
+      frozenFishFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      frozenCoralFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      pelletsFish: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      pelletsCoral: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      liveFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      specialtyFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
       // Supplies & Equipment
-      tanksAquariums: '', filtration: '', heatingLighting: '',
-      pumpsFlow: '', testingAdditives: '', substrateDecor: '',
-      reptileGear: '', petAccessories: '',
-      // Gift Cards
+      tanksAquariums: 'https://brunos-aquarium.square.site/shop/aquarium-equipments/EYJAES4GMDJ7AH67QXPMWC56?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      filtration: 'https://brunos-aquarium.square.site/shop/dry-goods/2RRGBAN3LJF5CF3F5UDLMNK3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      heatingLighting: 'https://brunos-aquarium.square.site/shop/aquarium-equipments/EYJAES4GMDJ7AH67QXPMWC56?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      pumpsFlow: 'https://brunos-aquarium.square.site/shop/dry-goods/2RRGBAN3LJF5CF3F5UDLMNK3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      testingAdditives: 'https://brunos-aquarium.square.site/shop/tank-ecosystem-essentials/4T5R36KEU4G4G3R2ZVAXWM72?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      substrateDecor: 'https://brunos-aquarium.square.site/shop/dry-goods/2RRGBAN3LJF5CF3F5UDLMNK3?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      reptileGear: 'https://brunos-aquarium.square.site/shop/reptile-essential/PCVRUSATI5TCLCMLNQIEFHTS?page=1&limit=30&sort_by=category_order&sort_order=asc',
+      petAccessories: 'https://brunos-aquarium.square.site/shop/other-creatures-essential/LHDM7U7KAXY4J6S6J2FZSFYJ?page=1&limit=30&sort_by=category_order&sort_order=asc',
+
+      // Gift cards (leave blank if not selling yet)
       giftCards: ''
     };
-    document.addEventListener('DOMContentLoaded',()=>{
-      for (const [k, url] of Object.entries(SQUARE_CATEGORY_LINKS)){
-        const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a && url){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
-      }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-square-cat]').forEach(a => {
+        const key = a.getAttribute('data-square-cat');
+        const url = SQUARE_CATEGORY_LINKS[key] || SHOP_ROOT; // safe fallback
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
     });
   </script>
 </head>
@@ -120,6 +145,13 @@
           <div class="tile"><strong>Reptiles</strong></div>
           <div class="pad"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div>
         </div>
+
+        <!-- Optional: show plants as its own tile
+        <div class="card">
+          <div class="tile"><strong>Freshwater Plants</strong></div>
+          <div class="pad"><a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a></div>
+        </div>
+        -->
       </div>
     </section>
 
