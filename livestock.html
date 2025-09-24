@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Livestock | Bruno’s Aquarium — Huron, SD</title>
-  <meta name="description" content="Saltwater & freshwater fish, corals, inverts, and reptiles. Availability varies—ask about special orders. Secure checkout via Square." />
+  <meta name="description" content="Saltwater & freshwater fish, corals, inverts, and freshwater plants. Availability varies—ask about special orders. Secure checkout via Square." />
   <meta name="theme-color" content="#0e7490" />
 
   <!-- Share/SEO -->
   <meta property="og:title" content="Livestock | Bruno’s Aquarium — Huron, SD" />
-  <meta property="og:description" content="Saltwater & freshwater fish, corals, inverts, and reptiles. Availability varies—ask about special orders." />
+  <meta property="og:description" content="Saltwater & freshwater fish, corals, inverts, and freshwater plants. Availability varies—ask about special orders." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/assets/img/logo.png" />
   <link rel="canonical" href="https://brunosaquarium.com/livestock.html" />
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
 
-  <!-- Brandbar helpers (can be moved to styles.css later) -->
+  <!-- Page helpers -->
   <style>
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
@@ -60,25 +60,6 @@
     ]
   }
   </script>
-
-  <script>
-    // Square category links (fill these in later)
-    const SQUARE_CATEGORY_LINKS = {
-      saltwaterFish: 'https://square.link/REPLACE-CAT-SALTWATER-FISH',
-      freshwaterFish: 'https://square.link/REPLACE-CAT-FRESHWATER-FISH',
-      corals: 'https://square.link/REPLACE-CAT-CORALS',
-      invertsSalt: 'https://square.link/REPLACE-CAT-INVERTS-SALT',
-      invertsFresh: 'https://square.link/REPLACE-CAT-INVERTS-FRESH',
-      reptiles: 'https://square.link/REPLACE-CAT-REPTILES',
-      reptileGear: 'https://square.link/REPLACE-CAT-REPTILE-GEAR'
-    };
-    document.addEventListener('DOMContentLoaded',()=>{
-      for (const [k,url] of Object.entries(SQUARE_CATEGORY_LINKS)){
-        const a = document.querySelector(`a[data-square-cat="${k}"]`);
-        if(a && url){ a.href=url; a.target='_blank'; a.rel='noopener'; }
-      }
-    });
-  </script>
 </head>
 <body>
   <header>
@@ -110,14 +91,14 @@
   <main class="container">
     <section class="card">
       <h1>Livestock</h1>
-      <p class="muted">We carry saltwater &amp; freshwater fish, corals, inverts, and reptiles. Stock changes often—<a href="special-orders.html">special orders</a> welcome.</p>
+      <p class="muted">We carry saltwater &amp; freshwater fish, corals, inverts, and freshwater plants. Stock changes often—<a href="special-orders.html">special orders</a> welcome.</p>
       <div class="toc" aria-label="Livestock categories">
         <a href="#saltwater-fish">Saltwater Fish</a>
         <a href="#freshwater-fish">Freshwater Fish</a>
         <a href="#corals">Corals</a>
         <a href="#inverts-salt">Inverts — Saltwater</a>
         <a href="#inverts-fresh">Inverts — Freshwater</a>
-        <a href="#reptiles">Reptiles</a>
+        <a href="#freshwater-plants">Freshwater Plants</a>
       </div>
     </section>
 
@@ -128,7 +109,8 @@
       <div class="card"><div class="tile">Corals</div><div class="pad"><a class="btn" data-square-cat="corals" href="#">Shop Corals</a></div></div>
       <div class="card"><div class="tile">Inverts — Saltwater</div><div class="pad"><a class="btn" data-square-cat="invertsSalt" href="#">Shop SW Inverts</a></div></div>
       <div class="card"><div class="tile">Inverts — Freshwater</div><div class="pad"><a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a></div></div>
-      <div class="card"><div class="tile">Reptiles</div><div class="pad"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div></div>
+      <div class="card"><div class="tile">Freshwater Plants</div><div class="pad"><a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a></div></div>
+      <div class="card"><div class="tile">All Livestock</div><div class="pad"><a class="btn ghost" data-square-cat="livestock" href="#">Shop All Livestock</a></div></div>
     </section>
 
     <section id="saltwater-fish" class="card">
@@ -181,13 +163,14 @@
       <a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a>
     </section>
 
-    <section id="reptiles" class="card">
-      <h2>Reptiles</h2>
-      <p class="muted">Ask about species availability and enclosure needs. We also carry habitat gear, lighting and food.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a>
-        <a class="btn ghost" data-square-cat="reptileGear" href="#">Shop Reptile Gear</a>
-      </div>
+    <section id="freshwater-plants" class="card">
+      <h2>Freshwater Plants</h2>
+      <p class="muted">Anubias, Java fern, stem plants, mosses, carpeting species and more. Ask about nutrient dosing and CO₂.</p>
+      <ul class="list">
+        <li>Match light and substrate to plant type; dose macros/micros as needed.</li>
+        <li>Great for stability and natural algae control.</li>
+      </ul>
+      <a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a>
     </section>
 
     <section class="card">
