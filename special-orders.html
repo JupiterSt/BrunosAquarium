@@ -34,6 +34,7 @@
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
+    .small{font-size:.92rem}
   </style>
 
   <script>
@@ -83,7 +84,7 @@
   <main class="container">
     <h1>Special Orders</h1>
     <p class="muted">
-      If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals &amp; treatments, reptile supplies, dog accessories, and more.
+      If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals &amp; treatments, reptiles, reptile supplies, dog accessories, and more.
       Tell us what you need and we’ll confirm price &amp; ETA, then invoice securely via Square.
     </p>
 
@@ -118,6 +119,7 @@
               <label>Full name<br><input name="name" autocomplete="name" required></label>
               <label>Phone<br><input name="phone" type="tel" autocomplete="tel" required></label>
             </div>
+
             <div class="grid cols-2" style="margin-top:10px">
               <label>Email<br><input type="email" name="email" autocomplete="email"></label>
               <label>Preferred contact method<br>
@@ -128,10 +130,18 @@
                 </select>
               </label>
             </div>
+
+            <!-- Weekly availability opt-in -->
+            <label class="small" style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <input type="checkbox" name="availability_opt_in" value="Yes">
+              <span>Please send me this week’s availability (fish & reptiles)</span>
+            </label>
+
             <label style="display:block;margin-top:10px">What do you want to order?<br>
               <textarea name="details" rows="5" placeholder="Give as much detail as you can: species/equipment, size, quantity, budget.
 Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Reef Nutrition TDO Chroma Boost; 75g glass tank w/ stand; Dog accessories—medium harness & leash; Water treatment—Prime 500ml."></textarea>
             </label>
+
             <div class="grid cols-2" style="margin-top:10px">
               <label>Deadline or event date (optional)<br><input name="deadline" placeholder="MM/DD/YYYY" autocomplete="off"></label>
               <label>Pickup or install?<br>
@@ -141,6 +151,7 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
                 </select>
               </label>
             </div>
+
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
               <button class="btn" type="submit">Request Quote</button>
               <a class="btn ghost" href="mailto:brunosaquarium@gmail.com">Email Instead</a>
@@ -154,6 +165,7 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
           <h2>What we can order</h2>
           <ul class="checklist">
             <li>Freshwater &amp; saltwater fish</li>
+            <li>Reptiles</li>
             <li>Live plants &amp; algae</li>
             <li>Corals &amp; invertebrates</li>
             <li>Aquarium chemicals &amp; treatments</li>
@@ -161,6 +173,7 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
             <li>Reptile supplies</li>
             <li>Dog accessories (leashes, harnesses, toys, etc.)</li>
           </ul>
+          <p class="muted" style="margin-top:8px">We source through trusted wholesalers and can check weekly availability by request.</p>
         </div>
 
         <div class="card">
