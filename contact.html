@@ -42,14 +42,10 @@
       { "@type": "ContactPoint", "telephone": "+1-787-233-3313", "contactType": "owner", "name": "Jose Escribano" },
       { "@type": "ContactPoint", "telephone": "+1-605-350-6478", "contactType": "manager", "name": "Ian Escribano" }
     ],
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61580495271761"
-    ],
+    "sameAs": ["https://www.facebook.com/profile.php?id=61580495271761"],
     "openingHoursSpecification": [
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Thursday"], "opens":"10:00", "closes":"20:00" },
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Friday"],   "opens":"10:00", "closes":"20:00" },
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Saturday"], "opens":"10:00", "closes":"20:00" },
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday"], "opens":"10:00", "closes":"20:00" }
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"10:00", "closes":"20:00" },
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Sunday"], "opens":"00:00", "closes":"00:00" }
     ]
   }
   </script>
@@ -61,10 +57,28 @@
     .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     @media (max-width:960px){.contact-cards{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.contact-cards{grid-template-columns:1fr}}
-
-    /* make anchor jumps clear the sticky header if you add #links later */
     section[id]{scroll-margin-top:100px}
+
+    /* brand row safety styles */
+    .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
+    .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0e1b2a;text-decoration:none}
+    .brand-meta{color:#6b7280;font-weight:600}
+    .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
+
+    .note{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:12px;padding:10px;margin:0 0 12px}
   </style>
+
+  <script>
+    // Show a lightweight success note if redirected back with ?sent=1
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      if (params.get('sent') === '1') {
+        const note = document.getElementById('sent-note');
+        if (note) note.hidden = false;
+      }
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -79,17 +93,14 @@
       </div>
     </div>
 
-    <!-- Unified tabs -->
+    <!-- Main nav (updated) -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="livestock.html">Livestock</a>
-      <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies &amp; Equipment</a>
-      <a href="services.html">Services &amp; Maintenance</a>
+      <a href="shop.html">Shop</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
-      <a href="shop.html">Shop</a>
       <a class="active" href="contact.html">Contact</a>
+      <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a>
     </nav>
   </header>
 
@@ -101,6 +112,11 @@
       <div>
         <div class="card">
           <h2>Get in touch</h2>
+
+          <p id="sent-note" class="note" hidden role="status" aria-live="polite">
+            Thanks! Your message was sent.
+          </p>
+
           <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
             <!-- Spam honeypot -->
             <input type="text" name="_honey" style="display:none">
@@ -108,6 +124,8 @@
             <input type="hidden" name="_subject" value="Website Contact — Bruno’s Aquarium">
             <!-- Disable captcha -->
             <input type="hidden" name="_captcha" value="false">
+            <!-- Return to this page with success flag -->
+            <input type="hidden" name="_next" value="https://brunosaquarium.com/contact.html?sent=1">
 
             <div class="grid cols-2">
               <label>Full name<br>
@@ -138,13 +156,13 @@
         <div class="card" aria-labelledby="hours-title">
           <h2 id="hours-title">Store Hours</h2>
           <div class="hours" role="list">
+            <div role="listitem">Monday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Tuesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
+            <div role="listitem">Wednesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
             <div role="listitem">Thursday</div><div role="listitem">10:00 AM – 8:00 PM</div>
             <div role="listitem">Friday</div><div role="listitem">10:00 AM – 8:00 PM</div>
             <div role="listitem">Saturday</div><div role="listitem">10:00 AM – 8:00 PM</div>
             <div role="listitem">Sunday</div><div role="listitem">Closed</div>
-            <div role="listitem">Monday</div><div role="listitem">10:00 AM – 8:00 PM</div>
-            <div role="listitem">Tuesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
-            <div role="listitem">Wednesday</div><div role="listitem">10:00 AM – 8:00 PM</div>
           </div>
         </div>
       </div>
@@ -186,7 +204,7 @@
   <footer>
     <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
       <p><strong>Bruno’s Aquarium</strong> — Huron, SD • © 2025</p>
-      <p class="muted"><a href="shop.html">Shop</a> • <a href="services.html">Services</a></p>
+      <p class="muted"><a href="shop.html">Shop</a> • <a href="special-orders.html">Special Orders</a> • <a href="care-guides.html">Care Guides</a> • <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a></p>
     </div>
   </footer>
 
