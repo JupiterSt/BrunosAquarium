@@ -14,7 +14,7 @@
   <meta property="og:image" content="assets/assets/img/logo.png" />
   <link rel="canonical" href="https://brunosaquarium.com/" />
 
-  <!-- Font (to match your CSS that uses Inter) -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -22,18 +22,16 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
 
-  <!-- Small brandbar helpers so the logo renders nicely on every page -->
   <style>
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#0e1b2a;text-decoration:none}
     .brand-meta{color:#6b7280;font-weight:600}
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
-    /* make anchor jumps clear sticky header if you add in-page links later */
     section[id]{scroll-margin-top:100px}
   </style>
 
-  <!-- LocalBusiness JSON-LD -->
+  <!-- LocalBusiness JSON-LD + Gift Card offer -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,7 +59,15 @@
       { "@type":"OpeningHoursSpecification", "dayOfWeek":["Friday"],   "opens":"10:00", "closes":"20:00" },
       { "@type":"OpeningHoursSpecification", "dayOfWeek":["Saturday"], "opens":"10:00", "closes":"20:00" },
       { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday"], "opens":"10:00", "closes":"20:00" }
-    ]
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "url": "https://app.squareup.com/gift/MLMPZV89CWAAF/order",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Bruno’s Aquarium Gift Card"
+      }
+    }
   }
   </script>
 </head>
@@ -89,6 +95,7 @@
       <a href="care-guides.html">Care Guides</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
+      <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a>
     </nav>
   </header>
 
@@ -101,6 +108,7 @@
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <a class="btn" href="shop.html">Shop Now</a>
           <a class="btn" href="services.html">Book Services</a>
+          <a class="btn ghost" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Buy Gift Card</a>
         </div>
       </div>
       <div class="card">
@@ -129,16 +137,14 @@
       </div>
     </section>
 
-    <!-- SPECIAL ORDERS -->
+    <!-- GIFT CARDS -->
     <section style="margin-top:16px">
       <div class="card">
-        <h2 style="margin-top:0">Special Orders</h2>
+        <h2 style="margin-top:0">Gift Cards</h2>
         <p class="muted">
-          Don’t see what you’re looking for in-store? We can special order almost anything — 
-          from freshwater &amp; saltwater fish, live plants, algae, corals, and aquarium chemicals 
-          to reptile supplies, dog accessories, and much more.
+          Send an e-gift instantly. Redeemable only at <strong>Bruno’s Aquarium</strong> (Huron, SD) for in-store purchases.
         </p>
-        <p style="margin:0">Just ask us and we’ll get it in for you!</p>
+        <a class="btn" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Buy Gift Card</a>
       </div>
     </section>
 
