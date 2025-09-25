@@ -23,9 +23,6 @@
   <link rel="icon" href="assets/img/favicon.ico">
 
   <style>
-    /* tiny fallback tile bg (kept) */
-    .tile{height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ebf8ff,#f8fafc)}
-
     /* Brand bar quick styles (shared look) */
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
@@ -33,8 +30,16 @@
     .brand-meta{color:#6b7280;font-weight:600}
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
 
-    /* Prevent sticky header overlap when jumping to #livestock/#food/#supplies */
+    /* Prevent sticky header overlap when jumping to anchors */
     section[id]{scroll-margin-top:100px}
+
+    /* Photo tiles */
+    .tile-card{display:block;border-radius:12px;overflow:hidden;background:#f8fafc;border:1px solid #e5e7eb}
+    .tile-wrap{position:relative;height:160px;background:#eef2ff}
+    .tile-img{width:100%;height:100%;object-fit:cover;display:block}
+    .tile-label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;padding:6px 10px;border-radius:999px;font-weight:600}
+    .tile-body{padding:10px}
+    .tile-body .btn{width:100%}
   </style>
 
   <script>
@@ -50,7 +55,7 @@
       invertsFresh: 'https://brunos-aquarium.square.site/shop/freshwater-inverts/44VOENIFWWUDWIN3PEONUFO3?page=1&limit=30&sort_by=category_order&sort_order=asc',
       reptiles: 'https://brunos-aquarium.square.site/shop/livestock/DHBVDEXHF24SQYM2JPIIVU2X?page=1&limit=30&sort_by=category_order&sort_order=asc', // no dedicated reptiles category: send to Livestock
 
-      // Optional: Plants (add a tile if you want this visible)
+      // Optional: Plants
       freshwaterPlants: 'https://brunos-aquarium.square.site/shop/freshwater-plants/AWRCUU5P2LNBBBNN6W3QKYKO?page=1&limit=30&sort_by=category_order&sort_order=asc',
 
       // Food → all map to your Food bucket
@@ -71,8 +76,8 @@
       reptileGear: 'https://brunos-aquarium.square.site/shop/reptile-essential/PCVRUSATI5TCLCMLNQIEFHTS?page=1&limit=30&sort_by=category_order&sort_order=asc',
       petAccessories: 'https://brunos-aquarium.square.site/shop/other-creatures-essential/LHDM7U7KAXY4J6S6J2FZSFYJ?page=1&limit=30&sort_by=category_order&sort_order=asc',
 
-      // Gift cards (leave blank if not selling yet)
-      giftCards: ''
+      // Gift cards → direct eGift link
+      giftCards: 'https://app.squareup.com/gift/MLMPZV89CWAAF/order'
     };
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -99,17 +104,14 @@
       </div>
     </div>
 
-    <!-- Unified tabs -->
+    <!-- Main nav (updated categories) -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="livestock.html">Livestock</a>
-      <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies &amp; Equipment</a>
-      <a href="services.html">Services &amp; Maintenance</a>
+      <a class="active" aria-current="page" href="shop.html">Shop</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
-      <a class="active" aria-current="page" href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
+      <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a>
     </nav>
   </header>
 
@@ -117,112 +119,196 @@
     <h1>Shop</h1>
     <p class="muted">Secure checkout via Square. Prices shown in-store may vary due to live inventory. Ask about <strong>special orders</strong> if you don’t see what you need.</p>
 
-    <!-- 👇 IDs so homepage tiles can land here -->
+    <!-- LIVESTOCK -->
     <section id="livestock" aria-label="Livestock">
       <h2>Livestock</h2>
       <div class="grid cols-3">
-        <div class="card">
-          <div class="tile"><strong>Saltwater Fish</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="saltwaterFish" href="#">Shop Saltwater Fish</a></div>
-        </div>
-        <div class="card">
-          <div class="tile"><strong>Freshwater Fish</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="freshwaterFish" href="#">Shop Freshwater Fish</a></div>
-        </div>
-        <div class="card">
-          <div class="tile"><strong>Corals</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="corals" href="#">Shop Corals</a></div>
-        </div>
-        <div class="card">
-          <div class="tile"><strong>Inverts — Saltwater</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="invertsSalt" href="#">Shop SW Inverts</a></div>
-        </div>
-        <div class="card">
-          <div class="tile"><strong>Inverts — Freshwater</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a></div>
-        </div>
-        <div class="card">
-          <div class="tile"><strong>Reptiles</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div>
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/saltwater-fish.jpg" alt="Saltwater fish" />
+            <span class="tile-label">Saltwater Fish</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="saltwaterFish" href="#">Shop Saltwater Fish</a></div>
         </div>
 
-        <!-- Optional: show plants as its own tile
-        <div class="card">
-          <div class="tile"><strong>Freshwater Plants</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a></div>
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/freshwater-fish.jpg" alt="Freshwater fish" />
+            <span class="tile-label">Freshwater Fish</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="freshwaterFish" href="#">Shop Freshwater Fish</a></div>
+        </div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/corals.jpg" alt="Corals" />
+            <span class="tile-label">Corals</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="corals" href="#">Shop Corals</a></div>
+        </div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/saltwater-inverts.jpg" alt="Saltwater invertebrates" />
+            <span class="tile-label">Inverts — Saltwater</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="invertsSalt" href="#">Shop SW Inverts</a></div>
+        </div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/freshwater-inverts.jpg" alt="Freshwater invertebrates" />
+            <span class="tile-label">Inverts — Freshwater</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="invertsFresh" href="#">Shop FW Inverts</a></div>
+        </div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/reptiles.jpg" alt="Reptiles" />
+            <span class="tile-label">Reptiles</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div>
+        </div>
+
+        <!-- Optional: Plants -->
+        <!--
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/freshwater-plants.jpg" alt="Freshwater plants" />
+            <span class="tile-label">Freshwater Plants</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a></div>
         </div>
         -->
       </div>
     </section>
 
+    <!-- FOOD -->
     <section id="food" aria-label="Food">
       <h2>Food</h2>
       <div class="grid cols-3">
-        <div class="card">
-          <div class="tile"><strong>Frozen Fish Food</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="frozenFishFood" href="#">Shop Frozen Fish</a></div>
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/frozen-fish-food.jpg" alt="Frozen fish food" />
+            <span class="tile-label">Frozen Fish Food</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="frozenFishFood" href="#">Shop Frozen Fish</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Frozen Coral Food</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/frozen-coral-food.jpg" alt="Frozen coral food" />
+            <span class="tile-label">Frozen Coral Food</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="frozenCoralFood" href="#">Shop Frozen Coral</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Pellets — Fish</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/pellets-fish.jpg" alt="Pellets for fish" />
+            <span class="tile-label">Pellets — Fish</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="pelletsFish" href="#">Shop Pellets (Fish)</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Pellets — Corals</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="pelletsCoral" href="#">Shop Pellets (Coral)</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/pellets-coral.jpg" alt="Pellets for corals" />
+            <span class="tile-label">Pellets — Corals</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="pelletsCoral" href="#">Shop Pellets (Coral)</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Live Food</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/live-food.jpg" alt="Live food" />
+            <span class="tile-label">Live Food</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="liveFood" href="#">Shop Live Food</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Specialty &amp; Other</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/specialty-food.jpg" alt="Specialty food" />
+            <span class="tile-label">Specialty &amp; Other</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="specialtyFood" href="#">Shop Specialty</a></div>
         </div>
       </div>
     </section>
 
+    <!-- SUPPLIES & EQUIPMENT -->
     <section id="supplies" aria-label="Supplies & Equipment">
       <h2>Supplies &amp; Equipment</h2>
       <div class="grid cols-3">
-        <div class="card">
-          <div class="tile"><strong>Aquariums &amp; Tanks</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a></div>
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/tanks.jpg" alt="Aquariums & tanks" />
+            <span class="tile-label">Aquariums &amp; Tanks</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="tanksAquariums" href="#">Shop Tanks</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Filtration</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="filtration" href="#">Shop Filtration</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/filtration.jpg" alt="Filtration" />
+            <span class="tile-label">Filtration</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="filtration" href="#">Shop Filtration</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Heating &amp; Lighting</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat &amp; Light</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/heating-lighting.jpg" alt="Heating & lighting" />
+            <span class="tile-label">Heating &amp; Lighting</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="heatingLighting" href="#">Shop Heat &amp; Light</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Pumps &amp; Flow</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="pumpsFlow" href="#">Shop Pumps</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/pumps.jpg" alt="Pumps & flow" />
+            <span class="tile-label">Pumps &amp; Flow</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="pumpsFlow" href="#">Shop Pumps</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Testing &amp; Additives</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/testing-additives.jpg" alt="Testing & additives" />
+            <span class="tile-label">Testing &amp; Additives</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Substrates &amp; Décor</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/substrate-decor.jpg" alt="Substrates & decor" />
+            <span class="tile-label">Substrates &amp; Décor</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Reptile Gear</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="reptileGear" href="#">Shop Reptile</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/reptile-gear.jpg" alt="Reptile gear" />
+            <span class="tile-label">Reptile Gear</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="reptileGear" href="#">Shop Reptile</a></div>
         </div>
-        <div class="card">
-          <div class="tile"><strong>Pet Accessories</strong></div>
-          <div class="pad"><a class="btn" data-square-cat="petAccessories" href="#">Shop Accessories</a></div>
+
+        <div class="card tile-card">
+          <div class="tile-wrap">
+            <img class="tile-img" src="assets/img/tiles/accessories.jpg" alt="Pet accessories" />
+            <span class="tile-label">Pet Accessories</span>
+          </div>
+          <div class="tile-body"><a class="btn" data-square-cat="petAccessories" href="#">Shop Accessories</a></div>
         </div>
       </div>
     </section>
 
+    <!-- GIFT CARDS -->
     <section>
       <h2>Gift Cards</h2>
       <div class="card">
@@ -233,6 +319,7 @@
       </div>
     </section>
 
+    <!-- SUPPLIERS -->
     <section>
       <h2>Suppliers</h2>
       <div class="badges" role="list">
