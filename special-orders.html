@@ -30,16 +30,14 @@
     .checklist{display:grid;gap:6px;margin:6px 0 0}
     .checklist li{list-style:none;padding-left:24px;position:relative}
     .checklist li::before{content:"✓";position:absolute;left:0;top:0}
-    /* prevent sticky header overlap if this page ever gets anchors */
     section[id]{scroll-margin-top:100px}
-    /* subtle brand bar if not already styled globally */
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
   </style>
 
   <script>
-    // Square checkout links (fill when ready)
+    // Optional Square checkout links (fill when ready)
     const SQUARE_LINKS = {
       deposit: 'https://square.link/REPLACE-DEPOSIT',
       payBalance: 'https://square.link/REPLACE-PAY-BALANCE'
@@ -47,10 +45,9 @@
     document.addEventListener('DOMContentLoaded',()=>{
       for(const [k,url] of Object.entries(SQUARE_LINKS)){
         const a = document.querySelector(`[data-square="${k}"]`);
-        if(a && url){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+        if(a && url && !url.includes('REPLACE')){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
       }
-
-      // Show a lightweight success note if redirected back with ?sent=1
+      // Success note if redirected back with ?sent=1
       const params = new URLSearchParams(location.search);
       if(params.get('sent') === '1'){
         const note = document.getElementById('sent-note');
@@ -61,7 +58,7 @@
 </head>
 <body>
   <header>
-    <!-- Compact brand row -->
+    <!-- Brand row -->
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
@@ -72,24 +69,21 @@
       </div>
     </div>
 
-    <!-- Unified tabs -->
+    <!-- Main nav (updated) -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="livestock.html">Livestock</a>
-      <a href="food.html">Food</a>
-      <a href="supplies.html">Supplies &amp; Equipment</a>
-      <a href="services.html">Services &amp; Maintenance</a>
+      <a href="shop.html">Shop</a>
       <a class="active" aria-current="page" href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
-      <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
+      <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a>
     </nav>
   </header>
 
   <main class="container">
     <h1>Special Orders</h1>
     <p class="muted">
-      If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals &amp; treatments, reptile supplies, dog accessories, and a lot more.
+      If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals &amp; treatments, reptile supplies, dog accessories, and more.
       Tell us what you need and we’ll confirm price &amp; ETA, then invoice securely via Square.
     </p>
 
@@ -111,13 +105,13 @@
           <p id="sent-note" class="policy" hidden role="status" aria-live="polite">Thanks! We received your request and will reach out soon.</p>
           <p class="muted">Fastest way to get a quote. You’ll receive a confirmation by phone or email.</p>
 
-          <!-- Swap to Google Form when ready -->
+          <!-- Sends to brunosaquarium@gmail.com via FormSubmit -->
           <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
             <!-- Anti-spam + helpful subject -->
             <input type="text" name="_honey" style="display:none">
             <input type="hidden" name="_subject" value="Special Order Request — Bruno’s Aquarium">
             <input type="hidden" name="_captcha" value="false">
-            <!-- Optional: return to this page with a success flag -->
+            <!-- Return to this page with success flag -->
             <input type="hidden" name="_next" value="https://brunosaquarium.com/special-orders.html?sent=1">
 
             <div class="grid cols-2">
@@ -191,7 +185,6 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
     </div>
   </footer>
 
-  <!-- Shared helpers -->
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
