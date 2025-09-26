@@ -53,12 +53,12 @@
       corals: 'https://brunos-aquarium.square.site/shop/corals/OJ63OW4KC6IRFGICS753EBLC?page=1&limit=30&sort_by=category_order&sort_order=asc',
       invertsSalt: 'https://brunos-aquarium.square.site/shop/saltwater-inverts/GBYGSII7V6L5ZCKZB7CPF677?page=1&limit=30&sort_by=category_order&sort_order=asc',
       invertsFresh: 'https://brunos-aquarium.square.site/shop/freshwater-inverts/44VOENIFWWUDWIN3PEONUFO3?page=1&limit=30&sort_by=category_order&sort_order=asc',
-      reptiles: 'https://brunos-aquarium.square.site/shop/livestock/DHBVDEXHF24SQYM2JPIIVU2X?page=1&limit=30&sort_by=category_order&sort_order=asc', // no dedicated reptiles category: send to Livestock
+      reptiles: 'https://brunos-aquarium.square.site/shop/livestock/DHBVDEXHF24SQYM2JPIIVU2X?page=1&limit=30&sort_by=category_order&sort_order=asc',
 
       // Optional: Plants
       freshwaterPlants: 'https://brunos-aquarium.square.site/shop/freshwater-plants/AWRCUU5P2LNBBBNN6W3QKYKO?page=1&limit=30&sort_by=category_order&sort_order=asc',
 
-      // Food → all map to your Food bucket
+      // Food
       frozenFishFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
       frozenCoralFood: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
       pelletsFish: 'https://brunos-aquarium.square.site/shop/food/E4A5V6FJPVACWC7U364BUMPN?page=1&limit=30&sort_by=category_order&sort_order=asc',
@@ -76,14 +76,14 @@
       reptileGear: 'https://brunos-aquarium.square.site/shop/reptile-essential/PCVRUSATI5TCLCMLNQIEFHTS?page=1&limit=30&sort_by=category_order&sort_order=asc',
       petAccessories: 'https://brunos-aquarium.square.site/shop/other-creatures-essential/LHDM7U7KAXY4J6S6J2FZSFYJ?page=1&limit=30&sort_by=category_order&sort_order=asc',
 
-      // Gift cards → direct eGift link
+      // Gift cards
       giftCards: 'https://app.squareup.com/gift/MLMPZV89CWAAF/order'
     };
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-square-cat]').forEach(a => {
         const key = a.getAttribute('data-square-cat');
-        const url = SQUARE_CATEGORY_LINKS[key] || SHOP_ROOT; // safe fallback
+        const url = SQUARE_CATEGORY_LINKS[key] || SHOP_ROOT;
         a.href = url;
         a.target = '_blank';
         a.rel = 'noopener';
@@ -93,7 +93,6 @@
 </head>
 <body>
   <header>
-    <!-- Compact brand row (shared across pages) -->
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
@@ -104,7 +103,6 @@
       </div>
     </div>
 
-    <!-- Main nav (updated categories) -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a class="active" aria-current="page" href="shop.html">Shop</a>
@@ -170,17 +168,6 @@
           </div>
           <div class="tile-body"><a class="btn" data-square-cat="reptiles" href="#">Shop Reptiles</a></div>
         </div>
-
-        <!-- Optional: Plants -->
-        <!--
-        <div class="card tile-card">
-          <div class="tile-wrap">
-            <img class="tile-img" src="assets/img/tiles/freshwater-plants.jpg" alt="Freshwater plants" />
-            <span class="tile-label">Freshwater Plants</span>
-          </div>
-          <div class="tile-body"><a class="btn" data-square-cat="freshwaterPlants" href="#">Shop FW Plants</a></div>
-        </div>
-        -->
       </div>
     </section>
 
@@ -276,68 +263,4 @@
 
         <div class="card tile-card">
           <div class="tile-wrap">
-            <img class="tile-img" src="assets/img/tiles/testing-additives.jpg" alt="Testing & additives" />
-            <span class="tile-label">Testing &amp; Additives</span>
-          </div>
-          <div class="tile-body"><a class="btn" data-square-cat="testingAdditives" href="#">Shop Test &amp; Add</a></div>
-        </div>
-
-        <div class="card tile-card">
-          <div class="tile-wrap">
-            <img class="tile-img" src="assets/img/tiles/substrate-decor.jpg" alt="Substrates & decor" />
-            <span class="tile-label">Substrates &amp; Décor</span>
-          </div>
-          <div class="tile-body"><a class="btn" data-square-cat="substrateDecor" href="#">Shop Substrate</a></div>
-        </div>
-
-        <div class="card tile-card">
-          <div class="tile-wrap">
-            <img class="tile-img" src="assets/img/tiles/reptile-gear.jpg" alt="Reptile gear" />
-            <span class="tile-label">Reptile Gear</span>
-          </div>
-          <div class="tile-body"><a class="btn" data-square-cat="reptileGear" href="#">Shop Reptile</a></div>
-        </div>
-
-        <div class="card tile-card">
-          <div class="tile-wrap">
-            <img class="tile-img" src="assets/img/tiles/accessories.jpg" alt="Pet accessories" />
-            <span class="tile-label">Pet Accessories</span>
-          </div>
-          <div class="tile-body"><a class="btn" data-square-cat="petAccessories" href="#">Shop Accessories</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GIFT CARDS -->
-    <section>
-      <h2>Gift Cards</h2>
-      <div class="card">
-        <div class="pad">
-          <p class="muted">Give the gift of a thriving tank. Digital gift cards available via Square.</p>
-          <a class="btn" data-square-cat="giftCards" href="#">Buy Gift Card</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUPPLIERS -->
-    <section>
-      <h2>Suppliers</h2>
-      <div class="badges" role="list">
-        <span class="badge" role="listitem">Reef Nutrition</span>
-        <span class="badge" role="listitem">AlgaeBarn</span>
-        <span class="badge" role="listitem">Quality Marine</span>
-        <span class="badge" role="listitem">Eye Catching Coral</span>
-        <span class="badge" role="listitem">UGR Wholesale</span>
-      </div>
-      <p class="muted">Approved wholesaler. We can special-order items not currently in stock.</p>
-    </section>
-  </main>
-
-  <footer class="container" style="margin-top:40px;border-top:1px solid #e5e7eb;padding-top:16px">
-    <p><strong>Bruno’s Aquarium</strong> — 258 Dakota Ave S, Huron SD 57350 • Jose 787-233-3313 • Ian 605-350-6478 • <a href="mailto:brunosaquarium@gmail.com">brunosaquarium@gmail.com</a></p>
-  </footer>
-
-  <!-- Shared helpers -->
-  <script src="assets/js/main.js" defer></script>
-</body>
-</html>
+            <img class="tile-img" src="assets/img/tiles/testing-additives.jpg" alt
