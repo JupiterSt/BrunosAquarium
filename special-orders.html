@@ -21,45 +21,89 @@
   <link rel="icon" href="assets/img/favicon.ico">
 
   <style>
-    .steps{counter-reset:step;display:grid;gap:12px}
-    .steps .step{display:flex;gap:12px;align-items:flex-start}
-    .steps .dot{flex:none;width:32px;height:32px;border-radius:999px;background:var(--sea);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
-    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
-    @media (max-width:960px){.cols{grid-template-columns:1fr}}
-    .policy{background:#fff7ed;border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:12px}
-    .checklist{display:grid;gap:6px;margin:6px 0 0}
-    .checklist li{list-style:none;padding-left:24px;position:relative}
-    .checklist li::before{content:"✓";position:absolute;left:0;top:0}
+    :root{--sea:#0e7490}
     section[id]{scroll-margin-top:100px}
+
     .brandbar{background:#fff;border-bottom:1px solid #e5e7eb}
     .brand-inner{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
     .small{font-size:.92rem}
+
+    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    @media (max-width:960px){.cols{grid-template-columns:1fr}}
+
+    .steps{counter-reset:step;display:grid;gap:12px}
+    .steps .step{display:flex;gap:12px;align-items:flex-start}
+    .steps .dot{flex:none;width:32px;height:32px;border-radius:999px;background:var(--sea);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+
+    .policy{background:#fff7ed;border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:12px}
+    .checklist{display:grid;gap:6px;margin:6px 0 0;padding:0}
+    .checklist li{list-style:none;padding-left:24px;position:relative}
+    .checklist li::before{content:"✓";position:absolute;left:0;top:0}
+
+    /* Quick chips */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+    .chip{border:1px solid #e5e7eb;border-radius:999px;padding:6px 10px;cursor:pointer;background:#fff}
+    .chip:focus-visible{outline:2px solid var(--sea)}
+
+    /* Sticky CTA on mobile */
+    .sticky-cta{position:sticky;bottom:12px;z-index:5;display:none}
+    @media (max-width:960px){
+      .sticky-cta{display:flex;justify-content:center}
+      .sticky-cta .btn{box-shadow:0 6px 20px rgba(14,116,144,.25)}
+    }
+
+    /* FAQ */
+    details{border:1px solid #e5e7eb;border-radius:10px;padding:10px}
+    details+details{margin-top:8px}
+    summary{cursor:pointer;font-weight:600}
   </style>
 
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "name":"Pet & Aquarium Special Orders",
+    "serviceType":"Sourcing livestock, plants, and equipment",
+    "provider":{"@type":"Store","name":"Bruno’s Aquarium","address":{"@type":"PostalAddress","streetAddress":"258 Dakota Ave S","addressLocality":"Huron","addressRegion":"SD","postalCode":"57350","addressCountry":"US"}},
+    "areaServed":"Huron, SD",
+    "availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://brunosaquarium.com/special-orders.html"}
+  }
+  </script>
+
   <script>
-    // Optional Square checkout links (fill when ready)
+    // 🔗 Drop your live Square links here once you have them
     const SQUARE_LINKS = {
       deposit: 'https://square.link/REPLACE-DEPOSIT',
       payBalance: 'https://square.link/REPLACE-PAY-BALANCE'
     };
-    document.addEventListener('DOMContentLoaded',()=>{
-      for(const [k,url] of Object.entries(SQUARE_LINKS)){
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wire Square buttons if links are set
+      for (const [k, url] of Object.entries(SQUARE_LINKS)) {
         const a = document.querySelector(`[data-square="${k}"]`);
-        if(a && url && !url.includes('REPLACE')){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+        if (a && url && !url.includes('REPLACE')) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
       }
+
       // Success note if redirected back with ?sent=1
       const params = new URLSearchParams(location.search);
-      if(params.get('sent') === '1'){
-        const note = document.getElementById('sent-note');
-        if(note){ note.hidden = false; }
-      }
+      if (params.get('sent') === '1') { const note = document.getElementById('sent-note'); if (note) note.hidden = false; }
+
+      // Quick chips -> append sample text to textarea
+      const text = document.querySelector('#order-details');
+      document.querySelectorAll('.chip').forEach(ch => {
+        ch.addEventListener('click', () => {
+          const add = ch.getAttribute('data-add') || ch.textContent.trim();
+          text.value = (text.value ? text.value + "\n" : "") + add;
+          text.focus();
+        });
+      });
     });
   </script>
 </head>
 <body>
   <header>
-    <!-- Brand row -->
     <div class="brandbar">
       <div class="brand-inner">
         <a class="brand" href="index.html" aria-label="Bruno’s Aquarium — Home">
@@ -70,7 +114,6 @@
       </div>
     </div>
 
-    <!-- Main nav (updated) -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -86,28 +129,42 @@
     <p class="muted">
       If it’s not on the shelf, we can usually get it — fish, freshwater plants, algae, corals, aquarium chemicals &amp; treatments, reptiles, reptile supplies, dog accessories, and more.
       Tell us what you need and we’ll confirm price &amp; ETA, then invoice securely via Square.
+      <br><em>También hablamos español — pida su orden especial sin problema.</em>
     </p>
+
+    <div class="sticky-cta">
+      <a class="btn" href="#request-form">Request a Quote</a>
+    </div>
 
     <section class="cols">
       <div>
-        <div class="card">
-          <h2>How it works</h2>
+        <div class="card" aria-labelledby="how-it-works">
+          <h2 id="how-it-works">How it works</h2>
           <div class="steps">
-            <div class="step"><div class="dot">1</div><div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget). We can source fish, plants, algae, chemicals, gear, and pet accessories.</div></div>
-            <div class="step"><div class="dot">2</div><div>We <strong>check availability</strong> and message you with price &amp; ETA.</div></div>
-            <div class="step"><div class="dot">3</div><div>Pay a small <strong>deposit</strong> to lock it in. <a class="btn" data-square="deposit" href="#">Pay Deposit</a></div></div>
-            <div class="step"><div class="dot">4</div><div>We place the order and <strong>notify you on arrival</strong>. Pick up in-store or ask about delivery/install.</div></div>
-            <div class="step"><div class="dot">5</div><div>Pay the <strong>remaining balance</strong> at pickup. <a class="btn ghost" data-square="payBalance" href="#">Pay Balance</a></div></div>
+            <div class="step"><div class="dot" aria-hidden="true">1</div><div><strong>Request</strong> your item below (species/equipment/food, size, quantity, budget).</div></div>
+            <div class="step"><div class="dot" aria-hidden="true">2</div><div>We <strong>check availability</strong> and message you with price &amp; ETA.</div></div>
+            <div class="step"><div class="dot" aria-hidden="true">3</div><div>Pay a <strong>deposit</strong> to lock it in. <a class="btn" data-square="deposit" href="#">Pay Deposit</a></div></div>
+            <div class="step"><div class="dot" aria-hidden="true">4</div><div>We place the order and <strong>notify you on arrival</strong>. Pickup or ask about delivery/install.</div></div>
+            <div class="step"><div class="dot" aria-hidden="true">5</div><div>Pay the <strong>remaining balance</strong> at pickup. <a class="btn ghost" data-square="payBalance" href="#">Pay Balance</a></div></div>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="request-form">
           <h2>Request Form</h2>
           <p id="sent-note" class="policy" hidden role="status" aria-live="polite">Thanks! We received your request and will reach out soon.</p>
           <p class="muted">Fastest way to get a quote. You’ll receive a confirmation by phone or email.</p>
 
+          <!-- Quick chips to help users describe orders -->
+          <div aria-label="Quick add examples" class="chips">
+            <button type="button" class="chip" data-add="Yellow Tang (SM) x1 — budget $120–$150">Yellow Tang</button>
+            <button type="button" class="chip" data-add="Freshwater plants: Anubias nana x2, Vallisneria x4">Plants</button>
+            <button type="button" class="chip" data-add="Reptile: Baby Citrus Bearded Dragon — setup bundle (40g tank, basking/UVB, substrate)">Reptile + Setup</button>
+            <button type="button" class="chip" data-add="Equipment: 75g glass tank + stand, canister filter, LED light">Equipment</button>
+            <button type="button" class="chip" data-add="Foods & Treatments: Reef Nutrition TDO Chroma Boost; Seachem Prime 500ml">Foods/Treatments</button>
+          </div>
+
           <!-- Sends to brunosaquarium@gmail.com via FormSubmit -->
-          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
+          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST" novalidate>
             <!-- Anti-spam + helpful subject -->
             <input type="text" name="_honey" style="display:none">
             <input type="hidden" name="_subject" value="Special Order Request — Bruno’s Aquarium">
@@ -117,18 +174,19 @@
 
             <div class="grid cols-2">
               <label>Full name<br><input name="name" autocomplete="name" required></label>
-              <label>Phone<br><input name="phone" type="tel" autocomplete="tel" required></label>
+              <label>Phone<br><input name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="^[0-9\\-\\+\\(\\)\\s]{7,}$" required></label>
             </div>
 
             <div class="grid cols-2" style="margin-top:10px">
               <label>Email<br><input type="email" name="email" autocomplete="email"></label>
-              <label>Preferred contact method<br>
-                <select name="contact" autocomplete="off">
+              <fieldset style="border:none;padding:0;margin:0">
+                <legend class="small" style="margin-bottom:4px">Preferred contact</legend>
+                <select name="contact" autocomplete="off" aria-label="Preferred contact">
                   <option value="Phone">Phone</option>
                   <option value="Text">Text</option>
                   <option value="Email">Email</option>
                 </select>
-              </label>
+              </fieldset>
             </div>
 
             <!-- Weekly availability opt-in -->
@@ -138,18 +196,23 @@
             </label>
 
             <label style="display:block;margin-top:10px">What do you want to order?<br>
-              <textarea name="details" rows="5" placeholder="Give as much detail as you can: species/equipment, size, quantity, budget.
-Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Reef Nutrition TDO Chroma Boost; 75g glass tank w/ stand; Dog accessories—medium harness & leash; Water treatment—Prime 500ml."></textarea>
+              <textarea id="order-details" name="details" rows="6" required placeholder="Give as much detail as you can: species/equipment, size, quantity, budget.&#10;Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Reef Nutrition TDO Chroma Boost; 75g glass tank w/ stand; Dog accessories—medium harness & leash; Water treatment—Prime 500ml."></textarea>
             </label>
 
             <div class="grid cols-2" style="margin-top:10px">
-              <label>Deadline or event date (optional)<br><input name="deadline" placeholder="MM/DD/YYYY" autocomplete="off"></label>
-              <label>Pickup or install?<br>
+              <label>Budget (optional)<br><input name="budget" inputmode="decimal" placeholder="$100–$250"></label>
+              <label>Deadline or event date (optional)<br><input name="deadline" type="date" autocomplete="off"></label>
+            </div>
+
+            <div class="grid cols-2" style="margin-top:10px">
+              <fieldset style="border:none;padding:0;margin:0">
+                <legend class="small" style="margin-bottom:4px">Pickup or install?</legend>
                 <select name="fulfillment" autocomplete="off">
                   <option value="Pickup">Pickup</option>
                   <option value="Delivery/Install">Delivery/Install</option>
                 </select>
-              </label>
+              </fieldset>
+              <label>Zip (for delivery quote)<br><input name="zip" inputmode="numeric" pattern="^[0-9]{5}$" placeholder="57350"></label>
             </div>
 
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
@@ -157,6 +220,28 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
               <a class="btn ghost" href="mailto:brunosaquarium@gmail.com">Email Instead</a>
             </div>
           </form>
+
+          <!-- Micro reassurance -->
+          <p class="small muted" style="margin-top:8px">
+            Secure invoices processed by Square. Deposits apply to your balance and are non-refundable once we order from our supplier.
+          </p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="card" aria-labelledby="faq">
+          <h2 id="faq">FAQ</h2>
+          <details>
+            <summary>How much is the deposit?</summary>
+            <div class="muted">Typically 25–50% depending on the item and supplier; we’ll confirm with your quote.</div>
+          </details>
+          <details>
+            <summary>How long does it take?</summary>
+            <div class="muted">Most items arrive within 3–10 days. Weather and supplier schedules can affect livestock ETAs.</div>
+          </details>
+          <details>
+            <summary>Can you install tanks or reptile setups?</summary>
+            <div class="muted">Yes—we offer delivery, assembly, aquascaping, and cycling help. Ask for a quote in your request.</div>
+          </details>
         </div>
       </div>
 
@@ -178,7 +263,7 @@ Examples: Yellow Tang (SM) x1; Freshwater plants—Anubias nana, Vallisneria; Re
 
         <div class="card">
           <h2>Policies</h2>
-          <div class="policy"><strong>Deposits:</strong> Non-refundable once ordered from supplier. Applied to final balance.</div>
+          <div class="policy"><strong>Deposits:</strong> Non-refundable once ordered. Applied to final balance.</div>
           <div class="policy" style="margin-top:10px"><strong>Live Arrival:</strong> For livestock, we follow standard DOA procedures. Inspect at pickup; contact us immediately with concerns.</div>
           <div class="policy" style="margin-top:10px"><strong>Timing:</strong> ETAs depend on supplier schedules and weather. We’ll provide the best estimate and updates.</div>
         </div>
