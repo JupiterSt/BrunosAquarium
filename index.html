@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bruno’s Aquarium | Huron, SD</title>
-  <meta name="description" content="Local pet shop for fish, corals, invertebrates, reptiles, birds, small mammals, feeders, foods, tanks, and supplies. Water testing & special orders. Huron, South Dakota." />
+  <meta name="description" content="Local pet shop for fish (salt & freshwater), reptiles, birds, small mammals, feeders, foods, tanks, and supplies. Water testing & special orders. Huron, South Dakota." />
   <meta name="theme-color" content="#0e7490" />
 
   <!-- Share/SEO -->
@@ -30,16 +30,11 @@
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
     section[id]{scroll-margin-top:100px}
 
-    /* Announcement */
-    .announce{background:#0e7490;color:#fff}
-    .announce-inner{max-width:1100px;margin:0 auto;padding:8px 14px;display:flex;gap:10px;align-items:center;justify-content:center;font-weight:600}
-    .badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.6);font-size:.8rem}
-
     /* image tiles */
     .tile-img{width:100%;height:160px;border-radius:10px;object-fit:cover;display:block}
     .tile-label{margin-top:8px;font-weight:600}
 
-    /* micro helper */
+    /* helpers */
     .muted-strong{color:#374151;font-weight:600}
     .list-check{display:grid;gap:6px;margin:8px 0 0;padding:0;list-style:none}
     .list-check li::before{content:"✓ ";font-weight:800}
@@ -85,14 +80,6 @@
   </script>
 </head>
 <body>
-  <!-- Announcement -->
-  <div class="announce" role="status" aria-live="polite">
-    <div class="announce-inner">
-      <span class="badge">Grand Opening</span>
-      <span>Saturday, Oct 25 • 10 AM–8 PM — 258 Dakota Ave S, Huron</span>
-    </div>
-  </div>
-
   <header>
     <!-- Compact brand row -->
     <div class="brandbar">
@@ -150,49 +137,28 @@
       </div>
     </section>
 
-    <!-- QUICK PATHS: Main Departments -->
+    <!-- WHAT WE SELL -->
     <section style="margin-top:16px">
-      <h2>Shop by Department</h2>
-      <div class="grid cols-3">
-        <a class="card" href="shop.html#saltwater">
-          <img class="tile-img" src="assets/img/tiles/saltwater.jpg" alt="Saltwater fish and corals" />
-          <div class="tile-label">Saltwater</div>
-          <p class="muted" style="margin:6px 0 0">Fish, corals & inverts.</p>
-        </a>
-
-        <a class="card" href="shop.html#freshwater">
-          <img class="tile-img" src="assets/img/tiles/freshwater.jpg" alt="Freshwater fish and plants" />
-          <div class="tile-label">Freshwater</div>
-          <p class="muted" style="margin:6px 0 0">Fish & live plants.</p>
-        </a>
-
-        <a class="card" href="shop.html#reptiles">
-          <img class="tile-img" src="assets/img/tiles/reptiles.jpg" alt="Reptiles and amphibians" />
-          <div class="tile-label">Reptiles & Amphibians</div>
-          <p class="muted" style="margin:6px 0 0">Geckos, dragons, frogs & more.</p>
-        </a>
-
-        <a class="card" href="shop.html#birds">
-          <img class="tile-img" src="assets/img/tiles/birds.jpg" alt="Finches and parakeets" />
-          <div class="tile-label">Birds</div>
-          <p class="muted" style="margin:6px 0 0">Finches, parakeets & supplies.</p>
-        </a>
-
-        <a class="card" href="shop.html#small-mammals">
-          <img class="tile-img" src="assets/img/tiles/small-mammals.jpg" alt="Hamsters, guinea pigs and small mammal supplies" />
-          <div class="tile-label">Small Mammals</div>
-          <p class="muted" style="margin:6px 0 0">Hamsters, guinea pigs & more.</p>
-        </a>
-
-        <a class="card" href="shop.html#supplies">
-          <img class="tile-img" src="assets/img/tiles/supplies.jpg" alt="Pet foods, feeders, tanks and equipment" />
-          <div class="tile-label">Supplies</div>
-          <p class="muted" style="margin:6px 0 0">Foods, feeders, tanks & gear.</p>
-        </a>
+      <div class="card">
+        <h2 style="margin-top:0">What We Sell</h2>
+        <ul class="list-check" style="columns:2;max-width:900px">
+          <li>Reptiles</li>
+          <li>Birds</li>
+          <li>Fish — Saltwater</li>
+          <li>Fish — Freshwater</li>
+          <li>Hamsters</li>
+          <li>Gerbils</li>
+          <li>Guinea Pigs</li>
+          <li>Turtles & Tortoises</li>
+          <li>Corals & Invertebrates</li>
+          <li>Live Feeders (crickets, mealworms, superworms, hornworms)</li>
+          <li>Foods, Substrates & Supplies</li>
+          <li>Tanks, Filters, Lights & Equipment</li>
+        </ul>
       </div>
     </section>
 
-    <!-- SERVICES STRIP -->
+    <!-- SERVICES (No Loyalty) -->
     <section style="margin-top:16px">
       <h2>In-Store Services</h2>
       <div class="grid cols-3">
@@ -214,15 +180,6 @@
             <h3 style="margin:0 0 4px">Special Orders</h3>
             <p class="muted" style="margin:0">Looking for something specific? We’ll quote price & ETA, then invoice via Square.</p>
             <a class="btn ghost" href="special-orders.html" style="margin-top:8px">Request Now</a>
-          </div>
-        </div>
-
-        <div class="card service-card">
-          <div class="service-ico" aria-hidden="true">♥</div>
-          <div>
-            <h3 style="margin:0 0 4px">Loyalty Perks</h3>
-            <p class="muted" style="margin:0">Earn rewards as you shop—perfect for feeders, foods, and routine supplies.</p>
-            <p class="muted" style="margin:6px 0 0"><em>Ask at checkout to join.</em></p>
           </div>
         </div>
       </div>
@@ -267,7 +224,11 @@
   <footer>
     <div class="container">
       <p><strong>Bruno’s Aquarium</strong> — Huron, SD • © 2025</p>
-      <p><a class="muted" href="contact.html">Contact</a></p>
+      <p>
+        <a class="muted" href="contact.html">Contact</a> •
+        <a class="muted" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a> •
+        <a class="muted" href="https://www.facebook.com/profile.php?id=61580495271761" target="_blank" rel="noopener">Facebook</a>
+      </p>
     </div>
   </footer>
 
