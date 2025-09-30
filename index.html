@@ -42,6 +42,31 @@
     /* service cards */
     .service-card{display:flex;gap:14px;align-items:flex-start}
     .service-ico{width:44px;height:44px;border-radius:10px;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-weight:800}
+
+    /* eGift block */
+    .egift {
+      display: grid;
+      grid-template-columns: minmax(220px, 360px) 1fr;
+      gap: 16px;
+      align-items: center;
+      background:#ecfdf5;
+      border:1px solid #a7f3d0;
+      border-radius:12px;
+      padding:16px;
+    }
+    .egift-img {
+      width:100%;
+      height: clamp(160px, 28vw, 240px);
+      object-fit: contain;
+      object-position: center;
+      border-radius:12px;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      padding:8px;
+    }
+    @media (max-width: 700px){
+      .egift { grid-template-columns: 1fr; }
+    }
   </style>
 
   <!-- PetStore JSON-LD -->
@@ -187,15 +212,17 @@
 
     <!-- FEATURED: eGift Cards -->
     <section style="margin-top:16px">
-      <div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#ecfdf5;border:1px solid #a7f3d0">
+      <div class="card egift">
         <img
+          class="egift-img"
           src="assets/assets/img/egift-card.jpg"
           alt="Bruno’s Aquarium eGift Card"
-          width="1200" height="800"
-          style="width:340px;max-width:100%;border-radius:12px;object-fit:cover;aspect-ratio:3/2">
+          loading="lazy">
         <div>
           <h2 style="margin-top:0">eGift Cards</h2>
-          <p class="muted">Perfect for fishkeepers, reptile lovers, bird owners, and pet parents. Instant, digital, and redeemable in-store.</p>
+          <p class="muted">
+            Perfect for fishkeepers, reptile lovers, bird owners, and pet parents. Instant, digital, and redeemable in-store.
+          </p>
           <a class="btn" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Buy eGift Card</a>
         </div>
       </div>
@@ -213,7 +240,7 @@
       </div>
     </section>
 
-    <!-- NOTE ABOUT AMBASSADOR ANIMALS (optional) -->
+    <!-- NOTE ABOUT AMBASSADOR ANIMALS -->
     <section style="margin-top:16px">
       <div class="card" style="background:#f9fafb">
         <h3 style="margin-top:0">Ambassador Animals</h3>
