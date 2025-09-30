@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bruno’s Aquarium | Huron, SD</title>
-  <meta name="description" content="Salt & freshwater fish, corals, inverts, reptiles, foods, tanks, equipment & professional services. Special orders welcome. Huron, South Dakota." />
+  <meta name="description" content="Local pet shop for fish, corals, invertebrates, reptiles, birds, small mammals, feeders, foods, tanks, and supplies. Water testing & special orders. Huron, South Dakota." />
   <meta name="theme-color" content="#0e7490" />
 
   <!-- Share/SEO -->
   <meta property="og:title" content="Bruno’s Aquarium | Huron, SD" />
-  <meta property="og:description" content="Salt & freshwater fish, corals, inverts, reptiles, foods, tanks, equipment & services. Special orders welcome." />
+  <meta property="og:description" content="Fish, reptiles, birds & small mammals. Foods, feeders, tanks, supplies, and services. Special orders welcome." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/assets/img/logo.png" />
   <link rel="canonical" href="https://brunosaquarium.com/" />
@@ -30,12 +30,26 @@
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
     section[id]{scroll-margin-top:100px}
 
+    /* Announcement */
+    .announce{background:#0e7490;color:#fff}
+    .announce-inner{max-width:1100px;margin:0 auto;padding:8px 14px;display:flex;gap:10px;align-items:center;justify-content:center;font-weight:600}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.6);font-size:.8rem}
+
     /* image tiles */
     .tile-img{width:100%;height:160px;border-radius:10px;object-fit:cover;display:block}
     .tile-label{margin-top:8px;font-weight:600}
+
+    /* micro helper */
+    .muted-strong{color:#374151;font-weight:600}
+    .list-check{display:grid;gap:6px;margin:8px 0 0;padding:0;list-style:none}
+    .list-check li::before{content:"✓ ";font-weight:800}
+
+    /* service cards */
+    .service-card{display:flex;gap:14px;align-items:flex-start}
+    .service-ico{width:44px;height:44px;border-radius:10px;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-weight:800}
   </style>
 
-  <!-- LocalBusiness JSON-LD + Gift Card offer -->
+  <!-- PetStore JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,18 +73,26 @@
     ],
     "sameAs": ["https://www.facebook.com/profile.php?id=61580495271761"],
     "openingHoursSpecification": [
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"10:00", "closes":"20:00" },
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Sunday"], "opens":"00:00", "closes":"00:00" }
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"10:00", "closes":"20:00" }
     ],
-    "makesOffer": {
-      "@type": "Offer",
-      "url": "https://app.squareup.com/gift/MLMPZV89CWAAF/order",
-      "itemOffered": { "@type": "Product", "name": "Bruno’s Aquarium Gift Card" }
-    }
+    "department": [
+      {"@type":"Store","name":"Aquatics"},
+      {"@type":"Store","name":"Reptiles"},
+      {"@type":"Store","name":"Birds"},
+      {"@type":"Store","name":"Small Mammals"}
+    ]
   }
   </script>
 </head>
 <body>
+  <!-- Announcement -->
+  <div class="announce" role="status" aria-live="polite">
+    <div class="announce-inner">
+      <span class="badge">Grand Opening</span>
+      <span>Saturday, Oct 25 • 10 AM–8 PM — 258 Dakota Ave S, Huron</span>
+    </div>
+  </div>
+
   <header>
     <!-- Compact brand row -->
     <div class="brandbar">
@@ -79,7 +101,7 @@
           <img class="brand-logo" src="assets/assets/img/logo.png" alt="Bruno’s Aquarium logo" />
           <span>Bruno’s Aquarium</span>
         </a>
-        <div class="brand-meta">Huron, SD • Est. 2025</div>
+        <div class="brand-meta">Fish • Reptiles • Birds • Small Mammals</div>
       </div>
     </div>
 
@@ -98,14 +120,20 @@
     <!-- HERO -->
     <section class="hero">
       <div class="card">
-        <h1>Welcome to Bruno’s Aquarium</h1>
-        <p class="muted">Your local hub in Huron, SD for saltwater &amp; freshwater fish, corals, inverts, reptiles, foods, tanks and professional services. Special orders available.</p>
+        <h1>Your Huron Pet Shop for Aquatics & Exotics</h1>
+        <p class="muted">
+          Fish (salt & freshwater), corals, invertebrates, reptiles, birds, small mammals, feeders, foods, tanks & supplies.
+          <span class="muted-strong">Water testing & special orders available.</span><br>
+          <em>También hablamos español — ¡bienvenidos!</em>
+        </p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <a class="btn" href="shop.html">Shop Now</a>
           <a class="btn" href="special-orders.html">Request Special Order</a>
+          <a class="btn ghost" href="care-guides.html">Care Guides</a>
           <a class="btn ghost" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener" aria-label="Buy eGift Card">Buy eGift Card</a>
         </div>
       </div>
+
       <div class="card">
         <h3 style="margin-top:0">Hours & Info</h3>
         <div class="hours">
@@ -122,39 +150,93 @@
       </div>
     </section>
 
+    <!-- QUICK PATHS: Main Departments -->
+    <section style="margin-top:16px">
+      <h2>Shop by Department</h2>
+      <div class="grid cols-3">
+        <a class="card" href="shop.html#saltwater">
+          <img class="tile-img" src="assets/img/tiles/saltwater.jpg" alt="Saltwater fish and corals" />
+          <div class="tile-label">Saltwater</div>
+          <p class="muted" style="margin:6px 0 0">Fish, corals & inverts.</p>
+        </a>
+
+        <a class="card" href="shop.html#freshwater">
+          <img class="tile-img" src="assets/img/tiles/freshwater.jpg" alt="Freshwater fish and plants" />
+          <div class="tile-label">Freshwater</div>
+          <p class="muted" style="margin:6px 0 0">Fish & live plants.</p>
+        </a>
+
+        <a class="card" href="shop.html#reptiles">
+          <img class="tile-img" src="assets/img/tiles/reptiles.jpg" alt="Reptiles and amphibians" />
+          <div class="tile-label">Reptiles & Amphibians</div>
+          <p class="muted" style="margin:6px 0 0">Geckos, dragons, frogs & more.</p>
+        </a>
+
+        <a class="card" href="shop.html#birds">
+          <img class="tile-img" src="assets/img/tiles/birds.jpg" alt="Finches and parakeets" />
+          <div class="tile-label">Birds</div>
+          <p class="muted" style="margin:6px 0 0">Finches, parakeets & supplies.</p>
+        </a>
+
+        <a class="card" href="shop.html#small-mammals">
+          <img class="tile-img" src="assets/img/tiles/small-mammals.jpg" alt="Hamsters, guinea pigs and small mammal supplies" />
+          <div class="tile-label">Small Mammals</div>
+          <p class="muted" style="margin:6px 0 0">Hamsters, guinea pigs & more.</p>
+        </a>
+
+        <a class="card" href="shop.html#supplies">
+          <img class="tile-img" src="assets/img/tiles/supplies.jpg" alt="Pet foods, feeders, tanks and equipment" />
+          <div class="tile-label">Supplies</div>
+          <p class="muted" style="margin:6px 0 0">Foods, feeders, tanks & gear.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- SERVICES STRIP -->
+    <section style="margin-top:16px">
+      <h2>In-Store Services</h2>
+      <div class="grid cols-3">
+        <div class="card service-card">
+          <div class="service-ico" aria-hidden="true">H₂O</div>
+          <div>
+            <h3 style="margin:0 0 4px">Water Testing</h3>
+            <p class="muted" style="margin:0">Salt & freshwater. Bring a clean sample; we’ll test and recommend next steps.</p>
+            <ul class="list-check">
+              <li>Quick in-store results</li>
+              <li>Care & dosing advice</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="service-ico" aria-hidden="true">★</div>
+          <div>
+            <h3 style="margin:0 0 4px">Special Orders</h3>
+            <p class="muted" style="margin:0">Looking for something specific? We’ll quote price & ETA, then invoice via Square.</p>
+            <a class="btn ghost" href="special-orders.html" style="margin-top:8px">Request Now</a>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="service-ico" aria-hidden="true">♥</div>
+          <div>
+            <h3 style="margin:0 0 4px">Loyalty Perks</h3>
+            <p class="muted" style="margin:0">Earn rewards as you shop—perfect for feeders, foods, and routine supplies.</p>
+            <p class="muted" style="margin:6px 0 0"><em>Ask at checkout to join.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FEATURED: eGift Cards -->
     <section style="margin-top:16px">
       <div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#ecfdf5;border:1px solid #a7f3d0">
         <img src="assets/img/egift-placeholder.jpg" alt="Bruno’s Aquarium eGift Card" style="width:320px;max-width:100%;border-radius:12px;object-fit:cover">
         <div>
           <h2 style="margin-top:0">eGift Cards</h2>
-          <p class="muted">Perfect for any fishkeeper, reptile lover, or pet parent. Available instantly online and redeemable only at <strong>Bruno’s Aquarium</strong>.</p>
+          <p class="muted">Perfect for fishkeepers, reptile lovers, bird owners, and pet parents. Instant, digital, and redeemable in-store.</p>
           <a class="btn" href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Buy eGift Card</a>
         </div>
-      </div>
-    </section>
-
-    <!-- QUICK PATHS -->
-    <section style="margin-top:16px">
-      <h2>Jump In</h2>
-      <div class="grid cols-3">
-        <a class="card" href="shop.html" aria-label="Go to Shop">
-          <img class="tile-img" src="assets/img/tiles/shop.jpg" alt="Shop categories" />
-          <div class="tile-label">Shop</div>
-          <p class="muted" style="margin:6px 0 0">Browse livestock, foods, and gear.</p>
-        </a>
-
-        <a class="card" href="care-guides.html" aria-label="Go to Care Guides">
-          <img class="tile-img" src="assets/img/tiles/care-guides.jpg" alt="Care guides" />
-          <div class="tile-label">Care Guides</div>
-          <p class="muted" style="margin:6px 0 0">Quick tips & full care sheets.</p>
-        </a>
-
-        <a class="card" href="special-orders.html" aria-label="Go to Special Orders">
-          <img class="tile-img" src="assets/img/tiles/special-orders.jpg" alt="Special orders" />
-          <div class="tile-label">Special Orders</div>
-          <p class="muted" style="margin:6px 0 0">Request hard-to-find items.</p>
-        </a>
       </div>
     </section>
 
@@ -167,6 +249,17 @@
           <strong>Hours:</strong> Mon–Sat 10 AM–8 PM; Sun Closed
         </p>
         <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed" title="Map to Bruno’s Aquarium, Huron SD"></iframe>
+      </div>
+    </section>
+
+    <!-- NOTE ABOUT AMBASSADOR ANIMALS (optional) -->
+    <section style="margin-top:16px">
+      <div class="card" style="background:#f9fafb">
+        <h3 style="margin-top:0">Ambassador Animals</h3>
+        <p class="muted" style="margin:0">
+          Some animals in-store are ambassador animals and <strong>not for sale</strong>. Please look, don’t touch—thank you for helping us keep them comfortable.
+          <br><em>Algunos animales son embajadores y <strong>no están a la venta</strong>. Por favor solo mirar, no tocar.</em>
+        </p>
       </div>
     </section>
   </main>
