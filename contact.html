@@ -12,7 +12,9 @@
   <meta property="og:description" content="Hours, phone, address, email, and a quick contact form for Bruno’s Aquarium in Huron, SD.">
   <meta property="og:image" content="assets/assets/img/logo.png">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brunosaquarium.com/contact.html">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://brunosaquarium.com/contact.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +22,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.ico">
 
-  <!-- LocalBusiness JSON-LD -->
+  <!-- PetStore JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,14 +46,14 @@
     ],
     "sameAs": ["https://www.facebook.com/profile.php?id=61580495271761"],
     "openingHoursSpecification": [
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"10:00", "closes":"20:00" },
-      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Sunday"], "opens":"00:00", "closes":"00:00" }
+      { "@type":"OpeningHoursSpecification", "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens":"10:00", "closes":"20:00" }
     ]
   }
   </script>
 
   <style>
-    /* minimal extras specific to this page */
+    :root{--sea:#0e7490}
+    /* layout */
     .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
     @media (max-width:960px){.cols{grid-template-columns:1fr}}
     .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -67,6 +69,13 @@
     .brand-logo{width:40px;height:40px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;padding:4px}
 
     .note{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:12px;padding:10px;margin:0 0 12px}
+
+    /* sticky mobile CTA */
+    .sticky-cta{display:none;position:sticky;bottom:12px;z-index:5;justify-content:center}
+    @media (max-width:960px){
+      .sticky-cta{display:flex}
+      .sticky-cta .btn{box-shadow:0 6px 20px rgba(14,116,144,.25)}
+    }
   </style>
 
   <script>
@@ -93,20 +102,23 @@
       </div>
     </div>
 
-    <!-- Main nav (updated) -->
+    <!-- Main nav -->
     <nav aria-label="Main">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="special-orders.html">Special Orders</a>
       <a href="care-guides.html">Care Guides</a>
-      <a class="active" href="contact.html">Contact</a>
+      <a class="active" aria-current="page" href="contact.html">Contact</a>
       <a href="https://app.squareup.com/gift/MLMPZV89CWAAF/order" target="_blank" rel="noopener">Gift Cards</a>
     </nav>
   </header>
 
   <main class="container">
     <h1>Contact Us</h1>
-    <p class="muted">Questions about livestock, special orders, maintenance, or installs? Send a message and we’ll get right back to you.</p>
+    <p class="muted">Questions about livestock, special orders, maintenance, or installs? Send a message and we’ll get right back to you. <em>También hablamos español.</em></p>
+
+    <!-- Mobile sticky call button -->
+    <div class="sticky-cta"><a class="btn" href="tel:+16053506478">Call Now</a></div>
 
     <section class="cols">
       <div>
@@ -117,10 +129,10 @@
             Thanks! Your message was sent.
           </p>
 
-          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST">
+          <form action="https://formsubmit.co/brunosaquarium@gmail.com" method="POST" novalidate>
             <!-- Spam honeypot -->
             <input type="text" name="_honey" style="display:none">
-            <!-- Optional subject for your inbox -->
+            <!-- Inbox subject -->
             <input type="hidden" name="_subject" value="Website Contact — Bruno’s Aquarium">
             <!-- Disable captcha -->
             <input type="hidden" name="_captcha" value="false">
@@ -132,9 +144,11 @@
                 <input name="name" autocomplete="name" required>
               </label>
               <label>Phone<br>
-                <input type="tel" name="phone" inputmode="tel" autocomplete="tel" required>
+                <input type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                  pattern="^[0-9\\-\\+\\(\\)\\s]{7,}$" required>
               </label>
             </div>
+
             <div class="grid cols-2" style="margin-top:10px">
               <label>Email<br>
                 <input type="email" name="email" autocomplete="email" placeholder="optional">
@@ -143,9 +157,11 @@
                 <input name="subject" placeholder="Question, special order, service…">
               </label>
             </div>
+
             <label style="display:block;margin-top:10px">Message<br>
-              <textarea name="message" rows="5" placeholder="Tell us what you’re looking for or how we can help."></textarea>
+              <textarea name="message" rows="5" placeholder="Tell us what you’re looking for or how we can help." required></textarea>
             </label>
+
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
               <button class="btn" type="submit">Send Message</button>
               <a class="btn ghost" href="mailto:brunosaquarium@gmail.com">Email Instead</a>
@@ -171,8 +187,13 @@
         <div class="card">
           <h2>Visit Us</h2>
           <p>258 Dakota Ave S, Huron SD 57350</p>
-          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed" title="Map to Bruno’s Aquarium, Huron SD"></iframe>
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=258%20Dakota%20Ave%20S%2C%20Huron%2C%20SD%2057350&output=embed"
+            title="Map to Bruno’s Aquarium, Huron SD"></iframe>
+          <p style="margin-top:8px"><a class="btn ghost" target="_blank" rel="noopener"
+            href="https://www.google.com/maps/place/258+Dakota+Ave+S,+Huron,+SD+57350">Open in Google Maps</a></p>
         </div>
+
         <div class="card contact-cards">
           <div>
             <h3>Owner</h3>
